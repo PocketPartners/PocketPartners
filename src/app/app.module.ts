@@ -7,6 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatAnchor} from "@angular/material/button";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {MatAnchor} from "@angular/material/button";
     BrowserModule,
     AppRoutingModule,
     MatToolbar,
-    MatAnchor
+    MatAnchor,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()
