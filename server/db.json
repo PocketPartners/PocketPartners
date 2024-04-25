@@ -1,0 +1,134 @@
+{
+  "grupos": [
+    {
+      "id": 1,
+      "nombre": "Los mejores de la U",
+      "miembros": [1, 2, 3],
+      "gastos": [
+        {
+          "id": 1,
+          "descripcion": "KFC",
+          "monto": 500,
+          "fecha": "2024-04-20",
+          "pagadoPor": 1,
+          "usuariosParaDividir": [1, 5, 6],
+          "miembrosPagando": [
+            { "usuarioId": 1, "montoPagado": 166.67, "pagoRealizado": true },
+            { "usuarioId": 5, "montoPagado": 166.67, "pagoRealizado": false },
+            { "usuarioId": 6, "montoPagado": 166.67, "pagoRealizado": false }
+          ]
+        },
+        {
+          "id": 2,
+          "descripcion": "Taxi - Interbank",
+          "monto": 50,
+          "fecha": "2024-04-21",
+          "pagadoPor": 5,
+          "usuariosParaDividir": [1, 5, 6],
+          "miembrosPagando": [
+            { "usuarioId": 1, "montoPagado": 16.67, "pagoRealizado": false },
+            { "usuarioId": 5, "montoPagado": 16.67, "pagoRealizado": true },
+            { "usuarioId": 6, "montoPagado": 16.67, "pagoRealizado": false }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Aliens :0",
+      "miembros": [1,2,3,4],
+      "gastos": [
+        {
+          "id": 1,
+          "descripcion": "Parque de diversiones, entradas",
+          "monto": 500,
+          "fecha": "2024-04-20",
+          "pagadoPor": 1,
+          "usuariosParaDividir": [1, 2, 3, 4],
+          "miembrosPagando": [
+            { "usuarioId": 1, "montoPagado": 166.67, "pagoRealizado": true },
+            { "usuarioId": 2, "montoPagado": 166.67, "pagoRealizado": false },
+            { "usuarioId": 3, "montoPagado": 166.67, "pagoRealizado": true },
+            { "usuarioId": 4, "montoPagado": 166.67, "pagoRealizado": false }
+          ]
+        },
+        {
+          "id": 2,
+          "descripcion": "Gasolina",
+          "monto": 55,
+          "fecha": "2024-04-21",
+          "pagadoPor": 2,
+          "usuariosParaDividir": [1, 2, 3, 4],
+          "miembrosPagando": [
+            { "usuarioId": 1, "montoPagado": 13.75, "pagoRealizado": false },
+            { "usuarioId": 2, "montoPagado": 13.75, "pagoRealizado": true },
+            { "usuarioId": 3, "montoPagado": 13.75, "pagoRealizado": false },
+            { "usuarioId": 4, "montoPagado": 13.75, "pagoRealizado": false }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Familia Snow",
+      "miembros": [1,7,8,9,10],
+      "gastos": [
+        {
+          "id": 1,
+          "descripcion": "Restaurante",
+          "monto": 1000.50,
+          "fecha": "2024-04-22",
+          "pagadoPor": 8,
+          "usuariosParaDividir": [1, 9, 10],
+          "miembrosPagando": [
+            { "usuarioId": 1, "montoPagado": 250.125, "pagoRealizado": true },
+            { "usuarioId": 9, "montoPagado": 250.125, "pagoRealizado": true },
+            { "usuarioId": 10, "montoPagado": 250.125, "pagoRealizado": true }
+          ]
+        }
+      ]
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Jon Snow"
+    },
+    {
+      "id": 2,
+      "nombre": "Ariana Alvarez"
+    },
+    {
+      "id": 3,
+      "nombre": "Luciana Jones"
+    },
+    {
+      "id": 4,
+      "nombre": "Camila Cabello"
+    },
+    {
+      "id": 5,
+      "nombre": "María García"
+    },
+    {
+      "id": 6,
+      "nombre": "Pedro López"
+    },
+    {
+      "id": 7,
+      "nombre": "Mama"
+    },
+    {
+      "id": 8,
+      "nombre": "Papa"
+    },
+    {
+      "id": 9,
+      "nombre": "Hermano"
+    },
+    {
+      "id": 10,
+      "nombre": "Hermana"
+    }
+  ]
+}
