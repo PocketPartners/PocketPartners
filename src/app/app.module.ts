@@ -13,6 +13,7 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { LanguageSwitcherComponent } from './public/components/language-switcher/language-switcher.component';
+import { PageCreateGroupComponent } from './group/pages/page-create-group/page-create-group.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -22,7 +23,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    LanguageSwitcherComponent
+    LanguageSwitcherComponent,
+    PageCreateGroupComponent
   ],
   imports: [
     BrowserModule,
