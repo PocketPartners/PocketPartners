@@ -4,5 +4,10 @@
         "message": "La página {{page}} que busca no existe.",
         "redirect": "Redirigir en",
         "button": "Volver a la página de inicio"
+    },
+    "group": {
+        "create-group": {
+            "title": "Crea tu grupo"
+        }
     }
 }
