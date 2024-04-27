@@ -4,7 +4,7 @@ import { catchError, Observable, retry, throwError } from "rxjs";
 
 export class BaseService<T> {
   basePath: string = `${environment.baseURL}`;
-  resourceEndpoint: string = '/resources';
+  resourceEndpoint: string = '/';
 
   httpOptions = {
     headers: new HttpHeaders({
