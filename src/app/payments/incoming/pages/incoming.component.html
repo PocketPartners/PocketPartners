@@ -7,17 +7,19 @@
 
   <mat-card-content class="container">
     <div class="box name">
-      <h4>Nombre</h4>
-      <p>{{ group.members }}</p>
+      <h4>Integrantes</h4>
+      <p *ngFor="let member of group.members">{{ member.name }}</p>
     </div>
-    <div class="box date">
-      <h4>Fecha</h4>
-      <p>{{ group.paymentHistory }}</p>
-    </div>
-    <div class="box amount">
-      <h4>Monto</h4>
-      <p>{{ group.paymentHistory }}</p>
-    </div>
+    <div *ngFor="let payment of group.paymentHistory" class="box date">
+      <div class="box date">
+        <h4>Fecha</h4>
+        <p >{{ payment.date }}</p>
+      </div>
+      <div class="box amount">
+        <h4>Monto</h4>
+        <p>{{ payment.amount }}</p>
+      </div>
+    </div>  
   </mat-card-content>
 
 </mat-card>

@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {GroupEntity} from "../../../group/model/group.entity";
-import {GroupService} from "../../../group/services/group.service";
+import { Component, OnInit } from '@angular/core';
+import { GroupEntity } from "../../../group/model/group.entity";
+import { GroupService } from "../../../group/services/group.service";
 
 @Component({
   selector: 'app-pages',

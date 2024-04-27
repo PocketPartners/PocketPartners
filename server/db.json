@@ -253,7 +253,25 @@
         }
       ],
       "creationDate": "2024-04-27T02:30:19.691Z",
-      "paymentHistory": []
+      "paymentHistory": [
+        {
+          "id": 0,
+          "description": "Pizza",
+          "amount": 100,
+          "date": "2024-04-27T02:30:19.691Z",
+          "paidBy": 0,
+          "usersToDivide": [
+            0
+          ],
+          "membersPaying": [
+            {
+              "userId": 0,
+              "amountPaid": 100,
+              "paymentMade": true
+            }
+          ]
+        }
+      ]
     }
   ],
   "users": [
