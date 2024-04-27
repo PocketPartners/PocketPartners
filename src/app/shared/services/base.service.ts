@@ -1,9 +1,9 @@
-import {environment} from "../../../environments/environment";
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, retry, throwError} from "rxjs";
+import { environment } from "../../../environments/environment";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { catchError, Observable, retry, throwError } from "rxjs";
 
 export class BaseService<T> {
-  basePath: string = `${environment.serverBasePath}`;
+  basePath: string = `${environment.baseURL}`;
   resourceEndpoint: string = '/resources';
 
   httpOptions = {
@@ -27,8 +27,9 @@ export class BaseService<T> {
   }
 
   // Create Resource
-  create(item: any): Observable<T> { return this.http.post<T>(this.resourcePath(), JSON.stringify(item), this.httpOptions)
-    .pipe(retry(2), catchError(this.handleError));
+  create(item: any): Observable<T> {
+    return this.http.post<T>(this.resourcePath(), JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
   // Delete Resource
