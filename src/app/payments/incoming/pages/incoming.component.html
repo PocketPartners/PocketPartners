@@ -5,21 +5,20 @@
     </mat-card-title-group>
   </mat-card-header>
 
-  <mat-card-content class="container">
-    <div class="box name">
-      <h4>Integrantes</h4>
-      <p *ngFor="let member of group.members">{{ member.name }}</p>
-    </div>
-    <div *ngFor="let payment of group.paymentHistory" class="box date">
+  <mat-card-content >
+    <div class="container">
+      <div class="box name">
+        <h3><b>Integrantes</b></h3>
+        <p *ngFor="let member of group.members">{{ member.name }}</p>
+      </div>
       <div class="box date">
-        <h4>Fecha</h4>
-        <p >{{ payment.date }}</p>
+        <h4><b>Fecha</b></h4>
+        <p *ngFor="let payment of group.paymentHistory">{{ payment.date }}</p>
       </div>
       <div class="box amount">
-        <h4>Monto</h4>
-        <p>{{ payment.amount }}</p>
+        <h4><b>Monto</b></h4>
+        <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{group.currency}}</p>
       </div>
-    </div>  
+    </div>
   </mat-card-content>
-
 </mat-card>

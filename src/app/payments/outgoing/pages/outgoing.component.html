@@ -1,1 +1,44 @@
-<p>outgoing.component works!</p>
+<div class="cards">
+<mat-card class="done card">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>Pagos Realizados</mat-card-title>
+    </mat-card-title-group>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-card *ngFor="let group of groups" class="group-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>{{ group.name }}</mat-card-title>
+        </mat-card-title-group>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="container">
+          <div class="box name">
+            <h3><b>Integrantes</b></h3>
+            <p *ngFor="let member of group.members">{{ member.name }}</p>
+          </div>
+          <div class="box amount">
+            <h4><b>Monto</b></h4>
+            <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{group.currency}}</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="missing card">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>Pagos Faltantes</mat-card-title>
+    </mat-card-title-group>
+  </mat-card-header>
+
+  <mat-card-content>
+
+  </mat-card-content>
+</mat-card>
+</div>
