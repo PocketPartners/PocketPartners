@@ -21,9 +21,11 @@ import { LanguageSwitcherComponent } from './public/components/language-switcher
 import { PageCreateGroupComponent } from './group/pages/page-create-group/page-create-group.component';
 import { FormCreateGroupComponent } from './group/components/form-create-group/form-create-group.component';
 import { HomeComponent } from './public/pages/home/home.component';
-import {MatIcon} from "@angular/material/icon";
-import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
-import {MatListItem, MatListItemAvatar, MatListItemLine, MatNavList} from "@angular/material/list";
+import { MatIcon } from "@angular/material/icon";
+import { MatSidenav, MatSidenavContainer, MatSidenavContent } from "@angular/material/sidenav";
+import { MatListItem, MatListItemAvatar, MatListItemLine, MatNavList } from "@angular/material/list";
+import { PageGroupComponent } from './group/pages/page-group/page-group.component';
+import { GroupService } from './group/services/group.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -36,7 +38,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LanguageSwitcherComponent,
     PageCreateGroupComponent,
     FormCreateGroupComponent,
-    HomeComponent
+    HomeComponent,
+    PageGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSidenav
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    GroupService
   ],
   bootstrap: [AppComponent]
 })
