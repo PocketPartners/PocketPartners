@@ -20,6 +20,10 @@ import { AppComponent } from './app.component';
 import { LanguageSwitcherComponent } from './public/components/language-switcher/language-switcher.component';
 import { PageCreateGroupComponent } from './group/pages/page-create-group/page-create-group.component';
 import { FormCreateGroupComponent } from './group/components/form-create-group/form-create-group.component';
+import { HomeComponent } from './public/pages/home/home.component';
+import {MatIcon} from "@angular/material/icon";
+import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
+import {MatListItem, MatListItemAvatar, MatListItemLine, MatNavList} from "@angular/material/list";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -31,7 +35,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageNotFoundComponent,
     LanguageSwitcherComponent,
     PageCreateGroupComponent,
-    FormCreateGroupComponent
+    FormCreateGroupComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatStepperModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIcon,
+    MatSidenavContent,
+    MatListItemAvatar,
+    MatListItemLine,
+    MatSidenavContainer,
+    MatNavList,
+    MatListItem,
+    MatSidenav
   ],
   providers: [
     provideAnimationsAsync()

@@ -1,5 +1,5 @@
 {
-  "grupos": [
+  "groups": [
     {
       "id": 1,
       "nombre": "Los mejores de la U",
@@ -89,46 +89,76 @@
       ]
     }
   ],
-  "usuarios": [
+  "users": [
     {
       "id": 1,
-      "nombre": "Jon Snow"
+      "name": "Jon Snow",
+      "email": "jonysnow@email.com",
+      "balance": 3000,
+      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
     },
     {
       "id": 2,
-      "nombre": "Ariana Alvarez"
+      "nombre": "Ariana Alvarez",
+      "email": "jonysnow@email.com",
+      "balance": 3000,
+      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
     },
     {
       "id": 3,
-      "nombre": "Luciana Jones"
+      "nombre": "Luciana Jones",
+      "email": "jonysnow@email.com",
+      "balance": 3000,
+      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
     },
     {
       "id": 4,
-      "nombre": "Camila Cabello"
+      "nombre": "Camila Cabello",
+      "email": "jonysnow@email.com",
+      "balance": 3000,
+      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
     },
     {
       "id": 5,
-      "nombre": "María García"
+      "nombre": "María García",
+      "email": "jonysnow@email.com",
+      "balance": 3000,
+      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
     },
     {
       "id": 6,
-      "nombre": "Pedro López"
+      "nombre": "Pedro López",
+      "email": "jonysnow@email.com",
+      "balance": 3000,
+      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
     },
     {
       "id": 7,
-      "nombre": "Mama"
+      "nombre": "Mama",
+      "email": "jonysnow@email.com",
+      "balance": 3000,
+      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
     },
     {
       "id": 8,
-      "nombre": "Papa"
+      "nombre": "Papa",
+      "email": "jonysnow@email.com",
+      "balance": 3000,
+      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
     },
     {
       "id": 9,
-      "nombre": "Hermano"
+      "nombre": "Hermano",
+      "email": "jonysnow@email.com",
+      "balance": 3000,
+      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
     },
     {
       "id": 10,
-      "nombre": "Hermana"
+      "nombre": "Hermana",
+      "email": "jonysnow@email.com",
+      "balance": 3000,
+      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
     }
   ]
 }
