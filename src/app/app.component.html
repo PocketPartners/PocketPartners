@@ -3,6 +3,8 @@
   <div class="mat-spacer"></div>
   <a mat-button *ngFor="let option of options"
     [routerLink]="option.path">{{ option.title }}</a>
-  <app-language-switcher />
+  <span>
+        <app-language-switcher/>
+  </span>
 </mat-toolbar>
 <router-outlet></router-outlet>
