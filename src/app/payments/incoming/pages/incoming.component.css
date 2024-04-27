@@ -1,0 +1,15 @@
+.group-card{
+  margin: 1.5rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box {
+  width: calc((100% - 2 * 1em) / 3);
+  height: 100px;
+}
+
+

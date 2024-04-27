@@ -11,8 +11,8 @@ export class AppComponent implements OnInit {
   options = [
     { path: '/home', title: 'Home' },
     { path: '/groups', title: 'Groups' },
-    { path: '/IPayments', title: 'Incoming payments'},
-    { path: '/OPayments', title: 'Outgoing  payments'},
+    { path: '/incoming', title: 'Incoming payments'},
+    { path: '/outgoing', title: 'Outgoing  payments'},
   ];
 
   constructor(translate: TranslateService) {

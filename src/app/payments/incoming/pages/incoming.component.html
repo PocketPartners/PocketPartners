@@ -1,0 +1,23 @@
+<mat-card *ngFor="let group of groups" class="group-card">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{ group.name }}</mat-card-title>
+    </mat-card-title-group>
+  </mat-card-header>
+
+  <mat-card-content class="container">
+    <div class="box name">
+      <h4>Nombre</h4>
+      <p>{{ group.members }}</p>
+    </div>
+    <div class="box date">
+      <h4>Fecha</h4>
+      <p>{{ group.paymentHistory }}</p>
+    </div>
+    <div class="box amount">
+      <h4>Monto</h4>
+      <p>{{ group.paymentHistory }}</p>
+    </div>
+  </mat-card-content>
+
+</mat-card>

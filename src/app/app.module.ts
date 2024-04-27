@@ -26,6 +26,9 @@ import { MatSidenav, MatSidenavContainer, MatSidenavContent } from "@angular/mat
 import { MatListItem, MatListItemAvatar, MatListItemLine, MatNavList } from "@angular/material/list";
 import { PageGroupComponent } from './group/pages/page-group/page-group.component';
 import { GroupService } from './group/services/group.service';
+import { IncomingComponent } from './payments/incoming/pages/incoming.component';
+import { OutgoingComponent } from './payments/outgoing/pages/outgoing.component';
+import {MatCard, MatCardHeader, MatCardModule, MatCardTitleGroup} from "@angular/material/card";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -39,7 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageCreateGroupComponent,
     FormCreateGroupComponent,
     HomeComponent,
-    PageGroupComponent
+    PageGroupComponent,
+    IncomingComponent,
+    OutgoingComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSidenavContainer,
     MatNavList,
     MatListItem,
-    MatSidenav
+    MatSidenav,
+    MatCard,
+    MatCardModule,
+    MatCardHeader,
+    MatCardTitleGroup
   ],
   providers: [
     provideAnimationsAsync(),
