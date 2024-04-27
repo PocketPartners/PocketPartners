@@ -1,4 +1,4 @@
-export class Popartner {
+export class PartnerEntity {
 
   id: number;
   name: string;

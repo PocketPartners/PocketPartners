@@ -1,231 +1,12 @@
 {
   "groups": [
     {
-      "id": 1,
-      "nombre": "Los mejores de la U",
-      "miembros": [
-        1,
-        2,
-        3
-      ],
-      "gastos": [
-        {
-          "id": 1,
-          "descripcion": "KFC",
-          "monto": 500,
-          "fecha": "2024-04-20",
-          "pagadoPor": 1,
-          "usuariosParaDividir": [
-            1,
-            5,
-            6
-          ],
-          "miembrosPagando": [
-            {
-              "usuarioId": 1,
-              "montoPagado": 166.67,
-              "pagoRealizado": true
-            },
-            {
-              "usuarioId": 5,
-              "montoPagado": 166.67,
-              "pagoRealizado": false
-            },
-            {
-              "usuarioId": 6,
-              "montoPagado": 166.67,
-              "pagoRealizado": false
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "descripcion": "Taxi - Interbank",
-          "monto": 50,
-          "fecha": "2024-04-21",
-          "pagadoPor": 5,
-          "usuariosParaDividir": [
-            1,
-            5,
-            6
-          ],
-          "miembrosPagando": [
-            {
-              "usuarioId": 1,
-              "montoPagado": 16.67,
-              "pagoRealizado": false
-            },
-            {
-              "usuarioId": 5,
-              "montoPagado": 16.67,
-              "pagoRealizado": true
-            },
-            {
-              "usuarioId": 6,
-              "montoPagado": 16.67,
-              "pagoRealizado": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "nombre": "Aliens :0",
-      "miembros": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "gastos": [
-        {
-          "id": 1,
-          "descripcion": "Parque de diversiones, entradas",
-          "monto": 500,
-          "fecha": "2024-04-20",
-          "pagadoPor": 1,
-          "usuariosParaDividir": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "miembrosPagando": [
-            {
-              "usuarioId": 1,
-              "montoPagado": 166.67,
-              "pagoRealizado": true
-            },
-            {
-              "usuarioId": 2,
-              "montoPagado": 166.67,
-              "pagoRealizado": false
-            },
-            {
-              "usuarioId": 3,
-              "montoPagado": 166.67,
-              "pagoRealizado": true
-            },
-            {
-              "usuarioId": 4,
-              "montoPagado": 166.67,
-              "pagoRealizado": false
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "descripcion": "Gasolina",
-          "monto": 55,
-          "fecha": "2024-04-21",
-          "pagadoPor": 2,
-          "usuariosParaDividir": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "miembrosPagando": [
-            {
-              "usuarioId": 1,
-              "montoPagado": 13.75,
-              "pagoRealizado": false
-            },
-            {
-              "usuarioId": 2,
-              "montoPagado": 13.75,
-              "pagoRealizado": true
-            },
-            {
-              "usuarioId": 3,
-              "montoPagado": 13.75,
-              "pagoRealizado": false
-            },
-            {
-              "usuarioId": 4,
-              "montoPagado": 13.75,
-              "pagoRealizado": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "nombre": "Familia Snow",
-      "miembros": [
-        1,
-        7,
-        8,
-        9,
-        10
-      ],
-      "gastos": [
-        {
-          "id": 1,
-          "descripcion": "Restaurante",
-          "monto": 1000.5,
-          "fecha": "2024-04-22",
-          "pagadoPor": 8,
-          "usuariosParaDividir": [
-            1,
-            9,
-            10
-          ],
-          "miembrosPagando": [
-            {
-              "usuarioId": 1,
-              "montoPagado": 250.125,
-              "pagoRealizado": true
-            },
-            {
-              "usuarioId": 9,
-              "montoPagado": 250.125,
-              "pagoRealizado": true
-            },
-            {
-              "usuarioId": 10,
-              "montoPagado": 250.125,
-              "pagoRealizado": true
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": 669,
-      "name": "no tiene",
+      "name": "Aliens",
       "description": "PEN",
       "createdAt": "2024-04-27T02:12:39.959Z",
       "updatedAt": "2024-04-27T02:12:39.959Z",
       "deletedAt": "2024-04-27T02:12:39.959Z"
-    },
-    {
-      "id": 231,
-      "name": "no tiene",
-      "members": [
-        {
-          "id": 0,
-          "name": "PEN"
-        }
-      ],
-      "creationDate": "2024-04-27T02:17:53.327Z",
-      "paymentHistory": []
-    },
-    {
-      "id": 621,
-      "currency": "",
-      "image": "",
-      "name": "no tiene",
-      "members": [
-        {
-          "id": 0,
-          "name": ""
-        }
-      ],
-      "creationDate": "2024-04-27T02:25:36.530Z",
-      "paymentHistory": []
     },
     {
       "id": 773,
@@ -253,6 +34,34 @@
         }
       ],
       "creationDate": "2024-04-27T02:30:19.691Z",
+      "paymentHistory": []
+    },
+    {
+      "id": 577,
+      "currency": "sol",
+      "image": "",
+      "name": "Sugar girls",
+      "members": [
+        {
+          "id": 0,
+          "name": "Arina"
+        }
+      ],
+      "creationDate": "2024-04-27T02:55:07.727Z",
+      "paymentHistory": []
+    },
+    {
+      "id": 522,
+      "currency": "dolar",
+      "image": "",
+      "name": "sugar yoyo",
+      "members": [
+        {
+          "id": 0,
+          "name": "sss"
+        }
+      ],
+      "creationDate": "2024-04-27T03:00:33.854Z",
       "paymentHistory": []
     }
   ],
