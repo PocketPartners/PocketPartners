@@ -154,5 +154,20 @@
       "photo": "https://picsum.photos/100"
     }
   ],
-  "expenses": []
+  "expenses": [
+    {
+      "id": "AgiE5FPRKb8B",
+      "name": "Pizza",
+      "amount": 30.0,
+      "date": "2024-04-27T02:30:19.691Z",
+      "member": {
+        "id": 1,
+        "name": "Jon Snow"
+      },
+      "group": {
+        "id": 621,
+        "name": "Los mejores de la U"
+      }
+    }
+  ]
 }

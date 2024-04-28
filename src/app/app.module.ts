@@ -36,6 +36,7 @@ import { FormCreateContactComponent } from './contacts/components/form-create-co
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatRadioButton} from "@angular/material/radio";
 import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expenses.component';
+import { ExpenseCardComponent } from './expenses/components/expense-card/expense-card.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -54,7 +55,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     OutgoingComponent,
     ContactComponent,
     FormCreateContactComponent,
-    PageExpensesComponent
+    PageExpensesComponent,
+    ExpenseCardComponent
   ],
   imports: [
     BrowserModule,
