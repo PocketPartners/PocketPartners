@@ -29,6 +29,7 @@ import { GroupService } from './group/services/group.service';
 import { IncomingComponent } from './payments/incoming/pages/incoming.component';
 import { OutgoingComponent } from './payments/outgoing/pages/outgoing.component';
 import {MatCard, MatCardHeader, MatCardModule, MatCardTitleGroup} from "@angular/material/card";
+import {MatRadioButton} from "@angular/material/radio";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -46,40 +47,41 @@ export function HttpLoaderFactory(http: HttpClient) {
     IncomingComponent,
     OutgoingComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatToolbar,
-    MatAnchor,
-    HttpClientModule,
-    MatButtonToggleModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    MatInputModule,
-    MatFormFieldModule,
-    MatStepperModule,
-    MatButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatIcon,
-    MatSidenavContent,
-    MatListItemAvatar,
-    MatListItemLine,
-    MatSidenavContainer,
-    MatNavList,
-    MatListItem,
-    MatSidenav,
-    MatCard,
-    MatCardModule,
-    MatCardHeader,
-    MatCardTitleGroup
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatToolbar,
+        MatAnchor,
+        HttpClientModule,
+        MatButtonToggleModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'en',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        MatInputModule,
+        MatFormFieldModule,
+        MatStepperModule,
+        MatButtonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatIcon,
+        MatSidenavContent,
+        MatListItemAvatar,
+        MatListItemLine,
+        MatSidenavContainer,
+        MatNavList,
+        MatListItem,
+        MatSidenav,
+        MatCard,
+        MatCardModule,
+        MatCardHeader,
+        MatCardTitleGroup,
+        MatRadioButton
+    ],
   providers: [
     provideAnimationsAsync(),
     GroupService
