@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ExpensesEntity } from '../../model/expenses.entity';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-expense',
@@ -24,7 +25,7 @@ export class FormExpenseComponent {
   @Input() user: any;
   private Expense = new ExpensesEntity();
   @Output() onAddExpense: EventEmitter<ExpensesEntity> = new EventEmitter<ExpensesEntity>();
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private router: Router) { }
 
   onSubmit() {
     this.Expense.id = Math.random().toString(36).substring(2);
@@ -38,5 +39,7 @@ export class FormExpenseComponent {
     let groupSelected = this.user.groups.find((group: { id: string | null | undefined; }) => group.id === this.fourthFormGroup.value.firstCtrl);
     this.Expense.group = groupSelected;
     this.onAddExpense.emit(this.Expense);
+    // redirect to expenses list
+    this.router.navigate(['/expenses']);
   }
 }
