@@ -11,6 +11,7 @@ export class PartnerService extends BaseService<PartnerEntity> {
   constructor(http: HttpClient) {
     super(http);
     this.resourceEndpoint = '/chartData';
+    this.resourceEndpoint = '/users';
   }
 
   getAllChartData(): Observable<any[]> {

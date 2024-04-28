@@ -1,0 +1,81 @@
+<mat-stepper #stepper>
+<mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>
+            Información del Gasto
+        </ng-template>
+        <mat-form-field>
+            <mat-label>Dale un nombre</mat-label>
+            <input matInput formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </form>
+</mat-step>
+<mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>
+            Cuando fue tu gasto
+        </ng-template>
+        <mat-form-field>
+            <mat-label>Ingresa la fecha</mat-label>
+            <input type="date" matInput formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </form>
+</mat-step>
+<mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>
+            Cuando gasto
+        </ng-template>
+        <mat-form-field>
+            <mat-label>Ingresa la cantidad</mat-label>
+            <input type="number" matInput formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </form>
+</mat-step>
+<mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+        <ng-template matStepLabel>
+            Grupo para agregar gasto
+        </ng-template>
+        <mat-form-field>
+            <mat-label>Selecciona un grupo</mat-label>
+            <mat-select formControlName="firstCtrl" required>
+                <mat-option *ngFor="let group of user.groups" [value]="group.id">
+                    {{ group.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+    </form>
+</mat-step>
+<mat-step>
+    <ng-template matStepLabel>
+        Resumen
+    </ng-template>
+    <div>
+        <h1>Resumen</h1>
+        <p>Nombre: {{ firstFormGroup.value.firstCtrl }}</p>
+        <p>Fecha: {{ secondFormGroup.value.firstCtrl }}</p>
+        <p>Gasto: {{ thirdFormGroup.value.firstCtrl }}</p>
+        <p>Grupo: {{ fourthFormGroup.value.firstCtrl }}</p>
+    </div>
+    <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()">Submit</button>
+    </div>
+</mat-step>
+</mat-stepper>  

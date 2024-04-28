@@ -1,4 +1,44 @@
 {
+  "users": [
+    {
+      "id": 0,
+      "name": "Diego",
+      "email": "aksjdka@gmail.com",
+      "password": "1234",
+      "phone": 999999999,
+      "photo": "https://picsum.photos/200",
+      "balance": 100,
+      "groups": [
+        {
+          "id": 522,
+          "name": "sugar yoyo"
+        },
+        {
+          "id": 621,
+          "name": "Los mejores de la U"
+        },
+        {
+          "id": 577,
+          "name": "Los otakus"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Joaquín",
+      "email": "aslñdka@mail.com",
+      "password": "1234",
+      "phone": 999999999,
+      "balance": 100,
+      "photo": "https://picsum.photos/300",
+      "groups": [
+        {
+          "id": 621,
+          "name": "Los mejores de la U"
+        }
+      ]
+    }
+  ],
   "groups": [
     {
       "id": 621,
@@ -281,6 +321,49 @@
       "month": "Septiembre",
       "amount": 102.00,
       "color": "rgb(138, 43, 226)"
+    }],
+  "expenses": [
+    {
+      "id": "AgiE5FPRKb8B",
+      "name": "Pizza",
+      "amount": 30,
+      "date": "2024-04-27T02:30:19.691Z",
+      "member": {
+        "id": 0,
+        "name": "Diego"
+      },
+      "group": {
+        "id": 621,
+        "name": "Los mejores de la U"
+      }
+    },
+    {
+      "id": "uecwunuxoh",
+      "name": "Salchipapa",
+      "amount": 0,
+      "date": "2024-04-28T06:59:19.932Z",
+      "member": {
+        "id": 0,
+        "name": "Diego"
+      },
+      "group": {
+        "id": 577,
+        "name": "Los otakus"
+      }
+    },
+    {
+      "id": "xkwr8mfikzn",
+      "name": "Ropa",
+      "amount": 150,
+      "date": "2024-04-28T07:00:49.636Z",
+      "member": {
+        "id": 0,
+        "name": "Diego"
+      },
+      "group": {
+        "id": 577,
+        "name": "Los otakus"
+      }
     }
   ]
 }

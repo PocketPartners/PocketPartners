@@ -1,0 +1,8 @@
+.title {
+    margin-bottom: 20px;
+    background-color: #FF7F00;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+}

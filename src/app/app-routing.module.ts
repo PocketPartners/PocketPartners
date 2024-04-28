@@ -6,9 +6,11 @@ import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-fo
 import { PageCreateGroupComponent } from './group/pages/page-create-group/page-create-group.component';
 import { HomeComponent } from "./pockets/pages/home/home.component";
 import { PageGroupComponent } from "./group/pages/page-group/page-group.component";
-import {IncomingComponent} from "./payments/incoming/pages/incoming.component";
-import {OutgoingComponent} from "./payments/outgoing/pages/outgoing.component";
-import {ContactComponent} from "./contacts/components/contact/contact.component";
+import { IncomingComponent } from "./payments/incoming/pages/incoming.component";
+import { OutgoingComponent } from "./payments/outgoing/pages/outgoing.component";
+import { ContactComponent } from "./contacts/components/contact/contact.component";
+import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expenses.component';
+import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'incoming', component: IncomingComponent },
   { path: 'outgoing', component: OutgoingComponent },
   { path: 'create-group', component: PageCreateGroupComponent },
+  { path: 'expenses', component: PageExpensesComponent },
+  { path: 'expenses/add-expense', component: AddExpenseComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
