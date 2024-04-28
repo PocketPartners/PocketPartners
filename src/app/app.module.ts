@@ -32,9 +32,8 @@ import { GroupService } from './group/services/group.service';
 import { IncomingComponent } from './payments/incoming/pages/incoming.component';
 import { OutgoingComponent } from './payments/outgoing/pages/outgoing.component';
 import { MatCard, MatCardHeader, MatCardModule, MatCardTitleGroup } from "@angular/material/card";
-import { ContactComponent } from './contacts/components/contact/contact.component';
+import { ContactComponent } from './contacts/pages/contact/contact.component';
 import { FormCreateContactComponent } from './contacts/components/form-create-contact/form-create-contact.component';
-import {MatCheckbox} from "@angular/material/checkbox";
 import { TransactionsTimelineComponent } from './pockets/components/transactions-timeline/transactions-timeline.component';
 import { ChartComponent } from './pockets/components/chart/chart.component';
 import {ChartModule} from "angular-highcharts";
@@ -64,7 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactComponent,
     FormCreateContactComponent,
     TransactionsTimelineComponent,
-    ChartComponent
+    ChartComponent,
     PageExpensesComponent,
     ExpenseCardComponent,
     AddExpenseComponent,

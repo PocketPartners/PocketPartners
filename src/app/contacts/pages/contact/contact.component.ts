@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ContactEntity} from "../../model/contact.entity";
 import {ContactService} from "../../services/contact.service";
 import {MatDialog} from "@angular/material/dialog";
-import {FormCreateContactComponent} from "../form-create-contact/form-create-contact.component";
+import {FormCreateContactComponent} from "../../components/form-create-contact/form-create-contact.component";
 import {GroupService} from "../../../group/services/group.service";
 
 @Component({

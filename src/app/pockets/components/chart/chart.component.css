@@ -1,6 +1,6 @@
 .example-card {
   max-width: 630px; /* Define el ancho máximo de la tarjeta */
-  margin-left: auto;/* Centra la tarjeta horizontalmente */
-  padding-right: 20px;
+  margin-right: auto;/* Centra la tarjeta horizontalmente */
+  padding-left: 20px;
   padding-bottom: 20px;
 }
