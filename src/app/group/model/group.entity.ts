@@ -8,6 +8,15 @@ export class GroupEntity {
         name: string;
     }[];
     creationDate: Date;
+    expenseHistory: {
+        id: number;
+        date: Date;
+        amount: number;
+        member: {
+            id: number;
+            name: string;
+        }
+    }[];
     paymentHistory: {
         id: number;
         date: Date;
@@ -28,13 +37,24 @@ export class GroupEntity {
             id: number;
             name: string;
         }
-    }[] = []) {
+    }[] = [],
+        expenseHistory: {
+            id: number;
+            date: Date;
+            amount: number;
+            member: {
+                id: number;
+                name: string;
+            }
+        }[] = []
+    ) {
         this.id = id;
         this.currency = currency;
         this.image = image;
         this.name = name;
         this.members = members;
         this.creationDate = creationDate;
+        this.expenseHistory = expenseHistory;
         this.paymentHistory = paymentHistory;
     };
 }
