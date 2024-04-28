@@ -9,7 +9,7 @@
   margin: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  background-image: linear-gradient(to bottom, #c682ff, rgba(255, 190, 67, 0.87));
+  background-image: linear-gradient(to bottom, #fea993, rgba(198, 130, 255, 0.89));
 }
 
 .mat-card-header {

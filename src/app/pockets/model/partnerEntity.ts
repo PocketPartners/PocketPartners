@@ -1,5 +1,4 @@
 export class PartnerEntity {
-
   id: number;
   name: string;
   email: string;

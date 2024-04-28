@@ -23,7 +23,7 @@ import { AppComponent } from './app.component';
 import { LanguageSwitcherComponent } from './public/components/language-switcher/language-switcher.component';
 import { PageCreateGroupComponent } from './group/pages/page-create-group/page-create-group.component';
 import { FormCreateGroupComponent } from './group/components/form-create-group/form-create-group.component';
-import { HomeComponent } from './pockets/home/home.component';
+import { HomeComponent } from './pockets/pages/home/home.component';
 import { MatIcon } from "@angular/material/icon";
 import { MatSidenav, MatSidenavContainer, MatSidenavContent } from "@angular/material/sidenav";
 import { MatListItem, MatListItemAvatar, MatListItemLine, MatNavList } from "@angular/material/list";
@@ -34,12 +34,17 @@ import { OutgoingComponent } from './payments/outgoing/pages/outgoing.component'
 import { MatCard, MatCardHeader, MatCardModule, MatCardTitleGroup } from "@angular/material/card";
 import { ContactComponent } from './contacts/components/contact/contact.component';
 import { FormCreateContactComponent } from './contacts/components/form-create-contact/form-create-contact.component';
+import {MatCheckbox} from "@angular/material/checkbox";
+import { TransactionsTimelineComponent } from './pockets/components/transactions-timeline/transactions-timeline.component';
+import { ChartComponent } from './pockets/components/chart/chart.component';
+import {ChartModule} from "angular-highcharts";
 import { MatCheckbox } from "@angular/material/checkbox";
 import { MatRadioButton } from "@angular/material/radio";
 import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expenses.component';
 import { ExpenseCardComponent } from './expenses/components/expense-card/expense-card.component';
 import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
 import { FormExpenseComponent } from './expenses/components/form-expense/form-expense.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -58,10 +63,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     OutgoingComponent,
     ContactComponent,
     FormCreateContactComponent,
+    TransactionsTimelineComponent,
+    ChartComponent
     PageExpensesComponent,
     ExpenseCardComponent,
     AddExpenseComponent,
     FormExpenseComponent
+
   ],
   imports: [
     BrowserModule,
@@ -100,6 +108,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     MatCheckbox,
     MatRadioButton,
+    ChartModule,
     MatSelectModule
   ],
   providers: [
