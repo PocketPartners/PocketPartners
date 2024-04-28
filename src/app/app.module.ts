@@ -22,7 +22,7 @@ import { AppComponent } from './app.component';
 import { LanguageSwitcherComponent } from './public/components/language-switcher/language-switcher.component';
 import { PageCreateGroupComponent } from './group/pages/page-create-group/page-create-group.component';
 import { FormCreateGroupComponent } from './group/components/form-create-group/form-create-group.component';
-import { HomeComponent } from './pockets/home/home.component';
+import { HomeComponent } from './pockets/pages/home/home.component';
 import { MatIcon } from "@angular/material/icon";
 import { MatSidenav, MatSidenavContainer, MatSidenavContent } from "@angular/material/sidenav";
 import { MatListItem, MatListItemAvatar, MatListItemLine, MatNavList } from "@angular/material/list";
@@ -35,6 +35,9 @@ import { ContactComponent } from './contacts/components/contact/contact.componen
 import { FormCreateContactComponent } from './contacts/components/form-create-contact/form-create-contact.component';
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatRadioButton} from "@angular/material/radio";
+import { TransactionsTimelineComponent } from './pockets/components/transactions-timeline/transactions-timeline.component';
+import { ChartComponent } from './pockets/components/chart/chart.component';
+import {ChartModule} from "angular-highcharts";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -52,7 +55,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     IncomingComponent,
     OutgoingComponent,
     ContactComponent,
-    FormCreateContactComponent
+    FormCreateContactComponent,
+    TransactionsTimelineComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +95,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDialogModule,
     MatIconModule,
     MatCheckbox,
-    MatRadioButton
+    MatRadioButton,
+    ChartModule
     ],
   providers: [
     provideAnimationsAsync(),

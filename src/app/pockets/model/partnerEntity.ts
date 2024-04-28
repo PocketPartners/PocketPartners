@@ -1,17 +1,13 @@
 export class PartnerEntity {
 
-  id: number;
-  name: string;
-  email: string;
-  balance: number;
-  photo: string;
+  month: string;
+  amount: number
+  color: string;
 
   constructor() {
-  this.id = 0;
-  this.name = "";
-  this.email = "";
-  this.balance = 0;
-  this.photo = "";
+  this.month = "";
+  this.amount = 0;
+  this.color = "";
   }
 
 }

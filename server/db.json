@@ -11,8 +11,43 @@
           "name": ""
         }
       ],
-      "creationDate": "2024-04-27T02:30:19.691Z",
-      "paymentHistory": []
+      "creationDate": "2024-04-09T02:30:19.691Z",
+      "paymentHistory": [
+        {
+          "id": 0,
+          "description": "KFC",
+          "amount": 100,
+          "date": "2024-04-10T02:30:19.691Z",
+          "paidBy": 0,
+          "usersToDivide": [
+            0
+          ],
+          "membersPaying": [
+            {
+              "userId": 1,
+              "amountPaid": 100,
+              "paymentMade": true
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "description": "Restaurante Chili's",
+          "amount": 300,
+          "date": "2024-04-12T02:30:19.691Z",
+          "paidBy": 15,
+          "usersToDivide": [
+            0
+          ],
+          "membersPaying": [
+            {
+              "userId": 9,
+              "amountPaid": 300,
+              "paymentMade": true
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 577,
@@ -22,17 +57,64 @@
       "members": [
         {
           "id": 2,
-          "name": ""
+          "name": "Ariana Alvarez"
+        },
+        {
+          "id": 3,
+          "name": "Luciana Jones"
+        },
+        {
+          "id": 4,
+          "name": "Camila Cabello"
+        },
+        {
+          "id": 5,
+          "name": "María García"
         }
       ],
-      "creationDate": "2024-04-27T02:55:07.727Z",
-      "paymentHistory": []
+      "creationDate": "2024-04-20T02:55:07.727Z",
+      "paymentHistory": [
+        {
+          "id": 0,
+          "description": "Noche de Peliculas",
+          "amount": 100,
+          "date": "2024-04-20T02:30:19.691Z",
+          "paidBy": 2,
+          "usersToDivide": [
+            1,2,3,4,5
+          ],
+          "membersPaying": [
+            {
+              "userId": 1,
+              "amountPaid": 100,
+              "paymentMade": true
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "description": "Gaseosas",
+          "amount": 300,
+          "date": "2024-04-15T02:30:19.691Z",
+          "paidBy": 5,
+          "usersToDivide": [
+            1,2,3,4,5
+          ],
+          "membersPaying": [
+            {
+              "userId": 5,
+              "amountPaid": 300,
+              "paymentMade": true
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 522,
       "currency": "dolar",
       "image": "",
-      "name": "sugar yoyo",
+      "name": "Sugar yoyo",
       "members": [
         {
           "id": 0,
@@ -56,7 +138,7 @@
           ],
           "membersPaying": [
             {
-              "userId": 0,
+              "userId": 1,
               "amountPaid": 100,
               "paymentMade": true
             }
@@ -144,7 +226,7 @@
       "name": "Hermano",
       "email": "bran_cuervo@email.com",
       "phone": 938847125,
-      "photo": "https://picsum.photos/200"
+      "photo": "https://picsum.photos/500"
     },
     {
       "id": 10,
@@ -152,6 +234,53 @@
       "email": "sansaestrella@email.com",
       "phone": 938847125,
       "photo": "https://picsum.photos/100"
+    }
+  ],
+  "chartData": [
+    {
+      "month": "Enero",
+      "amount": 100,
+      "color": "rgb(128, 0, 128)"
+    },
+    {
+      "month": "Febrero",
+      "amount": 200,
+      "color": "rgb(218, 112, 214)"
+    },
+    {
+      "month": "Marzo",
+      "amount": 15.6,
+      "color": "rgb(186, 85, 211)"
+    },
+    {
+      "month": "Abril",
+      "amount": 218,
+      "color": "rgb(160, 32, 240)"
+    },
+    {
+      "month": "Mayo",
+      "amount": 48.7,
+      "color": "rgb(128, 0, 128)"
+    },
+    {
+      "month": "Junio",
+      "amount": 55.9,
+      "color": "rgb(218, 112, 214)"
+    },
+    {
+      "month": "Julio",
+      "amount": 76.5,
+      "color": "rgb(186, 85, 211)"
+    },
+    {
+      "month": "Agosto",
+      "amount": 80.00,
+      "color": "rgb(160, 32, 240)"
+    },
+    {
+      "month": "Septiembre",
+      "amount": 102.00,
+      "color": "rgb(138, 43, 226)"
     }
   ]
 }
