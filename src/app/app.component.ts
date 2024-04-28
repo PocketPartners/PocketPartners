@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
 import { MatDialog } from "@angular/material/dialog";
-import { ContactComponent } from "./contacts/components/contact/contact.component";
+import { ContactComponent } from "./contacts/pages/contact/contact.component";
 
 @Component({
   selector: 'app-root',

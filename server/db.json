@@ -121,7 +121,11 @@
           "date": "2024-04-20T02:30:19.691Z",
           "paidBy": 2,
           "usersToDivide": [
-            1,2,3,4,5
+            1,
+            2,
+            3,
+            4,
+            5
           ],
           "membersPaying": [
             {
@@ -138,7 +142,11 @@
           "date": "2024-04-15T02:30:19.691Z",
           "paidBy": 5,
           "usersToDivide": [
-            1,2,3,4,5
+            1,
+            2,
+            3,
+            4,
+            5
           ],
           "membersPaying": [
             {
@@ -274,6 +282,13 @@
       "email": "sansaestrella@email.com",
       "phone": 938847125,
       "photo": "https://picsum.photos/100"
+    },
+    {
+      "name": "Fiorella",
+      "email": "fio@email.com",
+      "phone": "99999",
+      "photo": "https://i.pinimg.com/564x/2a/85/5a/2a855aa6fa274f22d40d8fec81b72345.jpg",
+      "id": 11
     }
   ],
   "chartData": [
@@ -314,14 +329,15 @@
     },
     {
       "month": "Agosto",
-      "amount": 80.00,
+      "amount": 80,
       "color": "rgb(160, 32, 240)"
     },
     {
       "month": "Septiembre",
-      "amount": 102.00,
+      "amount": 102,
       "color": "rgb(138, 43, 226)"
-    }],
+    }
+  ],
   "expenses": [
     {
       "id": "AgiE5FPRKb8B",

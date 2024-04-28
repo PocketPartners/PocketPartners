@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import Chart from 'chart.js/auto';
-import {PartnerEntity} from "../../model/partnerEntity";
-import {PartnerService} from "../../services/Partner.service";
+import {ChartEntity} from "../../model/chart.entity";
+import {ChartService} from "../../services/chart.service";
 
 @Component({
   selector: 'app-chart',
@@ -11,18 +11,18 @@ import {PartnerService} from "../../services/Partner.service";
 export class ChartComponent implements OnInit{
 
   data: any;
-  dataMonth: PartnerEntity[] = [];
-  dataAmount: PartnerEntity[] = [];
+  dataMonth: ChartEntity[] = [];
+  dataAmount: ChartEntity[] = [];
   dataColor: any[] = [];
 
-constructor(private pocketService: PartnerService) {
+constructor(private chartService: ChartService) {
 }
 
 
 
   ngOnInit() {
 
-    this.pocketService.getAllChartData().subscribe((res) => {
+    this.chartService.getAllChartData().subscribe((res) => {
       this.data = res;
       if (Array.isArray(this.data)) {
         for (let i = 0; i < this.data.length; i++) {
@@ -37,7 +37,7 @@ constructor(private pocketService: PartnerService) {
 
   }
 
-  showChart(dataMonth: PartnerEntity[], dataAmount: PartnerEntity[], dataColor: any[]) {
+  showChart(dataMonth: ChartEntity[], dataAmount: ChartEntity[], dataColor: any[]) {
     new Chart("myChart", {
       type: 'line',
       data: {

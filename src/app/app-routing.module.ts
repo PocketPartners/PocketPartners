@@ -8,7 +8,7 @@ import { HomeComponent } from "./pockets/pages/home/home.component";
 import { PageGroupComponent } from "./group/pages/page-group/page-group.component";
 import { IncomingComponent } from "./payments/incoming/pages/incoming.component";
 import { OutgoingComponent } from "./payments/outgoing/pages/outgoing.component";
-import { ContactComponent } from "./contacts/components/contact/contact.component";
+import { ContactComponent } from "./contacts/pages/contact/contact.component";
 import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expenses.component';
 import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
 
