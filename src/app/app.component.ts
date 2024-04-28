@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
+import {MatDialog} from "@angular/material/dialog";
+import {ContactComponent} from "./contacts/components/contact/contact.component";
 
 @Component({
   selector: 'app-root',
@@ -11,6 +13,7 @@ export class AppComponent implements OnInit {
   options = [
     { path: '/home', title: 'Home' },
     { path: '/groups', title: 'Groups' },
+    { path: '/contacts', title: 'Contacts' },
     { path: '/incoming', title: 'Incoming payments'},
     { path: '/outgoing', title: 'Outgoing  payments'},
   ];
@@ -18,7 +21,10 @@ export class AppComponent implements OnInit {
   constructor(translate: TranslateService) {
     translate.setDefaultLang('en');
     translate.use('en');
+
   }
+
+
 
   ngOnInit() {
   }

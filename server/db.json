@@ -65,76 +65,76 @@
       "paymentHistory": []
     }
   ],
-  "users": [
+  "contacts": [
     {
       "id": 1,
       "name": "Jon Snow",
       "email": "jonysnow@email.com",
-      "balance": 3000,
-      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
+      "phone": 938847125,
+      "photo": "https://picsum.photos/300"
     },
     {
       "id": 2,
-      "nombre": "Ariana Alvarez",
-      "email": "jonysnow@email.com",
-      "balance": 3000,
-      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
+      "name": "Ariana Alvarez",
+      "email": "aarianaAlv@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/600"
     },
     {
       "id": 3,
-      "nombre": "Luciana Jones",
-      "email": "jonysnow@email.com",
-      "balance": 3000,
-      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
+      "name": "Luciana Jones",
+      "email": "lucy1234@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/800"
     },
     {
       "id": 4,
-      "nombre": "Camila Cabello",
-      "email": "jonysnow@email.com",
-      "balance": 3000,
-      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
+      "name": "Camila Cabello",
+      "email": "camiCabe11o@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/200"
     },
     {
       "id": 5,
-      "nombre": "María García",
-      "email": "jonysnow@email.com",
-      "balance": 3000,
-      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
+      "name": "María García",
+      "email": "gracia_maria@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/500"
     },
     {
       "id": 6,
-      "nombre": "Pedro López",
-      "email": "jonysnow@email.com",
-      "balance": 3000,
-      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
+      "name": "Pedro López",
+      "email": "pedroLopez@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/100"
     },
     {
       "id": 7,
-      "nombre": "Mama",
-      "email": "jonysnow@email.com",
-      "balance": 3000,
-      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
+      "name": "Mamá",
+      "email": "tully_lol@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/400"
     },
     {
       "id": 8,
-      "nombre": "Papa",
-      "email": "jonysnow@email.com",
-      "balance": 3000,
-      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
+      "name": "Papá",
+      "email": "ned1235@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/300"
     },
     {
       "id": 9,
-      "nombre": "Hermano",
-      "email": "jonysnow@email.com",
-      "balance": 3000,
-      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
+      "name": "Hermano",
+      "email": "bran_cuervo@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/200"
     },
     {
       "id": 10,
-      "nombre": "Hermana",
-      "email": "jonysnow@email.com",
-      "balance": 3000,
-      "photo": "https://i.pinimg.com/564x/fe/cf/71/fecf7128596cfd66f5ab21bb219bdf64.jpg"
+      "name": "Hermana",
+      "email": "sansaestrella@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/100"
     }
   ]
 }

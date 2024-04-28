@@ -14,6 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
@@ -29,6 +31,9 @@ import { GroupService } from './group/services/group.service';
 import { IncomingComponent } from './payments/incoming/pages/incoming.component';
 import { OutgoingComponent } from './payments/outgoing/pages/outgoing.component';
 import {MatCard, MatCardHeader, MatCardModule, MatCardTitleGroup} from "@angular/material/card";
+import { ContactComponent } from './contacts/components/contact/contact.component';
+import { FormCreateContactComponent } from './contacts/components/form-create-contact/form-create-contact.component';
+import {MatCheckbox} from "@angular/material/checkbox";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -44,7 +49,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     PageGroupComponent,
     IncomingComponent,
-    OutgoingComponent
+    OutgoingComponent,
+    ContactComponent,
+    FormCreateContactComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +85,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCard,
     MatCardModule,
     MatCardHeader,
-    MatCardTitleGroup
+    MatCardTitleGroup,
+    MatDialogModule,
+    MatIconModule,
+    MatCheckbox
   ],
   providers: [
     provideAnimationsAsync(),

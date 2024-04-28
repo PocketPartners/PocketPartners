@@ -8,11 +8,13 @@ import { HomeComponent } from "./pockets/home/home.component";
 import { PageGroupComponent } from "./group/pages/page-group/page-group.component";
 import {IncomingComponent} from "./payments/incoming/pages/incoming.component";
 import {OutgoingComponent} from "./payments/outgoing/pages/outgoing.component";
+import {ContactComponent} from "./contacts/components/contact/contact.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'groups', component: PageGroupComponent },
+  { path: 'contacts', component: ContactComponent },
   { path: 'incoming', component: IncomingComponent },
   { path: 'outgoing', component: OutgoingComponent },
   { path: 'create-group', component: PageCreateGroupComponent },
