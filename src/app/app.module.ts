@@ -14,13 +14,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { LanguageSwitcherComponent } from './public/components/language-switcher/language-switcher.component';
 import { PageCreateGroupComponent } from './group/pages/page-create-group/page-create-group.component';
 import { FormCreateGroupComponent } from './group/components/form-create-group/form-create-group.component';
-import { HomeComponent } from './public/pages/home/home.component';
+import { HomeComponent } from './pockets/home/home.component';
 import { MatIcon } from "@angular/material/icon";
 import { MatSidenav, MatSidenavContainer, MatSidenavContent } from "@angular/material/sidenav";
 import { MatListItem, MatListItemAvatar, MatListItemLine, MatNavList } from "@angular/material/list";
@@ -29,6 +31,9 @@ import { GroupService } from './group/services/group.service';
 import { IncomingComponent } from './payments/incoming/pages/incoming.component';
 import { OutgoingComponent } from './payments/outgoing/pages/outgoing.component';
 import {MatCard, MatCardHeader, MatCardModule, MatCardTitleGroup} from "@angular/material/card";
+import { ContactComponent } from './contacts/components/contact/contact.component';
+import { FormCreateContactComponent } from './contacts/components/form-create-contact/form-create-contact.component';
+import {MatCheckbox} from "@angular/material/checkbox";
 import {MatRadioButton} from "@angular/material/radio";
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,42 +50,47 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     PageGroupComponent,
     IncomingComponent,
-    OutgoingComponent
+    OutgoingComponent,
+    ContactComponent,
+    FormCreateContactComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MatToolbar,
-        MatAnchor,
-        HttpClientModule,
-        MatButtonToggleModule,
-        TranslateModule.forRoot({
-            defaultLanguage: 'en',
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-        MatInputModule,
-        MatFormFieldModule,
-        MatStepperModule,
-        MatButtonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatIcon,
-        MatSidenavContent,
-        MatListItemAvatar,
-        MatListItemLine,
-        MatSidenavContainer,
-        MatNavList,
-        MatListItem,
-        MatSidenav,
-        MatCard,
-        MatCardModule,
-        MatCardHeader,
-        MatCardTitleGroup,
-        MatRadioButton
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatToolbar,
+    MatAnchor,
+    HttpClientModule,
+    MatButtonToggleModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    MatInputModule,
+    MatFormFieldModule,
+    MatStepperModule,
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIcon,
+    MatSidenavContent,
+    MatListItemAvatar,
+    MatListItemLine,
+    MatSidenavContainer,
+    MatNavList,
+    MatListItem,
+    MatSidenav,
+    MatCard,
+    MatCardModule,
+    MatCardHeader,
+    MatCardTitleGroup,
+    MatDialogModule,
+    MatIconModule,
+    MatCheckbox,
+    MatRadioButton
     ],
   providers: [
     provideAnimationsAsync(),

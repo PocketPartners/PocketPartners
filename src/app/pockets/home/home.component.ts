@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {PoparternsService} from "../../../pockets/services/poparterns.service";
-import {Popartner} from "../../../pockets/model/popartner";
+import {PartnerService} from "../services/Partner.service";
+import {PartnerEntity} from "../model/partnerEntity";
 
 @Component({
   selector: 'app-home',
