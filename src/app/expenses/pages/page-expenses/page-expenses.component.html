@@ -1,5 +1,9 @@
-<p>page-expenses works!</p>
-
+<div class="add-button">
+    <button [routerLink]="'add-expense'" mat-fab extended color="primary">
+        <mat-icon>favorite</mat-icon>
+        Agregar Gasto
+    </button>
+</div>
 <div class="content">
-<app-expense-card *ngFor="let expense of expenses" [expense]="expense"></app-expense-card>
+    <app-expense-card *ngFor="let expense of expenses" [expense]="expense"></app-expense-card>
 </div>

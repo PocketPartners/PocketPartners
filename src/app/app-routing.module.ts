@@ -10,6 +10,7 @@ import { IncomingComponent } from "./payments/incoming/pages/incoming.component"
 import { OutgoingComponent } from "./payments/outgoing/pages/outgoing.component";
 import { ContactComponent } from "./contacts/components/contact/contact.component";
 import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expenses.component';
+import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'outgoing', component: OutgoingComponent },
   { path: 'create-group', component: PageCreateGroupComponent },
   { path: 'expenses', component: PageExpensesComponent },
+  { path: 'expenses/add-expense', component: AddExpenseComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
