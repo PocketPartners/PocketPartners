@@ -1,36 +1,14 @@
 {
   "groups": [
     {
-      "id": 669,
-      "name": "Aliens",
-      "description": "PEN",
-      "createdAt": "2024-04-27T02:12:39.959Z",
-      "updatedAt": "2024-04-27T02:12:39.959Z",
-      "deletedAt": "2024-04-27T02:12:39.959Z"
-    },
-    {
-      "id": 773,
-      "currency": "",
-      "image": "",
-      "name": "Los bacanes",
-      "members": [
-        {
-          "id": 0,
-          "name": ""
-        }
-      ],
-      "creationDate": "2024-04-27T02:26:51.414Z",
-      "paymentHistory": []
-    },
-    {
-      "id": 761,
+      "id": 621,
       "currency": "PEN",
       "image": "",
-      "name": "Los bacanes",
+      "name": "Los mejores de la U",
       "members": [
         {
-          "id": 0,
-          "name": "Diego"
+          "id": 1,
+          "name": ""
         }
       ],
       "creationDate": "2024-04-27T02:30:19.691Z",
@@ -43,8 +21,8 @@
       "name": "Sugar girls",
       "members": [
         {
-          "id": 0,
-          "name": "Arina"
+          "id": 2,
+          "name": ""
         }
       ],
       "creationDate": "2024-04-27T02:55:07.727Z",
@@ -58,11 +36,50 @@
       "members": [
         {
           "id": 0,
-          "name": "sss"
+          "name": "Diego"
+        },
+        {
+          "id": 15,
+          "name": "Joaquín"
         }
       ],
-      "creationDate": "2024-04-27T03:00:33.854Z",
-      "paymentHistory": []
+      "creationDate": "2024-04-27T02:30:19.691Z",
+      "paymentHistory": [
+        {
+          "id": 0,
+          "description": "Pizza",
+          "amount": 100,
+          "date": "2024-04-27T02:30:19.691Z",
+          "paidBy": 0,
+          "usersToDivide": [
+            0
+          ],
+          "membersPaying": [
+            {
+              "userId": 0,
+              "amountPaid": 100,
+              "paymentMade": true
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "description": "Taxi",
+          "amount": 300,
+          "date": "2024-04-20T02:30:19.691Z",
+          "paidBy": 15,
+          "usersToDivide": [
+            0
+          ],
+          "membersPaying": [
+            {
+              "userId": 15,
+              "amountPaid": 300,
+              "paymentMade": true
+            }
+          ]
+        }
+      ]
     }
   ],
   "contacts": [

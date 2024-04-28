@@ -34,6 +34,7 @@ import {MatCard, MatCardHeader, MatCardModule, MatCardTitleGroup} from "@angular
 import { ContactComponent } from './contacts/components/contact/contact.component';
 import { FormCreateContactComponent } from './contacts/components/form-create-contact/form-create-contact.component';
 import {MatCheckbox} from "@angular/material/checkbox";
+import {MatRadioButton} from "@angular/material/radio";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -88,8 +89,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCardTitleGroup,
     MatDialogModule,
     MatIconModule,
-    MatCheckbox
-  ],
+    MatCheckbox,
+    MatRadioButton
+    ],
   providers: [
     provideAnimationsAsync(),
     GroupService
