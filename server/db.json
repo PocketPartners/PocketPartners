@@ -92,7 +92,11 @@
   "usuarios": [
     {
       "id": 1,
-      "nombre": "Jon Snow"
+      "nombre": "Jon",
+      "apellido": "Snow",
+      "username":  "jonsnow",
+      "email": "jonsnow@gmail.com",
+      "contraseña" : "123456"
     },
     {
       "id": 2,

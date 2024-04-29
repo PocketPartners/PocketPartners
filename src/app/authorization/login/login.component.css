@@ -1,0 +1,155 @@
+.container {
+  display: flex;
+  height: 96.6vh;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: left;
+}
+
+.form-container {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 150px 180px;
+}
+
+.welcome-text {
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.expenses-text {
+  color: #AA67F2;
+  margin-bottom: 20px;
+  padding-top: 12px;
+  font-size: 16px;
+}
+
+.email-text {
+  color: #AA67F2;
+  margin-top: 78px;
+  margin-bottom: 8px;
+}
+
+.password-text{
+  color: #AA67F2;
+  margin-bottom: 8px;
+}
+
+input[type="email"] {
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="password"] {
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+  color: gray;
+}
+
+.mat-input-element{
+  display: none;
+}
+
+button {
+  background-color: #AA67F2;
+  color: white;
+  border-radius: 10px;
+  padding: 20px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.forgot-password {
+  color: black;
+  cursor: pointer;
+  margin-top: 8px;
+  margin-left: 350px;
+  font-size: 12px;
+}
+
+.forgot-password:hover {
+  color: #AA67F2;
+}
+
+.social-text {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 175px;
+  position: relative;
+  display: inline-block;
+}
+.social-text-container {
+  position: relative;
+}
+.line1 {
+  position: absolute;
+  left: 0;
+  margin-left: 55px;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: #E5E5E5;
+  transform: translateY(-50%);
+  width: 90px;
+}
+.line2 {
+  position: absolute;
+  margin-right: 100px;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: #E5E5E5;
+  transform: translateY(-50%);
+  width: 90px;
+}
+.social-icons img {
+  width: 70px;
+  margin-right: -80px;
+  cursor: pointer;
+  margin-bottom: 0;
+  margin-left: 120px;
+}
+
+.register-text {
+  margin-top: 20px;
+  margin-left: 145px;
+  color: #686868;
+}
+
+.register-text span {
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
+.poppins-font {
+  font-family: 'Poppins', sans-serif;
+}
+
+.custom-input {
+  width: 100%;
+  max-width: 500px;
+}
+
+.custom-button {
+  background-color: #AA67F2;
+  padding: 28px 200px 28px 200px;
+  color: black;
+}
+
+.rounded-input .mat-input-element {
+  border-radius: 20px;
+}
