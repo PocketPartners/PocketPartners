@@ -43,6 +43,7 @@ import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expen
 import { ExpenseCardComponent } from './expenses/components/expense-card/expense-card.component';
 import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
 import { FormExpenseComponent } from './expenses/components/form-expense/form-expense.component';
+import { LoginComponent } from './authorization/components/login/login.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -67,7 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageExpensesComponent,
     ExpenseCardComponent,
     AddExpenseComponent,
-    FormExpenseComponent
+    FormExpenseComponent,
+    LoginComponent
 
   ],
   imports: [
