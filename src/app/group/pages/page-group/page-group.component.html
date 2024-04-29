@@ -1,0 +1,7 @@
+
+<h1>Todos los grupos</h1>
+<div>
+    <p *ngFor="let group of groups">{{ group.name }}</p>
+</div>
+
+<a [routerLink]="['/create-group']">Crear grupo</a>

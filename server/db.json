@@ -1,134 +1,385 @@
 {
-  "grupos": [
+  "users": [
+    {
+      "id": 0,
+      "name": "Diego",
+      "email": "aksjdka@gmail.com",
+      "password": "1234",
+      "phone": 999999999,
+      "photo": "https://picsum.photos/200",
+      "balance": 100,
+      "groups": [
+        {
+          "id": 522,
+          "name": "sugar yoyo"
+        },
+        {
+          "id": 621,
+          "name": "Los mejores de la U"
+        },
+        {
+          "id": 577,
+          "name": "Los otakus"
+        }
+      ]
+    },
     {
       "id": 1,
-      "nombre": "Los mejores de la U",
-      "miembros": [1, 2, 3],
-      "gastos": [
+      "name": "Joaquín",
+      "email": "aslñdka@mail.com",
+      "password": "1234",
+      "phone": 999999999,
+      "balance": 100,
+      "photo": "https://picsum.photos/300",
+      "groups": [
+        {
+          "id": 621,
+          "name": "Los mejores de la U"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": 621,
+      "currency": "PEN",
+      "image": "",
+      "name": "Los mejores de la U",
+      "members": [
         {
           "id": 1,
-          "descripcion": "KFC",
-          "monto": 500,
-          "fecha": "2024-04-20",
-          "pagadoPor": 1,
-          "usuariosParaDividir": [1, 5, 6],
-          "miembrosPagando": [
-            { "usuarioId": 1, "montoPagado": 166.67, "pagoRealizado": true },
-            { "usuarioId": 5, "montoPagado": 166.67, "pagoRealizado": false },
-            { "usuarioId": 6, "montoPagado": 166.67, "pagoRealizado": false }
+          "name": ""
+        }
+      ],
+      "creationDate": "2024-04-09T02:30:19.691Z",
+      "paymentHistory": [
+        {
+          "id": 0,
+          "description": "KFC",
+          "amount": 100,
+          "date": "2024-04-10T02:30:19.691Z",
+          "paidBy": 0,
+          "usersToDivide": [
+            0
+          ],
+          "membersPaying": [
+            {
+              "userId": 1,
+              "amountPaid": 100,
+              "paymentMade": true
+            }
           ]
         },
         {
-          "id": 2,
-          "descripcion": "Taxi - Interbank",
-          "monto": 50,
-          "fecha": "2024-04-21",
-          "pagadoPor": 5,
-          "usuariosParaDividir": [1, 5, 6],
-          "miembrosPagando": [
-            { "usuarioId": 1, "montoPagado": 16.67, "pagoRealizado": false },
-            { "usuarioId": 5, "montoPagado": 16.67, "pagoRealizado": true },
-            { "usuarioId": 6, "montoPagado": 16.67, "pagoRealizado": false }
+          "id": 20,
+          "description": "Restaurante Chili's",
+          "amount": 300,
+          "date": "2024-04-12T02:30:19.691Z",
+          "paidBy": 15,
+          "usersToDivide": [
+            0
+          ],
+          "membersPaying": [
+            {
+              "userId": 9,
+              "amountPaid": 300,
+              "paymentMade": true
+            }
           ]
         }
       ]
     },
     {
-      "id": 2,
-      "nombre": "Aliens :0",
-      "miembros": [1,2,3,4],
-      "gastos": [
+      "id": 577,
+      "currency": "sol",
+      "image": "",
+      "name": "Sugar girls",
+      "members": [
         {
-          "id": 1,
-          "descripcion": "Parque de diversiones, entradas",
-          "monto": 500,
-          "fecha": "2024-04-20",
-          "pagadoPor": 1,
-          "usuariosParaDividir": [1, 2, 3, 4],
-          "miembrosPagando": [
-            { "usuarioId": 1, "montoPagado": 166.67, "pagoRealizado": true },
-            { "usuarioId": 2, "montoPagado": 166.67, "pagoRealizado": false },
-            { "usuarioId": 3, "montoPagado": 166.67, "pagoRealizado": true },
-            { "usuarioId": 4, "montoPagado": 166.67, "pagoRealizado": false }
+          "id": 2,
+          "name": "Ariana Alvarez"
+        },
+        {
+          "id": 3,
+          "name": "Luciana Jones"
+        },
+        {
+          "id": 4,
+          "name": "Camila Cabello"
+        },
+        {
+          "id": 5,
+          "name": "María García"
+        }
+      ],
+      "creationDate": "2024-04-20T02:55:07.727Z",
+      "paymentHistory": [
+        {
+          "id": 0,
+          "description": "Noche de Peliculas",
+          "amount": 100,
+          "date": "2024-04-20T02:30:19.691Z",
+          "paidBy": 2,
+          "usersToDivide": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "membersPaying": [
+            {
+              "userId": 1,
+              "amountPaid": 100,
+              "paymentMade": true
+            }
           ]
         },
         {
-          "id": 2,
-          "descripcion": "Gasolina",
-          "monto": 55,
-          "fecha": "2024-04-21",
-          "pagadoPor": 2,
-          "usuariosParaDividir": [1, 2, 3, 4],
-          "miembrosPagando": [
-            { "usuarioId": 1, "montoPagado": 13.75, "pagoRealizado": false },
-            { "usuarioId": 2, "montoPagado": 13.75, "pagoRealizado": true },
-            { "usuarioId": 3, "montoPagado": 13.75, "pagoRealizado": false },
-            { "usuarioId": 4, "montoPagado": 13.75, "pagoRealizado": false }
+          "id": 20,
+          "description": "Gaseosas",
+          "amount": 300,
+          "date": "2024-04-15T02:30:19.691Z",
+          "paidBy": 5,
+          "usersToDivide": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "membersPaying": [
+            {
+              "userId": 5,
+              "amountPaid": 300,
+              "paymentMade": true
+            }
           ]
         }
       ]
     },
     {
-      "id": 2,
-      "nombre": "Familia Snow",
-      "miembros": [1,7,8,9,10],
-      "gastos": [
+      "id": 522,
+      "currency": "dolar",
+      "image": "",
+      "name": "Sugar yoyo",
+      "members": [
         {
-          "id": 1,
-          "descripcion": "Restaurante",
-          "monto": 1000.50,
-          "fecha": "2024-04-22",
-          "pagadoPor": 8,
-          "usuariosParaDividir": [1, 9, 10],
-          "miembrosPagando": [
-            { "usuarioId": 1, "montoPagado": 250.125, "pagoRealizado": true },
-            { "usuarioId": 9, "montoPagado": 250.125, "pagoRealizado": true },
-            { "usuarioId": 10, "montoPagado": 250.125, "pagoRealizado": true }
+          "id": 0,
+          "name": "Diego"
+        },
+        {
+          "id": 15,
+          "name": "Joaquín"
+        }
+      ],
+      "creationDate": "2024-04-27T02:30:19.691Z",
+      "paymentHistory": [
+        {
+          "id": 0,
+          "description": "Pizza",
+          "amount": 100,
+          "date": "2024-04-27T02:30:19.691Z",
+          "paidBy": 0,
+          "usersToDivide": [
+            0
+          ],
+          "membersPaying": [
+            {
+              "userId": 1,
+              "amountPaid": 100,
+              "paymentMade": true
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "description": "Taxi",
+          "amount": 300,
+          "date": "2024-04-20T02:30:19.691Z",
+          "paidBy": 15,
+          "usersToDivide": [
+            0
+          ],
+          "membersPaying": [
+            {
+              "userId": 15,
+              "amountPaid": 300,
+              "paymentMade": true
+            }
           ]
         }
       ]
     }
   ],
-  "usuarios": [
+  "contacts": [
     {
       "id": 1,
-      "nombre": "Jon Snow"
+      "name": "Jon Snow",
+      "email": "jonysnow@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/300"
     },
     {
       "id": 2,
-      "nombre": "Ariana Alvarez"
+      "name": "Ariana Alvarez",
+      "email": "aarianaAlv@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/600"
     },
     {
       "id": 3,
-      "nombre": "Luciana Jones"
+      "name": "Luciana Jones",
+      "email": "lucy1234@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/800"
     },
     {
       "id": 4,
-      "nombre": "Camila Cabello"
+      "name": "Camila Cabello",
+      "email": "camiCabe11o@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/200"
     },
     {
       "id": 5,
-      "nombre": "María García"
+      "name": "María García",
+      "email": "gracia_maria@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/500"
     },
     {
       "id": 6,
-      "nombre": "Pedro López"
+      "name": "Pedro López",
+      "email": "pedroLopez@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/100"
     },
     {
       "id": 7,
-      "nombre": "Mama"
+      "name": "Mamá",
+      "email": "tully_lol@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/400"
     },
     {
       "id": 8,
-      "nombre": "Papa"
+      "name": "Papá",
+      "email": "ned1235@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/300"
     },
     {
       "id": 9,
-      "nombre": "Hermano"
+      "name": "Hermano",
+      "email": "bran_cuervo@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/500"
     },
     {
       "id": 10,
-      "nombre": "Hermana"
+      "name": "Hermana",
+      "email": "sansaestrella@email.com",
+      "phone": 938847125,
+      "photo": "https://picsum.photos/100"
+    },
+    {
+      "name": "Fiorella",
+      "email": "fio@email.com",
+      "phone": "99999",
+      "photo": "https://i.pinimg.com/564x/2a/85/5a/2a855aa6fa274f22d40d8fec81b72345.jpg",
+      "id": 11
+    }
+  ],
+  "chartData": [
+    {
+      "month": "Enero",
+      "amount": 100,
+      "color": "rgb(128, 0, 128)"
+    },
+    {
+      "month": "Febrero",
+      "amount": 200,
+      "color": "rgb(218, 112, 214)"
+    },
+    {
+      "month": "Marzo",
+      "amount": 15.6,
+      "color": "rgb(186, 85, 211)"
+    },
+    {
+      "month": "Abril",
+      "amount": 218,
+      "color": "rgb(160, 32, 240)"
+    },
+    {
+      "month": "Mayo",
+      "amount": 48.7,
+      "color": "rgb(128, 0, 128)"
+    },
+    {
+      "month": "Junio",
+      "amount": 55.9,
+      "color": "rgb(218, 112, 214)"
+    },
+    {
+      "month": "Julio",
+      "amount": 76.5,
+      "color": "rgb(186, 85, 211)"
+    },
+    {
+      "month": "Agosto",
+      "amount": 80,
+      "color": "rgb(160, 32, 240)"
+    },
+    {
+      "month": "Septiembre",
+      "amount": 102,
+      "color": "rgb(138, 43, 226)"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "AgiE5FPRKb8B",
+      "name": "Pizza",
+      "amount": 30,
+      "date": "2024-04-27T02:30:19.691Z",
+      "member": {
+        "id": 0,
+        "name": "Diego"
+      },
+      "group": {
+        "id": 621,
+        "name": "Los mejores de la U"
+      }
+    },
+    {
+      "id": "uecwunuxoh",
+      "name": "Salchipapa",
+      "amount": 0,
+      "date": "2024-04-28T06:59:19.932Z",
+      "member": {
+        "id": 0,
+        "name": "Diego"
+      },
+      "group": {
+        "id": 577,
+        "name": "Los otakus"
+      }
+    },
+    {
+      "id": "xkwr8mfikzn",
+      "name": "Ropa",
+      "amount": 150,
+      "date": "2024-04-28T07:00:49.636Z",
+      "member": {
+        "id": 0,
+        "name": "Diego"
+      },
+      "group": {
+        "id": 577,
+        "name": "Los otakus"
+      }
     }
   ]
 }

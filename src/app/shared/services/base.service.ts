@@ -1,10 +1,10 @@
-import {environment} from "../../../environments/environment";
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, retry, throwError} from "rxjs";
+import { environment } from "../../../environments/environment";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { catchError, Observable, retry, throwError } from "rxjs";
 
 export class BaseService<T> {
-  basePath: string = `${environment.serverBasePath}`;
-  resourceEndpoint: string = '/resources';
+  basePath: string = `${environment.baseURL}`;
+  resourceEndpoint: string = '/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -12,7 +12,7 @@ export class BaseService<T> {
     })
   }
 
-  constructor(private http: HttpClient) {
+  constructor(protected http: HttpClient) {
   }
 
   handleError(error: HttpErrorResponse) {
@@ -27,8 +27,9 @@ export class BaseService<T> {
   }
 
   // Create Resource
-  create(item: any): Observable<T> { return this.http.post<T>(this.resourcePath(), JSON.stringify(item), this.httpOptions)
-    .pipe(retry(2), catchError(this.handleError));
+  create(item: any): Observable<T> {
+    return this.http.post<T>(this.resourcePath(), JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
   // Delete Resource
@@ -49,7 +50,7 @@ export class BaseService<T> {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  private resourcePath(): string {
+  protected resourcePath(): string {
     return `${this.basePath}${this.resourceEndpoint}`;
   }
 }

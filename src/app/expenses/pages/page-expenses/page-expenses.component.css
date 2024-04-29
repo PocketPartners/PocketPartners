@@ -1,0 +1,12 @@
+.content {
+    justify-content: center;
+    display: flex;
+}
+
+.add-button {
+    margin-top: 20px;
+    display: flex;
+    z-index: 15;
+    align-items:end;
+    justify-content: end;
+}
