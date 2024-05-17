@@ -1,7 +1,15 @@
-
 <h1>Todos los grupos</h1>
-<div>
-    <p *ngFor="let group of groups">{{ group.name }}</p>
-</div>
+<div class="container">
 
-<a [routerLink]="['/create-group']">Crear grupo</a>
+  <mat-card *ngFor="let group of groups" class="group-card">
+    {{ group.id }}
+    <h2>
+      {{ group.name }}
+    </h2>
+    <p>
+      Creation date:
+      {{ group.creationDate | date: 'dd/MM/yyyy'}}
+    </p>
+  </mat-card>
+  <a [routerLink]="['/create-group']">Crear grupo</a>
+</div>
