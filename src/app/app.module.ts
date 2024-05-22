@@ -36,7 +36,7 @@ import { ContactComponent } from './contacts/pages/contact/contact.component';
 import { FormCreateContactComponent } from './contacts/components/form-create-contact/form-create-contact.component';
 import { TransactionsTimelineComponent } from './pockets/components/transactions-timeline/transactions-timeline.component';
 import { ChartComponent } from './pockets/components/chart/chart.component';
-import {ChartModule} from "angular-highcharts";
+import { ChartModule } from "angular-highcharts";
 import { MatCheckbox } from "@angular/material/checkbox";
 import { MatRadioButton } from "@angular/material/radio";
 import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expenses.component';
@@ -44,7 +44,8 @@ import { ExpenseCardComponent } from './expenses/components/expense-card/expense
 import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
 import { FormExpenseComponent } from './expenses/components/form-expense/form-expense.component';
 import { LoginComponent } from './authorization/components/login/login.component';
-import {HeaderComponent} from "./public/components/header/header.component";
+import { HeaderComponent } from "./public/components/header/header.component";
+import { PageGroupDetailsComponent } from './group/pages/page-group-details/page-group-details.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -70,7 +71,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ExpenseCardComponent,
     AddExpenseComponent,
     FormExpenseComponent,
-    LoginComponent
+    LoginComponent,
+    PageGroupDetailsComponent
 
   ],
   imports: [

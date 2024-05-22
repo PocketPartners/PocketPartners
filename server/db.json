@@ -48,7 +48,19 @@
       "members": [
         {
           "id": 1,
-          "name": ""
+          "name": "Diego Rafael",
+          "email": "aksjdka@gmail.com",
+          "phone": 999999999,
+          "photo": "https://picsum.photos/200",
+          "joined": "2024-04-09T02:30:19.691Z"
+        },
+        {
+          "id": 9,
+          "name": "Joaquín",
+          "email": "aslñdka@mail.com",
+          "phone": 999999999,
+          "photo": "https://picsum.photos/200",
+          "joined": "2024-04-09T02:30:19.691Z"
         }
       ],
       "creationDate": "2024-04-09T02:30:19.691Z",
@@ -58,9 +70,9 @@
           "description": "KFC",
           "amount": 100,
           "date": "2024-04-10T02:30:19.691Z",
-          "paidBy": 0,
+          "paidBy": 1,
           "usersToDivide": [
-            0
+            1
           ],
           "membersPaying": [
             {
@@ -77,7 +89,8 @@
           "date": "2024-04-12T02:30:19.691Z",
           "paidBy": 15,
           "usersToDivide": [
-            0
+            1,
+            9
           ],
           "membersPaying": [
             {

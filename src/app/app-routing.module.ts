@@ -11,13 +11,15 @@ import { OutgoingComponent } from "./payments/outgoing/pages/outgoing.component"
 import { ContactComponent } from "./contacts/pages/contact/contact.component";
 import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expenses.component';
 import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
-import {LoginComponent} from "./authorization/components/login/login.component";
+import { LoginComponent } from "./authorization/components/login/login.component";
+import { PageGroupDetailsComponent } from './group/pages/page-group-details/page-group-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'groups', component: PageGroupComponent },
+  { path: 'group-detail/:id', component: PageGroupDetailsComponent },
   { path: 'contacts', component: ContactComponent },
   { path: 'incoming', component: IncomingComponent },
   { path: 'outgoing', component: OutgoingComponent },
