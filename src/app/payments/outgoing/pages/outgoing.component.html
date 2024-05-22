@@ -1,64 +1,64 @@
+<div class="title-container">
+  <h1>Outgoing Payments</h1>
+</div>
+
 <div class="cards">
-<mat-card class="done card">
-  <mat-card-header>
-    <mat-card-title-group>
-      <mat-card-title>Pagos Realizados</mat-card-title>
-    </mat-card-title-group>
-  </mat-card-header>
+  <mat-card class="done card">
+    <mat-card-header>
+      <mat-card-title>Payments Made</mat-card-title>
+    </mat-card-header>
 
-  <mat-card-content>
-    <mat-card *ngFor="let group of groups" class="group-card">
-      <mat-card-header>
-        <mat-card-title-group>
-          <mat-card-title>{{ group.name }}</mat-card-title>
-        </mat-card-title-group>
-      </mat-card-header>
+    <mat-card-content>
+      <div class="group-container">
+        <mat-card *ngFor="let group of groups" class="group-card">
+          <mat-card-header>
+            <mat-card-title>{{ group.name }}</mat-card-title>
+          </mat-card-header>
 
-      <mat-card-content>
-        <div class="container">
-          <div class="box name">
-            <h3><b>Integrantes</b></h3>
-            <p *ngFor="let member of group.members">{{ member.name }}</p>
-          </div>
-          <div class="box amount">
-            <h4><b>Monto</b></h4>
-            <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{group.currency}}</p>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </mat-card-content>
-</mat-card>
+          <mat-card-content>
+            <div class="container">
+              <div class="box name">
+                <h3><b>Members</b></h3>
+                <p *ngFor="let member of group.members">{{ member.name }}</p>
+              </div>
+              <div class="box amount">
+                <h4><b>Amount</b></h4>
+                <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{group.currency}}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-<mat-card class="missing card">
-  <mat-card-header>
-    <mat-card-title-group>
-      <mat-card-title>Pagos Faltantes</mat-card-title>
-      <button mat-raised-button class="btnPago">Hacer Pago</button>
-    </mat-card-title-group>
-  </mat-card-header>
+  <mat-card class="missing card">
+    <mat-card-header>
+      <mat-card-title>Payments to Do</mat-card-title>
+      <button mat-raised-button class="btnPago">Make Payment</button>
+    </mat-card-header>
 
-  <mat-card-content>
-    <mat-card *ngFor="let group of groups" class="group-card">
-      <mat-card-header>
-        <mat-card-title-group>
-          <mat-card-title>{{ group.name }}</mat-card-title>
-        </mat-card-title-group>
-      </mat-card-header>
+    <mat-card-content>
+      <div class="group-container">
+        <mat-card *ngFor="let group of groups" class="group-card">
+          <mat-card-header>
+            <mat-card-title>{{ group.name }}</mat-card-title>
+          </mat-card-header>
 
-      <mat-card-content>
-        <div class="container">
-          <div class="box name">
-            <h3><b>Integrantes</b></h3>
-            <p *ngFor="let member of group.members">{{ member.name }}</p>
-          </div>
-          <div class="box amount">
-            <h4><b>Monto</b></h4>
-            <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{group.currency}}</p>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </mat-card-content>
-</mat-card>
+          <mat-card-content>
+            <div class="container">
+              <div class="box name">
+                <h3><b>Members</b></h3>
+                <p *ngFor="let member of group.members">{{ member.name }}</p>
+              </div>
+              <div class="box amount">
+                <h4><b>Amount</b></h4>
+                <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{group.currency}}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

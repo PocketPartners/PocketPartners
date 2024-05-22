@@ -20,6 +20,44 @@
         {
           "id": 577,
           "name": "Los otakus"
+        },
+        {
+          "id": 574,
+          "name": "Sugar girls"
+        },
+        {
+          "id": 642,
+          "name": "Narutoooo"
+        }
+      ],
+      "contacts": [
+        {
+          "id": 1,
+          "name": "Jon Snow",
+          "email": "jonysnow@email.com",
+          "phone": 938847125,
+          "photo": "https://picsum.photos/300"
+        },
+        {
+          "id": 2,
+          "name": "Ariana Alvarez",
+          "email": "aarianaAlv@email.com",
+          "phone": 938847125,
+          "photo": "https://picsum.photos/600"
+        },
+        {
+          "id": 3,
+          "name": "Luciana Jones",
+          "email": "lucy1234@email.com",
+          "phone": 938847125,
+          "photo": "https://picsum.photos/800"
+        },
+        {
+          "id": 4,
+          "name": "Camila Cabello",
+          "email": "camiCabe11o@email.com",
+          "phone": 938847125,
+          "photo": "https://picsum.photos/200"
         }
       ]
     },
@@ -35,6 +73,13 @@
         {
           "id": 621,
           "name": "Los mejores de la U"
+        }
+      ],
+      "contacts": [
+        {
+          "id": 1,
+          "name": "Jon Snow",
+          "email": "ddd"
         }
       ]
     }
@@ -90,7 +135,7 @@
       ]
     },
     {
-      "id": 577,
+      "id": 574,
       "currency": "sol",
       "image": "",
       "name": "Sugar girls",
@@ -394,6 +439,34 @@
       "group": {
         "id": 577,
         "name": "Los otakus"
+      }
+    },
+    {
+      "id": "0sk4xk9pcgu",
+      "name": "Desayuno",
+      "amount": 47,
+      "date": "2024-05-22T16:25:34.097Z",
+      "member": {
+        "id": 0,
+        "name": "Diego"
+      },
+      "group": {
+        "id": 522,
+        "name": "sugar yoyo"
+      }
+    },
+    {
+      "id": "si2vmrqx9ns",
+      "name": "Viaje",
+      "amount": 500.4,
+      "date": "2024-05-22T16:29:30.629Z",
+      "member": {
+        "id": 0,
+        "name": "Diego"
+      },
+      "group": {
+        "id": 574,
+        "name": "Sugar girls"
       }
     }
   ]

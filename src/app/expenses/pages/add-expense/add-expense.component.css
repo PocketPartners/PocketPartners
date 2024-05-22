@@ -6,3 +6,9 @@
     border-radius: 10px;
     width: fit-content;
 }
+
+.new-expense{
+  margin-top: 15px;
+  padding: 40px;
+  margin-left: 50px;
+}
