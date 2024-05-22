@@ -12,4 +12,8 @@ export class GroupService extends BaseService<GroupEntity> {
     super(http);
     this.resourceEndpoint = '/groups';
   }
+
+  getById(id: number) {
+    return this.http.get<GroupEntity>(`${this.resourcePath()}/${id}`, this.httpOptions);
+  }
 }
