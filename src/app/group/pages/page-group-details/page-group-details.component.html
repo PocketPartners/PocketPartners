@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>{{ group.name }}</mat-card-title>
   <mat-card-header>
-    <img :src="group.image" alt="Imagen de grupo">
+    <img [src]="group.image" alt="Imagen de grupo">
     <mat-card-title-group>
       <mat-card-title>El grupo {{ group.name }} te debe: {{ amountOfPayToYou }} {{ group.currency }}</mat-card-title>
     </mat-card-title-group>
