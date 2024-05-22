@@ -44,6 +44,7 @@ import { ExpenseCardComponent } from './expenses/components/expense-card/expense
 import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
 import { FormExpenseComponent } from './expenses/components/form-expense/form-expense.component';
 import { LoginComponent } from './authorization/components/login/login.component';
+import {HeaderComponent} from "./public/components/header/header.component";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -110,7 +111,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCheckbox,
     MatRadioButton,
     ChartModule,
-    MatSelectModule
+    MatSelectModule,
+    HeaderComponent
   ],
   providers: [
     provideAnimationsAsync(),
