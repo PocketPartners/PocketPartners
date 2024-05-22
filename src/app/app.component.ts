@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
 import { MatDialog } from "@angular/material/dialog";
 import { ContactComponent } from "./contacts/pages/contact/contact.component";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -19,13 +21,11 @@ export class AppComponent implements OnInit {
     { path: '/expenses', title: 'Expenses' },
   ];
 
-  constructor(translate: TranslateService) {
+  constructor(translate: TranslateService, public router: Router) {
     translate.setDefaultLang('en');
     translate.use('en');
 
   }
-
-
 
   ngOnInit() {
   }

@@ -1,16 +1,16 @@
-
 <mat-card class="expense-card">
-    <mat-card-header>
-        <mat-card-title-group>
-            <mat-card-title>Gasto: {{expense.name}}</mat-card-title>
-            <mat-card-title>Monto: {{expense.amount}}</mat-card-title>
-        </mat-card-title-group>
-    </mat-card-header>
-    <mat-card-content>
-        <p>Fecha: {{expense.date}}</p>
-        <p>Grupo: {{expense.group.name}}</p>
-        <button mat-icon-button>
-            Pagar
-        </button>
-    </mat-card-content>
+  <mat-card-header class="expense-header">
+    <mat-card-title>Expense: {{expense.name}}</mat-card-title>
+    <mat-card-subtitle>Date: {{expense.date}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="expense-content">
+    <p>Amount: {{expense.amount}}</p>
+    <p>Group: {{expense.group.name}}</p>
+  </mat-card-content>
+  <mat-card-actions class="expense-actions">
+    <button mat-icon-button>
+      <mat-icon>payment</mat-icon>
+    </button>
+  </mat-card-actions>
 </mat-card>
+

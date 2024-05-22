@@ -210,6 +210,21 @@
           ]
         }
       ]
+    },
+    {
+      "id": 642,
+      "currency": "S/.",
+      "image": "",
+      "name": "Narutoooo",
+      "members": [
+        {
+          "id": 0,
+          "name": "Amanda"
+        }
+      ],
+      "creationDate": "2024-05-22T00:34:54.544Z",
+      "expenseHistory": [],
+      "paymentHistory": []
     }
   ],
   "contacts": [
