@@ -1,14 +1,42 @@
-<mat-card>
-  <mat-card-title>{{ group.name }}</mat-card-title>
-  <mat-card-header>
-    <img [src]="group.image" alt="Imagen de grupo">
-    <mat-card-title-group>
-      <mat-card-title>El grupo {{ group.name }} te debe: {{ amountOfPayToYou }} {{ group.currency }}</mat-card-title>
-    </mat-card-title-group>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Creación: {{ group.creationDate | date: 'dd/MM/yyyy'}}</p>
-    <p>Currency: {{ group.currency }}</p>
-    <p>Integrantes: {{ group.members.length }}</p>
-  </mat-card-content>
-</mat-card>
+<div class="container">
+  <div class="right-cards">
+    <mat-card>
+      <mat-card-title>{{ group.name }}</mat-card-title>
+      <mat-card-header>
+        <img [src]="group.image" alt="Imagen de grupo">
+        <mat-card-title-group>
+          <mat-card-title>El grupo {{ group.name }} te debe: {{ amountOfPayToYou }} {{ group.currency }}</mat-card-title>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Creación: {{ group.creationDate | date: 'dd/MM/yyyy'}}</p>
+        <p>Currency: {{ group.currency }}</p>
+        <p>Integrantes: {{ group.members.length }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-title>Cada miembro debe pagar</mat-card-title>
+      <mat-card-content>
+        <div *ngFor="let member of group.members">
+          <label [class.checked]="isMemberPaid(member.id)">
+            <input type="checkbox" [checked]="isMemberPaid(member.id)" (change)="togglePaidMember(member.id)">
+            <span>{{ member.name }}</span>
+          </label>
+          <span class="amount">{{ amountEachMemberShouldPay }} {{ group.currency }}</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="left-card">
+    <mat-card>
+      <mat-card-title>Distribución de pagos</mat-card-title>
+      <mat-card-content>
+        <div style="display: flex; justify-content: center;">
+          <canvas id="pieChart"></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
