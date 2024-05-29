@@ -13,6 +13,7 @@ export class PageGroupDetailsComponent implements OnInit {
   public id: number = 0;
   group: GroupEntity = new GroupEntity();
   public amountOfPayToYou: number = 0;
+  selectedPayment: any;
   constructor(private route: ActivatedRoute, private groupService: GroupService) { }
 
   ngOnInit() {
@@ -20,9 +21,8 @@ export class PageGroupDetailsComponent implements OnInit {
     console.log(this.id);
 
     if (this.id) {
-      this.groupService.getById(this.id).subscribe((group: any) => {
+      this.groupService.getById(577).subscribe((group: any) => {
         this.group = group;
-        console.log(this.group);
         this.calculateAmountToYou();
       });
     }
@@ -36,6 +36,15 @@ export class PageGroupDetailsComponent implements OnInit {
       }
     });
     this.amountOfPayToYou = totalAmount;
-    console.log(this.amountOfPayToYou);
   }
+
+  getUserName(userId: number): string {
+    const user = this.group.members.find(member => member.id === userId);
+    return user ? user.name : '';
+  }
+
+  showPaymentDetail(payment: any) {
+    this.selectedPayment = payment;
+  }
+
 }

@@ -1,14 +1,45 @@
-<mat-card>
-  <mat-card-title>{{ group.name }}</mat-card-title>
-  <mat-card-header>
-    <img :src="group.image" alt="Imagen de grupo">
-    <mat-card-title-group>
-      <mat-card-title>El grupo {{ group.name }} te debe: {{ amountOfPayToYou }} {{ group.currency }}</mat-card-title>
-    </mat-card-title-group>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Creación: {{ group.creationDate | date: 'dd/MM/yyyy'}}</p>
-    <p>Currency: {{ group.currency }}</p>
-    <p>Integrantes: {{ group.members.length }}</p>
-  </mat-card-content>
-</mat-card>
+
+<div class="titles">
+  {{ group.name }}
+</div>
+<div class="coments">
+  El grupo {{ group.name }} te debe: {{ amountOfPayToYou }} {{ group.currency }}
+</div>
+
+<div class="panel">
+  <div class="subtitles">
+    Cuentas
+  </div>
+  <mat-card>
+    <mat-card-content>
+      <p>Creación: {{ group.creationDate | date: 'dd/MM/yyyy' }}</p>
+      <p>Moneda: {{ group.currency }}</p>
+      <p>Integrantes: {{ group.members.length }}</p>
+
+      <div *ngFor="let payment of group.paymentHistory">
+        <div *ngIf="payment.date">
+          <h3>{{ payment.date | date: 'dd/MM/yyyy' }}</h3>
+          <p>Descripción: {{ payment.description }}</p>
+          <p>Monto: {{ payment.amount }}</p>
+          <p>Pagado por: {{ getUserName(payment.paidBy) }}</p>
+          <p>Usuarios a dividir: {{ payment.usersToDivide.length }}</p>
+          <p>Detalles de los miembros que pagaron:</p>
+          <ul>
+            <li *ngFor="let memberPaying of payment.membersPaying">
+              Usuario: {{ getUserName(memberPaying.userId) }}, Monto pagado: {{ memberPaying.amountPaid }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div *ngIf="selectedPayment" class="payment-detail">
+        <h4>Detalle del Pago Seleccionado</h4>
+        <p><strong>Fecha:</strong> {{ selectedPayment.date | date: 'dd/MM/yyyy' }}</p>
+        <p><strong>Descripción:</strong> {{ selectedPayment.description }}</p>
+        <p><strong>Monto:</strong> {{ selectedPayment.amount }}</p>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

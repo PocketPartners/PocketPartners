@@ -1,0 +1,43 @@
+.subtitles {
+  width: 200px;
+  height: 30px;
+  background-color: #ff8601;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin: 10px;
+  display: grid;
+}
+
+.titles {
+  width: 200px;
+  height: 50px;
+  background-color: #ff8601;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.panel {
+  float: left;
+  width: 40%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.coments {
+  display: flex;
+  margin: 10px;
+}
