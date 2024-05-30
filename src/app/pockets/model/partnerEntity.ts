@@ -5,6 +5,12 @@ export class PartnerEntity {
   password: string;
   balance: number;
   photo: string;
+  contacts: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
   groups: [
     {
       id: number;
@@ -18,6 +24,12 @@ export class PartnerEntity {
     this.email = "";
     this.password = "";
     this.balance = 0;
+    this.contacts = [
+      {
+        id: 0,
+        name: "",
+      }
+    ];
     this.groups = [
       {
         id: 0,

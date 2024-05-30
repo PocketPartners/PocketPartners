@@ -283,6 +283,25 @@
       "creationDate": "2024-05-22T00:34:54.544Z",
       "expenseHistory": [],
       "paymentHistory": []
+    },
+    {
+      "id": 867,
+      "currency": "PEN",
+      "image": "",
+      "name": "HOOA",
+      "members": [
+        {
+          "name": "Jon Snow",
+          "id": 152
+        },
+        {
+          "name": "Luciana Jones",
+          "id": 51
+        }
+      ],
+      "creationDate": "2024-05-30T23:33:55.572Z",
+      "expenseHistory": [],
+      "paymentHistory": []
     }
   ],
   "contacts": [
