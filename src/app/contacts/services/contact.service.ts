@@ -11,7 +11,7 @@ export class ContactService extends BaseService<ContactEntity>{
 
   constructor(http: HttpClient) {
     super(http);
-    this.resourceEndpoint = '/contacts';
+    this.resourceEndpoint = '/users';
   }
 
   getUserById(userId: any) {

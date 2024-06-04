@@ -1,3 +1,3 @@
 export const environment = {
-  baseURL: 'https://my-json-server.typicode.com/Diego22rct/poketpartners-db',
+  baseURL: 'http://localhost:8080/api/v1',
 };

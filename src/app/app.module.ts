@@ -36,6 +36,7 @@ import { OutgoingComponent } from './payments/outgoing/pages/outgoing.component'
 import { MatCard, MatCardHeader, MatCardModule, MatCardTitleGroup } from "@angular/material/card";
 import { ContactComponent } from './contacts/pages/contact/contact.component';
 import { FormCreateContactComponent } from './contacts/components/form-create-contact/form-create-contact.component';
+// @ts-ignore
 import { TransactionsTimelineComponent } from './pockets/components/transactions-timeline/transactions-timeline.component';
 import { ChartComponent } from './pockets/components/chart/chart.component';
 import { ChartModule } from "angular-highcharts";

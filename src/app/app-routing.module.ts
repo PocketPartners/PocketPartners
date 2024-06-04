@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'groups', component: PageGroupComponent },
   { path: 'group-detail/:id', component: PageGroupDetailsComponent },
-  { path: 'contacts', component: ContactComponent },
+  { path: 'users', component: ContactComponent },
   { path: 'incoming', component: IncomingComponent },
   { path: 'outgoing', component: OutgoingComponent },
   { path: 'create-group', component: PageCreateGroupComponent },

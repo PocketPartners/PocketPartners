@@ -1,16 +1,16 @@
 export class ContactEntity {
 
   id: number;
-  name: string;
+  fullName: string;
   email: string;
-  phone: string;
+  phoneNumber: string;
   photo: string;
 
-  constructor(id: number = 0, name: string = '', email: string = '', phone: string = '', photo: string = '') {
+  constructor(id: number = 0, fullName: string = '', email: string = '', phoneNumber: string = '', photo: string = '') {
     this.id = id;
-    this.name = name;
+    this.fullName = fullName;
     this.email = email;
-    this.phone = phone;
+    this.phoneNumber = phoneNumber;
     this.photo = photo;
   }
 

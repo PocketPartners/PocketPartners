@@ -16,4 +16,8 @@ export class GroupService extends BaseService<GroupEntity> {
   getById(id: number) {
     return this.http.get<GroupEntity>(`${this.resourcePath()}/${id}`, this.httpOptions);
   }
+
+  getExpensesById(id: number) {
+    return this.http.get<GroupEntity>(`${this.resourcePath()}/groupOperations/groupId/${id}`, this.httpOptions);
+  }
 }
