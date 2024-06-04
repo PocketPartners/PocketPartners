@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  height: 96.6vh;
+  height: 90vh;
 }
 
 .image-container {
@@ -39,7 +39,7 @@
   margin-bottom: 8px;
 }
 
-.password-text{
+.password-text {
   color: #AA67F2;
   margin-bottom: 8px;
 }
@@ -59,7 +59,7 @@ input[type="password"]::placeholder {
   color: gray;
 }
 
-.mat-input-element{
+.mat-input-element {
   display: none;
 }
 
@@ -92,9 +92,11 @@ button {
   position: relative;
   display: inline-block;
 }
+
 .social-text-container {
   position: relative;
 }
+
 .line1 {
   position: absolute;
   left: 0;
@@ -106,6 +108,7 @@ button {
   transform: translateY(-50%);
   width: 90px;
 }
+
 .line2 {
   position: absolute;
   margin-right: 100px;
@@ -116,6 +119,7 @@ button {
   transform: translateY(-50%);
   width: 90px;
 }
+
 .social-icons img {
   width: 70px;
   margin-right: -80px;
@@ -135,6 +139,7 @@ button {
   cursor: pointer;
   font-weight: bold;
 }
+
 .poppins-font {
   font-family: 'Poppins', sans-serif;
 }

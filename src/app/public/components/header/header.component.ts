@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
-import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {MatListItem, MatNavList} from "@angular/material/list";
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIcon} from "@angular/material/icon";
-import {MatAnchor, MatButton, MatIconButton} from "@angular/material/button";
-import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatDrawer, MatDrawerContainer } from "@angular/material/sidenav";
+import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
+import { MatListItem, MatNavList } from "@angular/material/list";
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIcon } from "@angular/material/icon";
+import { MatAnchor, MatButton, MatIconButton } from "@angular/material/button";
+import { MatMenu, MatMenuItem, MatMenuTrigger } from "@angular/material/menu";
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -34,4 +35,11 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 })
 export class HeaderComponent {
 
+  constructor(private cookieService: CookieService) {
+  }
+
+  logout() {
+    this.cookieService.delete('user');
+    window.location.reload();
+  }
 }

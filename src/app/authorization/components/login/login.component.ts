@@ -30,6 +30,7 @@ export class LoginComponent {
           console.log('User Found');
           console.log(element);
           this.cookieService.set('user', JSON.stringify(element));
+          window.location.reload();
         }
       });
     });
