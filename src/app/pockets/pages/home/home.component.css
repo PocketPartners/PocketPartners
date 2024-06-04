@@ -1,20 +1,17 @@
 .welcome-card {
-  width: 400px;
+  width: 450px;
   justify-content: left;
 }
 
-.else{
-  margin-top: 40px;
+.else, .mat-card-subtitle {
+  margin-left: 30px;
+  margin-top: 15px;
 }
 
-.welcome-image {
-  background-image: url('https://i.pinimg.com/564x/84/ae/a8/84aea8fdc3a37c1ca15a417ad2af2084.jpg');
-  background-size: cover;
+.welcome-image img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin-right: 20px;
-  margin-top: 20px
 }
 
 .currency-image{
@@ -45,15 +42,8 @@
   align-items: center;
 }
 
-.balance-card {
-  width: 510px;
-  height: 150px;
-  background-color: rgb(170, 103, 242);
-  color: white;
-}
-
 .currency-card {
-  width: 35%;
+  width: 150px;
   height: 150px;
   background-color: #8288ff;
   justify-items: center;

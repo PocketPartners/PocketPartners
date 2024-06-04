@@ -1,26 +1,16 @@
 <div class="container">
   <mat-card class="welcome-card">
     <mat-card-header>
-      <div mat-card-avatar class="welcome-image"></div>
-      <mat-card-title class="else">Welcome Back</mat-card-title>
-      <mat-card-subtitle>Jon Snow</mat-card-subtitle>
+      <div mat-card-avatar class="welcome-image">
+        <img [src]="partner?.photo" alt="User Photo">
+      </div>
+      <mat-card-title class="else">Welcome Back {{ partner?.fullName }}</mat-card-title>
+      <mat-card-subtitle style="margin-left: 30px;">{{ partner?.email }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>¡Hi! We hope you have a nice day.</p>
-      <p>The last time you login was on 27/04/2024</p>
+      <p style="margin-left: 85px;">¡Hi! We hope you have a nice day.</p>
     </mat-card-content>
   </mat-card>
-
-  <div class="cards-container">
-    <mat-card class="balance-card">
-      <mat-card-header>
-        <mat-card-title class="balance-card-title">Balance</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <h4>Amount</h4>
-        <h2>4000</h2>
-      </mat-card-content>
-    </mat-card>
 
     <mat-card class="currency-card">
       <mat-card-header>
@@ -31,7 +21,7 @@
       </mat-card-content>
     </mat-card>
   </div>
-</div>
+
 
 <div class="container">
   <mat-card class="expenses-card">
@@ -46,8 +36,3 @@
   </mat-card>
   <app-chart></app-chart>
 </div>
-
-
-
-
-
