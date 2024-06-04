@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import { MatToolbar } from "@angular/material/toolbar";
 import { MatAnchor } from "@angular/material/button";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CookieService } from 'ngx-cookie-service';
 
 import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
@@ -116,11 +117,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChartModule,
     MatSelectModule,
     HeaderComponent,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
   providers: [
     provideAnimationsAsync(),
-    GroupService
+    GroupService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })
