@@ -2,37 +2,41 @@
   <div class="image-container">
     <img src="assets/images/loginimageleft.png" alt="Imagen de fondo">
   </div>
-  <div class="form-container poppins-font">
-    <div class="welcome-text poppins-font">¡Bienvenido de vuelta!</div>
-    <div class="expenses-text">¿Qué gastos harás hoy?</div>
+  <form (ngSubmit)="login()" [formGroup]="firstFormGroup">
+    <div class="form-container poppins-font">
+      <div class="welcome-text poppins-font">¡Bienvenido de vuelta!</div>
+      <div class="expenses-text">¿Qué gastos harás hoy?</div>
 
-    <div class="email-text">E-mail o nombre de usuario</div>
+      <div class="email-text">E-mail o nombre de usuario</div>
 
-    <mat-form-field appearance="fill" class="custom-input">
-      <input matInput placeholder="Coloca tu e-mail o nombre de usuario" [(ngModel)]="email" class="rounded-input">
-    </mat-form-field>
+      <mat-form-field appearance="fill" class="custom-input">
+        <input matInput placeholder="Coloca tu e-mail o nombre de usuario" formControlName="firstCtrl"
+          [(ngModel)]="email" class="rounded-input">
+      </mat-form-field>
 
-    <div class="password-text">Contraseña</div>
-    <mat-form-field appearance="fill" class="custom-input input-password">
-      <input matInput type="password" placeholder="Coloca tu contraseña" [(ngModel)]="password" class="rounded-input">
-    </mat-form-field>
+      <div class="password-text">Contraseña</div>
+      <mat-form-field appearance="fill" class="custom-input input-password">
+        <input matInput type="password" placeholder="Coloca tu contraseña" formControlName="secondCtrl"
+          [(ngModel)]="password" class="rounded-input">
+      </mat-form-field>
 
-    <button mat-raised-button color="primary" class="custom-button">Iniciar Sesión</button>
-    <br>
-    <div class="forgot-password">¿Olvidaste tu contraseña?</div>
-    <br>
-    <div class="social-text-container">
-      <div class="line1"></div>
-      <div class="social-text poppins-font">o usa otra de tus cuentas</div>
-      <div class="line2"></div>
+      <button type="submit" mat-raised-button color="primary" class="custom-button">Iniciar Sesión</button>
+      <br>
+      <div class="forgot-password">¿Olvidaste tu contraseña?</div>
+      <br>
+      <div class="social-text-container">
+        <div class="line1"></div>
+        <div class="social-text poppins-font">o usa otra de tus cuentas</div>
+        <div class="line2"></div>
+      </div>
+      <br>
+      <div class="social-icons">
+        <img src="assets/images/imgGoogleAccess.png" alt="Google">
+        <img src="assets/images/imgAppleAccess.png" alt="Apple">
+        <img src="assets/images/imgFacebookAccess.png" alt="Facebook">
+      </div>
+      <br>
+      <div class="register-text poppins-font">Aún no tienes una cuenta? <span>Regístrate</span></div>
     </div>
-    <br>
-    <div class="social-icons">
-      <img src="assets/images/imgGoogleAccess.png" alt="Google">
-      <img src="assets/images/imgAppleAccess.png" alt="Apple">
-      <img src="assets/images/imgFacebookAccess.png" alt="Facebook">
-    </div>
-    <br>
-    <div class="register-text poppins-font" >Aún no tienes una cuenta? <span>Regístrate</span></div>
-  </div>
+  </form>
 </div>

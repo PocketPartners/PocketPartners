@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { GroupEntity } from '../../model/group.entity';
 import { PartnerEntity } from '../../../pockets/model/partnerEntity';
@@ -31,7 +31,7 @@ export class FormCreateGroupComponent implements OnInit {
   private group: GroupEntity = new GroupEntity();
   private members: PartnerEntity = new PartnerEntity();
 
-  constructor(private _formBuilder: FormBuilder, private partnerService: PartnerService) { }
+  constructor(@Inject(FormBuilder) private _formBuilder: FormBuilder, private partnerService: PartnerService) { }
   ngOnInit() {
     this.partnerService.getAll().subscribe((partners: any) => {
       partners.forEach((partner: any) => {
