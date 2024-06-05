@@ -33,7 +33,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // obtener ruta actual
     console.log(window.location.pathname);
-    if (this.isAuth && window.location.pathname == '/login') {
+    this.manageUnAuth();
+  }
+
+  manageUnAuth() {
+    if (this.isAuth && (window.location.pathname == '/login' || window.location.pathname == '/register')) {
       this.router.navigate(['home'], { replaceUrl: true });
     } else {
       console.log('No hay usuario');
@@ -44,8 +48,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const userData = this.cookieService.get('user');
     console.log(userData);
     this.isAuth = userData !== '';
-    if (!this.isAuth) {
-      this.router.navigate(['login']);
-    }
+    console.log(this.isAuth);
+    this.manageUnAuth();
   }
 }

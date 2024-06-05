@@ -13,9 +13,11 @@ import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expen
 import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
 import { LoginComponent } from "./authorization/components/login/login.component";
 import { PageGroupDetailsComponent } from './group/pages/page-group-details/page-group-details.component';
+import { RegisterComponent } from './authorization/components/register/register/register.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'groups', component: PageGroupComponent },
