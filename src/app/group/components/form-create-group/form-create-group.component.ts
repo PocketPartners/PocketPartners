@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { GroupEntity } from '../../model/group.entity';
 import { PartnerEntity } from '../../../pockets/model/partnerEntity';
 import { PartnerService } from '../../../pockets/services/Partner.service';
+import { GroupMembersService } from '../../services/group-members.service';
 
 @Component({
   selector: 'app-form-create-group',
@@ -31,21 +32,15 @@ export class FormCreateGroupComponent implements OnInit {
   private group: GroupEntity = new GroupEntity();
   private members: PartnerEntity = new PartnerEntity();
 
-  constructor(@Inject(FormBuilder) private _formBuilder: FormBuilder, private partnerService: PartnerService) { }
+  constructor(@Inject(FormBuilder) private _formBuilder: FormBuilder, private groupMember: GroupMembersService) { }
   ngOnInit() {
-    this.partnerService.getAll().subscribe((partners: any) => {
+    this.groupMember.getAllMembersByIdGroup(1).subscribe((partners: any) => {
+      console.log(partners);
       partners.forEach((partner: any) => {
-        if (partner.id == 0) {
-          this.members = partner;
-          partner.contacts.forEach((contact: any) => {
-            this.groupMembersList.push(contact.name);
-          });
-        }
+        this.groupMembersList.push(partner.fullName);
       });
     });
-
   }
-
 
   onChanges(): void {
     this.firstFormGroup.valueChanges.subscribe(val => {
@@ -53,9 +48,8 @@ export class FormCreateGroupComponent implements OnInit {
   }
 
   createNewGroup() {
-    // random id
-    this.group.id = Math.floor(Math.random() * 1000);
     this.group.name = this.firstFormGroup.get('firstCtrl')?.value as string;
+    this.group.image = this.firstFormGroup.get('secondCtrl')?.value as string;
     let members: any = this.secondFormGroup.get('firstCtrl')?.value;
     this.group.members = members.map((member: string) => {
       return { name: member, id: Math.floor(Math.random() * 1000) };
