@@ -30,7 +30,6 @@ export class FormExpenseComponent {
   onSubmit() {
     this.Expense.id = Math.random().toString(36).substring(2);
     this.Expense.name = this.firstFormGroup.value.firstCtrl as string;
-    this.Expense.date ? this.secondFormGroup.get('firstCtrl')?.value : new Date();
     this.Expense.amount = this.thirdFormGroup.value.firstCtrl as unknown as number;
     this.Expense.member = {
       id: this.user.id,

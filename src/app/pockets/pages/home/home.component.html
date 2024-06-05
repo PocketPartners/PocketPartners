@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container1">
   <mat-card class="welcome-card">
     <mat-card-header>
       <div mat-card-avatar class="welcome-image">
@@ -26,11 +26,12 @@
 <div class="container">
   <mat-card class="expenses-card">
     <mat-card-header>
-      <mat-card-title>Recent Movements</mat-card-title>
+      <mat-card-title class="title">Money Owed</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div class="movements-image">
-        <img src="https://i.ibb.co/JRpTc5g/movements.png" alt="Money Movements">
+      <div *ngFor="let expense of expenses" class="expense-card">
+        <p>Expense: {{ expense.name }}</p>
+        <p>Amount: {{ expense.amount }}</p>
       </div>
     </mat-card-content>
   </mat-card>

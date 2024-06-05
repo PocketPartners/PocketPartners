@@ -1,52 +1,46 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
-import {ChartEntity} from "../../model/chart.entity";
-import {ChartService} from "../../services/chart.service";
+import {ExpensesService} from "../../../expenses/services/expenses.service";
+
 
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrl: './chart.component.css'
+  styleUrls: ['./chart.component.css']
 })
-export class ChartComponent implements OnInit{
+export class ChartComponent implements OnInit {
 
-  data: any;
-  dataMonth: ChartEntity[] = [];
-  dataAmount: ChartEntity[] = [];
-  dataColor: any[] = [];
+  dataMonth: string[] = [];
+  dataAmount: number[] = [];
+  dataColor: string[] = [];
 
-constructor(private chartService: ChartService) {
-}
-
-
+  constructor(private expensesService: ExpensesService) {}
 
   ngOnInit() {
+    const userId = 1; // ID del usuario para excluir, reemplázalo con el ID real o pasa el ID como un parámetro al componente.
 
-    this.chartService.getAllChartData().subscribe((res) => {
-      this.data = res;
-      if (Array.isArray(this.data)) {
-        for (let i = 0; i < this.data.length; i++) {
-          this.dataMonth.push(this.data[i].month);
-          this.dataAmount.push(this.data[i].amount);
-          this.dataColor.push(this.data[i].color);
+    this.expensesService.getExpensesByUserId(userId).subscribe((expenses) => {
+      expenses.forEach(expense => {
+        if (expense.created_at) { // Comprueba si created_at tiene un valor definido
+          this.dataMonth.push(this.formatDate(expense.created_at));
+          this.dataAmount.push(expense.amount);
+          this.dataColor.push(this.getRandomColor());
         }
-      }
-
-    })
-    this.showChart(this.dataMonth, this.dataAmount, this.dataColor)
-
+      });
+      this.showChart();
+    });
   }
 
-  showChart(dataMonth: ChartEntity[], dataAmount: ChartEntity[], dataColor: any[]) {
-    new Chart("myChart", {
+  showChart() {
+    new Chart('myChart', {
       type: 'line',
       data: {
-        labels: dataMonth,
+        labels: this.dataMonth,
         datasets: [{
           label: '# of Money Used',
-          data: dataAmount,
+          data: this.dataAmount,
           borderWidth: 1,
-          borderColor: dataColor,
+          borderColor: this.dataColor,
         }]
       },
       options: {
@@ -59,4 +53,13 @@ constructor(private chartService: ChartService) {
     });
   }
 
+  formatDate(date: Date): string {
+    // Aquí implementa tu lógica de formato de fecha.
+    return date.toISOString(); // Esto es solo un ejemplo, reemplázalo con tu propia lógica.
+  }
+
+  getRandomColor(): string {
+    // Genera un color aleatorio hexadecimal.
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
+  }
 }
