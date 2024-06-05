@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
-import {ExpensesService} from "../../../expenses/services/expenses.service";
+import { ExpensesService } from "../../../expenses/services/expenses.service";
+import {ExpensesEntity} from "../../../expenses/model/expenses.entity";
 
 
 @Component({
@@ -19,10 +20,10 @@ export class ChartComponent implements OnInit {
   ngOnInit() {
     const userId = 1; // ID del usuario para excluir, reemplázalo con el ID real o pasa el ID como un parámetro al componente.
 
-    this.expensesService.getExpensesByUserId(userId).subscribe((expenses) => {
+    this.expensesService.getExpensesByUserId(userId).subscribe((expenses: ExpensesEntity[]) => {
       expenses.forEach(expense => {
-        if (expense.created_at) { // Comprueba si created_at tiene un valor definido
-          this.dataMonth.push(this.formatDate(expense.created_at));
+        if (expense.createdAt) {
+          this.dataMonth.push(this.formatDate(expense.createdAt));
           this.dataAmount.push(expense.amount);
           this.dataColor.push(this.getRandomColor());
         }
@@ -40,7 +41,8 @@ export class ChartComponent implements OnInit {
           label: '# of Money Used',
           data: this.dataAmount,
           borderWidth: 1,
-          borderColor: this.dataColor,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)'
         }]
       },
       options: {
@@ -54,12 +56,10 @@ export class ChartComponent implements OnInit {
   }
 
   formatDate(date: Date): string {
-    // Aquí implementa tu lógica de formato de fecha.
-    return date.toISOString(); // Esto es solo un ejemplo, reemplázalo con tu propia lógica.
+    return new Date(date).toLocaleDateString('en-GB'); // Ajusta el formato según tus necesidades
   }
 
   getRandomColor(): string {
-    // Genera un color aleatorio hexadecimal.
-    return '#' + Math.floor(Math.random()*16777215).toString(16);
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
   }
 }
