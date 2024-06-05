@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from '../shared/services/base.service';
-import { PartnerEntity } from '../pockets/model/partnerEntity';
+import { BaseService } from '../../shared/services/base.service';
+import { PartnerEntity } from '../../pockets/model/partnerEntity';
 import { HttpClient } from '@angular/common/http';
 import { catchError, retry } from 'rxjs';
 import { ɵparseCookieValue } from '@angular/common'; // Import the missing function
@@ -30,7 +30,7 @@ export class AuthService extends BaseService<PartnerEntity> {
     ɵparseCookieValue('user', '');
   }
 
-  register(partner: PartnerEntity) {
-    return this.http.post('', partner);
+  register(partner: any) {
+    return this.http.post(this.basePath + this.resourceEndpoint, partner, this.httpOptions).pipe(retry(2), catchError(this.handleError));
   }
 }
