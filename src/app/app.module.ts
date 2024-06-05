@@ -51,6 +51,8 @@ import { HeaderComponent } from "./public/components/header/header.component";
 import { PageGroupDetailsComponent } from './group/pages/page-group-details/page-group-details.component';
 import { RegisterComponent } from './authorization/components/register/register/register.component';
 import { AuthPageComponent } from './authorization/pages/auth-page/auth-page.component';
+import {FormPaymentComponent} from "./payments/components/form-payment/form-payment.component";
+import {AddPaymentComponent} from "./payments/incoming/pages/add-payment/add-payment.component";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -75,7 +77,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageExpensesComponent,
     ExpenseCardComponent,
     AddExpenseComponent,
+    AddPaymentComponent,
     FormExpenseComponent,
+    FormPaymentComponent,
     LoginComponent,
     PageGroupDetailsComponent,
     RegisterComponent,
