@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { GroupEntity } from '../../../group/model/group.entity';
 import { GroupService } from '../../../group/services/group.service';
 import { GroupOperationsService } from '../../../group/services/group-operations.service';
-import {PaymentEntity} from "../../model/payment-entity";
-import {ContactEntity} from "../../../contacts/model/contact.entity";
-import {PaymentService} from "../../services/payment.service";
-import {ContactService} from "../../../contacts/services/contact.service";
-import {OperationEntity} from "../../../group/model/operation-entity";
+import { PaymentEntity } from "../../model/payment-entity";
+import { ContactEntity } from "../../../contacts/model/contact.entity";
+import { PaymentService } from "../../services/payment.service";
+import { ContactService } from "../../../contacts/services/contact.service";
+import { OperationEntity } from "../../../group/model/operation-entity";
 
 
 @Component({
@@ -27,8 +27,8 @@ export class IncomingComponent implements OnInit {
   ) { }
 
   getAllGroups() {
-    this.groupService.getAllGroups()
-      .subscribe((groups: GroupEntity[]) => {
+    this.groupService.getAll()
+      .subscribe((groups: any) => {
         this.groups = groups;
         this.groups.forEach(group => {
           this.getAllGroupOperationsByGroupId(group.id);
