@@ -16,6 +16,19 @@
   font-size: 24px;
 }
 
+.group-card {
+  margin: 1.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #fff;
+  transition: transform 0.3s;
+}
+
+.group-card:hover {
+  transform: scale(1.02);
+}
+
 .cards {
   display: flex;
   justify-content: space-between;
@@ -44,8 +57,8 @@
 }
 
 .box {
-  flex: 1;
-  text-align: center;
+  width: calc((100% - 2 * 1em) / 3);
+  text-align: left;
 }
 
 .box h3, .box h4 {
@@ -54,9 +67,9 @@
 }
 
 .box p {
-  font-family: 'Roboto', sans-serif;
-  color: #555;
-  margin: 0.5rem 0;
+  font-family: 'Arial', sans-serif;
+  color: #777;
+  margin: 0.5em 0;
 }
 
 .btnPago {
@@ -76,7 +89,12 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .cards {
+  .container {
     flex-direction: column;
+  }
+
+  .box {
+    width: 100%;
+    margin-bottom: 1em;
   }
 }

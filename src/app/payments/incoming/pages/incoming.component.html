@@ -13,15 +13,21 @@
     <div class="container">
       <div class="box name">
         <h3><b>Members</b></h3>
-        <p *ngFor="let member of group.members">{{ member.name }}</p>
+        <div *ngFor="let payment of groupPayments[group.id]">
+          {{ users[payment.userId]?.fullName || payment.userId }}
+        </div>
       </div>
       <div class="box date">
-        <h4><b>Date</b></h4>
-        <p *ngFor="let payment of group.paymentHistory">{{ payment.date }}</p>
+        <h4><b>Description</b></h4>
+        <div *ngFor="let payment of groupPayments[group.id]">
+          {{ payment.description }} <!-- Assuming description contains date -->
+        </div>
       </div>
       <div class="box amount">
         <h4><b>Amount</b></h4>
-        <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{ group.currency }}</p>
+        <div *ngFor="let payment of groupPayments[group.id]">
+          {{ payment.amount | currency }}
+        </div>
       </div>
     </div>
   </mat-card-content>
