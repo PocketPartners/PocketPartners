@@ -9,7 +9,7 @@
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content>
-        <p>Creación: {{ group.creationDate | date: 'dd/MM/yyyy'}}</p>
+        <p>Creación: {{ group.createdAt | date: 'dd/MM/yyyy'}}</p>
         <p>Currency: {{ group.currency }}</p>
         <p>Integrantes: {{ group.members.length }}</p>
       </mat-card-content>

@@ -11,6 +11,7 @@ export class GroupOperationsService extends BaseService<GroupEntity> {
     super(http);
     this.resourceEndpoint = '/groupOperations';
   }
+
   getExpensesByGroupId(id: number) {
     return this.http.get<GroupEntity>(`${this.resourcePath()}/groupId/${id}`, this.httpOptions);
   }

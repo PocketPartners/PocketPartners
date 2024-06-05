@@ -2,7 +2,7 @@
 <div class="groups-container">
   <div class="group-item" *ngFor="let group of groups">
     <h2>{{ group.name }}</h2>
-    <p> {{ group.creationDate | date: 'dd/MM/yyyy'}}</p>
+    <p> {{ group.createdAt | date: 'dd/MM/yyyy'}}</p>
     <div class="group-item" (click)="openGroup(group.id)">
       <mat-icon>open_in_new</mat-icon> Ver más detalles
     </div>

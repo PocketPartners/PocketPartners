@@ -7,7 +7,7 @@ export class GroupEntity {
         id: number;
         name: string;
     }[];
-    creationDate: Date;
+    createdAt: Date;
     expenseHistory: {
         id: number;
         date: Date;
@@ -29,7 +29,7 @@ export class GroupEntity {
     constructor(id: number = 0, image: string = '', currency: string = 'PEN', name: string = '', members: {
         id: number;
         name: string;
-    }[] = [], creationDate: Date = new Date(), paymentHistory: {
+    }[] = [], createdAt: Date = new Date(), paymentHistory: {
         id: number;
         date: Date;
         amount: number;
@@ -53,7 +53,7 @@ export class GroupEntity {
         this.image = image;
         this.name = name;
         this.members = members;
-        this.creationDate = creationDate;
+        this.createdAt = createdAt;
         this.expenseHistory = expenseHistory;
         this.paymentHistory = paymentHistory;
     };
