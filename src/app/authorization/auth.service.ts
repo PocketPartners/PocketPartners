@@ -12,6 +12,7 @@ export class AuthService extends BaseService<PartnerEntity> {
 
   constructor(http: HttpClient) {
     super(http);
+    this.basePath = 'https://my-json-server.typicode.com/Diego22rct/poketpartners-db';
     this.resourceEndpoint = '/users';
   }
 
