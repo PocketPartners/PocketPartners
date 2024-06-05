@@ -19,7 +19,7 @@
             When?
         </ng-template>
         <mat-form-field>
-            <mat-label>Date of the Expense</mat-label>
+            <mat-label>Date of the Payment</mat-label>
             <input type="date" matInput formControlName="firstCtrl" required>
         </mat-form-field>
         <div>
@@ -70,7 +70,7 @@
         <h1>Summary</h1>
         <p>Name: {{ firstFormGroup.value.firstCtrl }}</p>
         <p>Date: {{ secondFormGroup.value.firstCtrl }}</p>
-        <p>Expense: {{ thirdFormGroup.value.firstCtrl }}</p>
+        <p>Amount: {{ thirdFormGroup.value.firstCtrl }}</p>
         <p>Group: {{ fourthFormGroup.value.firstCtrl }}</p>
     </div>
     <div>
