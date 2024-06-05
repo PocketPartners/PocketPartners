@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import { MatToolbar } from "@angular/material/toolbar";
 import { MatAnchor } from "@angular/material/button";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CookieService } from 'ngx-cookie-service';
 
 import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
@@ -34,9 +36,10 @@ import { OutgoingComponent } from './payments/outgoing/pages/outgoing.component'
 import { MatCard, MatCardHeader, MatCardModule, MatCardTitleGroup } from "@angular/material/card";
 import { ContactComponent } from './contacts/pages/contact/contact.component';
 import { FormCreateContactComponent } from './contacts/components/form-create-contact/form-create-contact.component';
+// @ts-ignore
 import { TransactionsTimelineComponent } from './pockets/components/transactions-timeline/transactions-timeline.component';
 import { ChartComponent } from './pockets/components/chart/chart.component';
-import {ChartModule} from "angular-highcharts";
+import { ChartModule } from "angular-highcharts";
 import { MatCheckbox } from "@angular/material/checkbox";
 import { MatRadioButton } from "@angular/material/radio";
 import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expenses.component';
@@ -44,6 +47,10 @@ import { ExpenseCardComponent } from './expenses/components/expense-card/expense
 import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
 import { FormExpenseComponent } from './expenses/components/form-expense/form-expense.component';
 import { LoginComponent } from './authorization/components/login/login.component';
+import { HeaderComponent } from "./public/components/header/header.component";
+import { PageGroupDetailsComponent } from './group/pages/page-group-details/page-group-details.component';
+import { RegisterComponent } from './authorization/components/register/register/register.component';
+import { AuthPageComponent } from './authorization/pages/auth-page/auth-page.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -69,7 +76,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     ExpenseCardComponent,
     AddExpenseComponent,
     FormExpenseComponent,
-    LoginComponent
+    LoginComponent,
+    PageGroupDetailsComponent,
+    RegisterComponent,
+    AuthPageComponent
 
   ],
   imports: [
@@ -110,11 +120,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCheckbox,
     MatRadioButton,
     ChartModule,
-    MatSelectModule
+    MatSelectModule,
+    HeaderComponent,
+    MatAutocompleteModule,
   ],
   providers: [
     provideAnimationsAsync(),
-    GroupService
+    GroupService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

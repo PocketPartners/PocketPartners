@@ -11,7 +11,7 @@ import {ChartEntity} from "../model/chart.entity";
 export class ChartService extends BaseService<ChartEntity> {
   constructor(http: HttpClient) {
     super(http);
-    this.resourceEndpoint = '/chartData';
+    this.resourceEndpoint = '/payments';
   }
 
   getAllChartData(): Observable<any[]> {

@@ -1,3 +1,3 @@
 export const environment = {
-  baseURL: 'https://my-json-server.typicode.com/Diego22rct/poketpartners-db',
+  baseURL: 'https://fairfinance-pocketpartners-os.happyhill-e56f582f.eastus.azurecontainerapps.io/api/v1',
 };

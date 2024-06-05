@@ -1,57 +1,61 @@
 .container {
   display: flex;
-  height: 96.6vh;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .image-container {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: cover;
-  background-position: left;
+  background-position: center;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  max-height: 100vh;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .form-container {
   flex: 1;
-  padding: 20px;
+  padding: 40px;
   box-sizing: border-box;
-  margin: 150px 180px;
+  max-width: 500px;
 }
 
 .welcome-text {
   font-size: 32px;
   margin-bottom: 20px;
   font-weight: bold;
-  padding-bottom: 5px;
 }
 
 .expenses-text {
   color: #AA67F2;
   margin-bottom: 20px;
-  padding-top: 12px;
   font-size: 16px;
 }
 
-.email-text {
-  color: #AA67F2;
-  margin-top: 78px;
-  margin-bottom: 8px;
-}
-
-.password-text{
+.email-text,
+.password-text {
   color: #AA67F2;
   margin-bottom: 8px;
 }
 
-input[type="email"] {
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
+input[type="email"],
 input[type="password"] {
   border-radius: 10px;
   margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #E5E5E5;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
 input[type="email"]::placeholder,
@@ -59,7 +63,7 @@ input[type="password"]::placeholder {
   color: gray;
 }
 
-.mat-input-element{
+.mat-input-element {
   display: none;
 }
 
@@ -67,66 +71,60 @@ button {
   background-color: #AA67F2;
   color: white;
   border-radius: 10px;
-  padding: 20px 20px;
+  padding: 12px;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #8842c3;
 }
 
 .forgot-password {
   color: black;
   cursor: pointer;
-  margin-top: 8px;
-  margin-left: 350px;
   font-size: 12px;
+  text-align: right;
+  margin-top: 8px;
 }
 
 .forgot-password:hover {
   color: #AA67F2;
 }
 
-.social-text {
+.social-text-container {
+  display: flex;
+  align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 175px;
-  position: relative;
-  display: inline-block;
 }
-.social-text-container {
-  position: relative;
-}
-.line1 {
-  position: absolute;
-  left: 0;
-  margin-left: 55px;
-  right: 0;
-  top: 50%;
+
+.line {
+  flex: 1;
   height: 1px;
   background-color: #E5E5E5;
-  transform: translateY(-50%);
-  width: 90px;
 }
-.line2 {
-  position: absolute;
-  margin-right: 100px;
-  right: 0;
-  top: 50%;
-  height: 1px;
-  background-color: #E5E5E5;
-  transform: translateY(-50%);
-  width: 90px;
+
+.social-text {
+  margin: 0 10px;
+  color: #686868;
 }
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .social-icons img {
-  width: 70px;
-  margin-right: -80px;
+  width: 40px;
+  margin: 0 10px;
   cursor: pointer;
-  margin-bottom: 0;
-  margin-left: 120px;
 }
 
 .register-text {
-  margin-top: 20px;
-  margin-left: 145px;
+  text-align: center;
   color: #686868;
 }
 
@@ -135,19 +133,17 @@ button {
   cursor: pointer;
   font-weight: bold;
 }
+
 .poppins-font {
   font-family: 'Poppins', sans-serif;
 }
 
 .custom-input {
   width: 100%;
-  max-width: 500px;
 }
 
 .custom-button {
-  background-color: #AA67F2;
-  padding: 28px 200px 28px 200px;
-  color: black;
+  margin-top: 10px;
 }
 
 .rounded-input .mat-input-element {

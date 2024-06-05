@@ -2,21 +2,15 @@ export class ExpensesEntity {
     id: string;
     name: string;
     amount: number;
-    date: Date;
-    member: {
-        id: number;
-        name: string;
-    };
-    group: {
-        id: number;
-        name: string;
-    }
-    constructor(id = '', name = '', amount = 0, date = new Date(), member = { id: 0, name: '' }, group = { id: 0, name: '' }) {
+    createdAt: Date;
+    updatedAt: Date;
+    userId: number;
+    constructor(id = '', name = '', amount = 0, createdAt = new Date(), updatedAt=new Date(),  userId = 0) {
         this.id = id;
         this.name = name;
         this.amount = amount;
-        this.date = date;
-        this.member = member;
-        this.group = group;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.userId = userId;
     }
 }

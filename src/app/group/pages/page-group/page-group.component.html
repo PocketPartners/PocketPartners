@@ -1,7 +1,13 @@
-
-<h1>Todos los grupos</h1>
-<div>
-    <p *ngFor="let group of groups">{{ group.name }}</p>
+<h1 class="title">Todos los grupos</h1>
+<div class="groups-container">
+  <div class="group-item" *ngFor="let group of groups">
+    <h2>{{ group.name }}</h2>
+    <p> {{ group.createdAt | date: 'dd/MM/yyyy'}}</p>
+    <div class="group-item" (click)="openGroup(group.id)">
+      <mat-icon>open_in_new</mat-icon> Ver más detalles
+    </div>
+  </div>
 </div>
-
-<a [routerLink]="['/create-group']">Crear grupo</a>
+<div class="create-group-container">
+  <a [routerLink]="['/create-group']" class="create-group-button">Crear grupo</a>
+</div>

@@ -1,0 +1,5 @@
+@if (this.wantToRegister) {
+<app-register (toggleRegister)="toggleRegister()"></app-register>
+} @else {
+<app-login (toggleRegister)="toggleRegister()"></app-login>
+}

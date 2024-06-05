@@ -1,3 +1,7 @@
+<div class="title-container">
+  <h1>Incoming Payments</h1>
+</div>
+
 <mat-card *ngFor="let group of groups" class="group-card">
   <mat-card-header>
     <mat-card-title-group>
@@ -5,19 +9,19 @@
     </mat-card-title-group>
   </mat-card-header>
 
-  <mat-card-content >
+  <mat-card-content>
     <div class="container">
       <div class="box name">
-        <h3><b>Integrantes</b></h3>
+        <h3><b>Members</b></h3>
         <p *ngFor="let member of group.members">{{ member.name }}</p>
       </div>
       <div class="box date">
-        <h4><b>Fecha</b></h4>
+        <h4><b>Date</b></h4>
         <p *ngFor="let payment of group.paymentHistory">{{ payment.date }}</p>
       </div>
       <div class="box amount">
-        <h4><b>Monto</b></h4>
-        <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{group.currency}}</p>
+        <h4><b>Amount</b></h4>
+        <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{ group.currency }}</p>
       </div>
     </div>
   </mat-card-content>
