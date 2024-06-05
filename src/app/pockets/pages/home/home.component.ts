@@ -12,7 +12,7 @@ import {ExpensesService} from "../../../expenses/services/expenses.service";
 })
 export class HomeComponent implements OnInit {
   partner: PartnerEntity | undefined;
-  userId: number = 1; // Aquí defines el ID del usuario que quieres obtener
+  userId: number = 151; // Aquí defines el ID del usuario que quieres obtener
   expenses: ExpensesEntity[] = [];
 
   constructor(private partnerService: PartnerService, private expensesService: ExpensesService) { }
@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (expenses: ExpensesEntity[]) => {
           // Filtrar los gastos del usuario especificado
+          // @ts-ignore
           this.expenses = expenses.filter(expense => expense.userId !== this.userId);
           console.log('Gastos obtenidos:', this.expenses);
         },

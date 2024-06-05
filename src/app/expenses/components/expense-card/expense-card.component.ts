@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ExpensesEntity } from '../../model/expenses.entity';
+import {ContactService} from "../../../contacts/services/contact.service";
 
 @Component({
   selector: 'app-expense-card',
@@ -8,5 +9,13 @@ import { ExpensesEntity } from '../../model/expenses.entity';
 })
 export class ExpenseCardComponent {
   @Input() expense: ExpensesEntity = new ExpensesEntity();
-  constructor() { }
+  user: any;
+
+  constructor(private userService: ContactService) { }
+
+  ngOnInit() {
+    this.userService.getUserById(this.expense.userId).subscribe(user => {
+      this.user = user;
+    });
+  }
 }

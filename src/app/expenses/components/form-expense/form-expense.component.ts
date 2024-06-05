@@ -31,12 +31,7 @@ export class FormExpenseComponent {
     this.Expense.id = Math.random().toString(36).substring(2);
     this.Expense.name = this.firstFormGroup.value.firstCtrl as string;
     this.Expense.amount = this.thirdFormGroup.value.firstCtrl as unknown as number;
-    this.Expense.member = {
-      id: this.user.id,
-      name: this.user.name
-    };
-    let groupSelected = this.user.groups.find((group: { id: string | null | undefined; }) => group.id === this.fourthFormGroup.value.firstCtrl);
-    this.Expense.group = groupSelected;
+    this.Expense.userId = this.user.id;
     this.onAddExpense.emit(this.Expense);
     // redirect to expenses list
     this.router.navigate(['/expenses']);
