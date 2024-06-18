@@ -14,6 +14,7 @@ import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.co
 import { LoginComponent } from "./authorization/components/login/login.component";
 import { PageGroupDetailsComponent } from './group/pages/page-group-details/page-group-details.component';
 import { RegisterComponent } from './authorization/components/register/register/register.component';
+import {AddPaymentComponent} from "./payments/incoming/pages/add-payment/add-payment.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'create-group', component: PageCreateGroupComponent },
   { path: 'expenses', component: PageExpensesComponent },
   { path: 'expenses/add-expense', component: AddExpenseComponent },
+  { path: 'outgoing/add-payment', component: AddPaymentComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
