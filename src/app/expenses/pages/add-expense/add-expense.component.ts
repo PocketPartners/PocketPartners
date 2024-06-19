@@ -3,6 +3,7 @@ import { PartnerEntity } from '../../../pockets/model/partnerEntity';
 import { PartnerService } from '../../../pockets/services/Partner.service';
 import { ExpensesEntity } from '../../model/expenses.entity';
 import { ExpensesService } from '../../services/expenses.service';
+import { AuthenticationService } from '../../../iam/services/authentication.service';
 
 @Component({
   selector: 'app-add-expense',
@@ -10,23 +11,27 @@ import { ExpensesService } from '../../services/expenses.service';
   styleUrl: './add-expense.component.css'
 })
 export class AddExpenseComponent implements OnInit {
-  private userId: number = 0;
-  constructor(private partnerService: PartnerService, private expenseService: ExpensesService) { }
-  public user: PartnerEntity = new PartnerEntity();
+  private userId: any;
+  joinedGroups: any;
+  constructor(private partnerService: PartnerService, private expenseService: ExpensesService, private authenticationService: AuthenticationService) { }
+  user: PartnerEntity = new PartnerEntity();
   ngOnInit(): void {
-    this.partnerService.getAll().subscribe((partner: any) => {
-      partner.forEach((element: any) => {
-        if (element.id == this.userId) {
-          this.user = element;
-          console.log(this.user);
-        }
+    this.userId = this.authenticationService.currentUserId.subscribe((userId: any) => {
+      this.userId = userId;
+      this.partnerService.getPartnerById(this.userId).subscribe((partner: any) => {
+        this.user = partner;
+        this.expenseService.getJoinedUserGroups(this.user.id).subscribe((groups: any) => {
+          this.joinedGroups = groups;
+        });
       });
     });
   }
 
   onSubmit(expense: ExpensesEntity) {
-    this.expenseService.create(expense).subscribe((expense: any) => {
-      console.log(expense);
-    });
+    // delete un necessary properties
+    let expenseClean: any = { ...expense };
+    delete expenseClean.createdAt;
+    delete expenseClean.updatedAt;
+    this.expenseService.create(expense).subscribe();
   }
 }
