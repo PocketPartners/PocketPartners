@@ -7,6 +7,7 @@ import { SignInResponse } from "../model/sign-in.response";
 import { environment } from "../../../environments/environment";
 import { SignUpRequest } from "../model/sign-up.request";
 import { SignUpResponse } from "../model/sign-up.response";
+import { SignInInfo } from "../model/sign-in-info";
 
 /**
  * Service for authentication.
@@ -22,7 +23,7 @@ export class AuthenticationService {
   private signedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private signedInUserId: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private signedInUsername: BehaviorSubject<string> = new BehaviorSubject<string>('');
-
+  private currentUserInformation: BehaviorSubject<SignInInfo> = new BehaviorSubject<SignInInfo>(new SignInInfo('', '', '', '', ''));
   constructor(private router: Router, private http: HttpClient) { }
 
   get isSignedIn() { return this.signedIn.asObservable(); }
@@ -36,11 +37,13 @@ export class AuthenticationService {
    * @param signUpRequest The sign up request.
    * @returns The sign up response.
    */
-  signUp(signUpRequest: SignUpRequest) {
+  signUp(signUpRequest: SignUpRequest, signInInfo: SignInInfo) {
     return this.http.post<SignUpResponse>(`${this.basePath}/authentication/sign-up`, signUpRequest, this.httpOptions)
       .subscribe({
         next: (response) => {
           console.log(`Signed up as ${response.username} with id: ${response.id}`);
+          const infoToSave = new SignInInfo(signInInfo.firstName, signInInfo.lastName, signInInfo.phoneNumber, signInInfo.photo, signInInfo.email, response.id);
+          this.currentUserInformation = new BehaviorSubject<SignInInfo>(infoToSave);
           this.router.navigate(['/sign-in']).then();
         },
         error: (error) => {
@@ -48,6 +51,10 @@ export class AuthenticationService {
           this.router.navigate(['/sign-up']).then();
         }
       });
+  }
+
+  saveUserInfo(signInInfo: SignInInfo) {
+    return this.http.post<SignInInfo>(`${this.basePath}/usersInformation`, signInInfo, this.httpOptions);
   }
 
   /**
@@ -65,7 +72,21 @@ export class AuthenticationService {
           this.signedInUsername.next(response.username);
           localStorage.setItem('token', response.token);
           console.log(`Signed in as ${response.username} with token ${response.token}`);
-          this.router.navigate(['/']).then();
+
+          if (this.currentUserInformation !== null && this.currentUserInformation.getValue().userId !== 0) {
+            this.saveUserInfo(this.currentUserInformation.value).subscribe({
+              next: (response: any) => {
+                console.log(`User information saved for user id: ${response.id}`);
+                this.router.navigate(['/']).then();
+              },
+              error: (error) => {
+                console.error(`Error while saving user information: ${error}`);
+              }
+            });
+          } else {
+            this.router.navigate(['/']).then();
+          }
+
         },
         error: (error) => {
           this.signedIn.next(false);

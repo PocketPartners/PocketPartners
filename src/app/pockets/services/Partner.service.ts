@@ -15,6 +15,6 @@ export class PartnerService extends BaseService<PartnerEntity> {
 
   // Method to get a partner by ID
   getPartnerById(id: number): Observable<PartnerEntity> {
-    return this.http.get<PartnerEntity>(`${this.resourcePath()}/${id}`, this.httpOptions);
+    return this.http.get<PartnerEntity>(`${this.resourcePath()}/userId/${id}`, this.httpOptions);
   }
 }
