@@ -8,6 +8,7 @@ import { MatIcon } from "@angular/material/icon";
 import { MatAnchor, MatButton, MatIconButton } from "@angular/material/button";
 import { MatMenu, MatMenuItem, MatMenuTrigger } from "@angular/material/menu";
 import { CookieService } from 'ngx-cookie-service';
+import { AuthenticationService } from '../../../iam/services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -34,12 +35,12 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
-  constructor(private cookieService: CookieService) {
+  currentUsername: string = '';
+  currentId: number = 0;
+  constructor(private authenticationService: AuthenticationService) {
   }
 
   logout() {
-    this.cookieService.delete('user');
-    window.location.reload();
+    this.authenticationService.signOut();
   }
 }
