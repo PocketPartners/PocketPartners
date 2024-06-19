@@ -1,5 +1,5 @@
-<!-- @if (isAuth == true) { -->
+@if (isAuth == true) {
 <app-header />
-<!-- } @else {
-<app-auth-page></app-auth-page>
-} -->
+} @else {
+<router-outlet></router-outlet>
+}

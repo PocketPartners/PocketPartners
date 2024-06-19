@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from './iam/services/authentication.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { AuthenticationService } from './iam/services/authentication.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'PocketPartners';
   options = [
     { path: '/home', title: 'Home' },
@@ -27,17 +26,14 @@ export class AppComponent implements OnInit {
     translate.setDefaultLang('en');
     translate.use('en');
   }
-
-  ngOnInit() {
+  ngAfterViewInit(): void {
     this.authenticationService.isSignedIn.subscribe(
       (isAuth: any) => {
         this.isAuth = isAuth;
       }
     );
-    this.authenticationService.currentUsername.subscribe(
-      (username: any) => {
-        this.currentUsername = username;
-      }
-    );
+  }
+
+  ngOnInit() {
   }
 }
