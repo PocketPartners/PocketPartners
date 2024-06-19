@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import { MatToolbar } from "@angular/material/toolbar";
 import { MatAnchor } from "@angular/material/button";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule, provideHttpClient, withInterceptors } from "@angular/common/http";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
@@ -36,7 +36,6 @@ import { OutgoingComponent } from './payments/outgoing/pages/outgoing.component'
 import { MatCard, MatCardHeader, MatCardModule, MatCardTitleGroup } from "@angular/material/card";
 import { ContactComponent } from './contacts/pages/contact/contact.component';
 import { FormCreateContactComponent } from './contacts/components/form-create-contact/form-create-contact.component';
-// @ts-ignore
 import { TransactionsTimelineComponent } from './pockets/components/transactions-timeline/transactions-timeline.component';
 import { ChartComponent } from './pockets/components/chart/chart.component';
 import { ChartModule } from "angular-highcharts";
@@ -46,13 +45,14 @@ import { PageExpensesComponent } from './expenses/pages/page-expenses/page-expen
 import { ExpenseCardComponent } from './expenses/components/expense-card/expense-card.component';
 import { AddExpenseComponent } from './expenses/pages/add-expense/add-expense.component';
 import { FormExpenseComponent } from './expenses/components/form-expense/form-expense.component';
-import { LoginComponent } from './authorization/components/login/login.component';
-import { HeaderComponent } from "./public/components/header/header.component";
+import { HeaderComponent } from './public/components/header/header.component';
 import { PageGroupDetailsComponent } from './group/pages/page-group-details/page-group-details.component';
-import { RegisterComponent } from './authorization/components/register/register/register.component';
-import { AuthPageComponent } from './authorization/pages/auth-page/auth-page.component';
-import {FormPaymentComponent} from "./payments/components/form-payment/form-payment.component";
-import {AddPaymentComponent} from "./payments/incoming/pages/add-payment/add-payment.component";
+import { FormPaymentComponent } from "./payments/components/form-payment/form-payment.component";
+import { AddPaymentComponent } from "./payments/incoming/pages/add-payment/add-payment.component";
+import { SignInComponent } from "./iam/pages/sign-in/sign-in.component";
+import { SignUpComponent } from "./iam/pages/sign-up/sign-up.component";
+import { AuthenticationSectionComponent } from "./iam/components/authentication-section/authentication-section.component";
+import { authenticationInterceptor } from './iam/services/authentication.interceptor';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -80,17 +80,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddPaymentComponent,
     FormExpenseComponent,
     FormPaymentComponent,
-    LoginComponent,
     PageGroupDetailsComponent,
-    RegisterComponent,
-    AuthPageComponent
-
+    AuthenticationSectionComponent,
+    SignInComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatToolbar,
     MatAnchor,
+    HeaderComponent,
     HttpClientModule,
     MatButtonToggleModule,
     TranslateModule.forRoot({
@@ -125,11 +125,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatRadioButton,
     ChartModule,
     MatSelectModule,
-    HeaderComponent,
     MatAutocompleteModule,
   ],
   providers: [
     provideAnimationsAsync(),
+    provideHttpClient(withInterceptors([authenticationInterceptor])),
     GroupService,
     CookieService
   ],
