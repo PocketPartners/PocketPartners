@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDrawer, MatDrawerContainer } from "@angular/material/sidenav";
 import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
@@ -34,10 +34,15 @@ import { AuthenticationService } from '../../../iam/services/authentication.serv
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
-  currentUsername: string = '';
-  currentId: number = 0;
+export class HeaderComponent implements OnInit {
+  currentUsername: any = '';
+  currentId: any = 0;
   constructor(private authenticationService: AuthenticationService) {
+  }
+
+  ngOnInit() {
+    this.currentUsername = this.authenticationService.currentUsername;
+    this.currentId = this.authenticationService.currentUserId;
   }
 
   logout() {
