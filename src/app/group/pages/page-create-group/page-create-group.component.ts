@@ -12,7 +12,7 @@ export class PageCreateGroupComponent {
   constructor(private groupService: GroupService, private router: Router) { }
 
   createNewGroup(group: GroupEntity) {
-    this.groupService.putANewGroup(group.name, group.image).subscribe((response) => {
+    this.groupService.putANewGroup(group.name, group.groupPhoto).subscribe((response) => {
       this.redirectToGroupList();
     });
   }

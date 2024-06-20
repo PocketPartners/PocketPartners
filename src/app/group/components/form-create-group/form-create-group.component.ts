@@ -49,7 +49,7 @@ export class FormCreateGroupComponent implements OnInit {
 
   createNewGroup() {
     this.group.name = this.firstFormGroup.get('firstCtrl')?.value as string;
-    this.group.image = this.firstFormGroup.get('secondCtrl')?.value as string;
+    this.group.groupPhoto = this.firstFormGroup.get('secondCtrl')?.value as string;
     let members: any = this.secondFormGroup.get('firstCtrl')?.value;
     this.group.members = members.map((member: string) => {
       return { name: member, id: Math.floor(Math.random() * 1000) };
