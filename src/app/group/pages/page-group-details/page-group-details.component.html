@@ -22,12 +22,12 @@
     <mat-card>
       <mat-card-title>Cada miembro debe pagar</mat-card-title>
       <mat-card-content>
-        <div *ngFor="let member of group.members">
-          <label [class.checked]="isMemberPaid(member.id)">
-            <input type="checkbox" [checked]="isMemberPaid(member.id)" (change)="togglePaidMember(member.id)">
-            <span>{{ member.name }}</span>
+        <div *ngFor="let member of groupMembers">
+          <label [class.checked]="isMemberPaid(member.userId)">
+            <input type="checkbox" [checked]="isMemberPaid(member.userId)" (change)="togglePaidMember(member.userId)">
+            <span>{{ member.fullName }}</span>
           </label>
-          <span class="amount">{{ amountEachMemberShouldPay }} {{ group.currency }}</span>
+          <span class="amount">{{ amountEachMemberShouldPay }} {{ group.currency[0]?.code }}</span>
         </div>
       </mat-card-content>
     </mat-card>

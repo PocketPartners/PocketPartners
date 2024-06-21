@@ -16,6 +16,7 @@ export class PageGroupDetailsComponent implements OnInit {
   idOfUser = 1;
   id: number = 0;
   group: GroupEntity = new GroupEntity();
+  groupMembers: any;
   totalExpenses: number = 0;
   totalOfMembers: number = 0;
   amountOfPayToYou: number = 0;
@@ -37,10 +38,15 @@ export class PageGroupDetailsComponent implements OnInit {
       this.groupService.getById(this.id).subscribe((group: any) => {
         this.group = group;
         this.calculateAmountToYou();
-
-
       });
     }
+  }
+
+  getAllGroupMembers() {
+    this.groupService.getAllMembersByIdGroup(this.group.id).subscribe((members: any) => {
+      this.groupMembers = members;
+      console.log(this.groupMembers);
+    });
   }
 
   /**
@@ -55,8 +61,8 @@ export class PageGroupDetailsComponent implements OnInit {
           totalExpenses += expense.amount;
         }
         this.totalExpenses += expense.amount;
-        this.paymentService.getPaymentByExpenseId(expense.id).subscribe((payment: any) => {
-          payment.forEach((payment: any) => {
+        this.paymentService.getPaymentByExpenseId(expense.id).subscribe((payments: any) => {
+          payments.forEach((payment: any) => {
             if (payment.status !== 'completed' && payment.userId == this.idOfUser) {
               totalCompletedPayments += payment.amount;
             }
@@ -77,6 +83,7 @@ export class PageGroupDetailsComponent implements OnInit {
         this.amountEachMemberShouldPay = this.totalExpenses / numberOfMembers;
         console.log('El monto que debe pagar cada miembro es ' + this.amountEachMemberShouldPay);
       }
+      this.getAllGroupMembers();
       this.updatePieChart();
     });
   }
