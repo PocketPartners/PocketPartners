@@ -41,6 +41,9 @@ export class PageGroupDetailsComponent implements OnInit {
     }
   }
 
+  /**
+   * Calculates the amount to be paid to the user based on expenses and completed payments.
+   */
   calculateAmountToYou() {
     let totalExpenses = 0;
     let totalCompletedPayments = 0;
@@ -59,7 +62,6 @@ export class PageGroupDetailsComponent implements OnInit {
       });
       this.amountOfPayToYou = totalCompletedPayments - totalExpenses;
     });
-
   }
 
   calculateAmountEachMemberShouldPay() {
