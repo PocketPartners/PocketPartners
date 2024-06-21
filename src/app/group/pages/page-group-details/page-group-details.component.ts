@@ -16,6 +16,8 @@ export class PageGroupDetailsComponent implements OnInit {
   idOfUser = 1;
   id: number = 0;
   group: GroupEntity = new GroupEntity();
+  totalExpenses: number = 0;
+  totalOfMembers: number = 0;
   amountOfPayToYou: number = 0;
   amountEachMemberShouldPay: number = 0;
   paidMembers: Set<number> = new Set<number>(); // Set to store paid member IDs
@@ -35,8 +37,8 @@ export class PageGroupDetailsComponent implements OnInit {
       this.groupService.getById(this.id).subscribe((group: any) => {
         this.group = group;
         this.calculateAmountToYou();
-        this.calculateAmountEachMemberShouldPay();
-        this.updatePieChart();
+
+
       });
     }
   }
@@ -52,6 +54,7 @@ export class PageGroupDetailsComponent implements OnInit {
         if (expense.userId == this.idOfUser) {
           totalExpenses += expense.amount;
         }
+        this.totalExpenses += expense.amount;
         this.paymentService.getPaymentByExpenseId(expense.id).subscribe((payment: any) => {
           payment.forEach((payment: any) => {
             if (payment.status !== 'completed' && payment.userId == this.idOfUser) {
@@ -61,14 +64,21 @@ export class PageGroupDetailsComponent implements OnInit {
         });
       });
       this.amountOfPayToYou = totalCompletedPayments - totalExpenses;
+      this.calculateAmountEachMemberShouldPay();
     });
   }
 
   calculateAmountEachMemberShouldPay() {
-    const numberOfMembers = this.group.members.length;
-    if (numberOfMembers > 0) {
-      this.amountEachMemberShouldPay = this.amountOfPayToYou / numberOfMembers;
-    }
+    this.groupService.getAllMembersByIdGroup(this.group.id).subscribe((group: any) => {
+      const numberOfMembers = group.length;
+      console.log('Hay ' + numberOfMembers + ' miembros');
+      if (numberOfMembers > 0) {
+        this.totalOfMembers = numberOfMembers;
+        this.amountEachMemberShouldPay = this.totalExpenses / numberOfMembers;
+        console.log('El monto que debe pagar cada miembro es ' + this.amountEachMemberShouldPay);
+      }
+      this.updatePieChart();
+    });
   }
 
   togglePaidMember(memberId: number) {
@@ -86,7 +96,7 @@ export class PageGroupDetailsComponent implements OnInit {
 
   updatePieChart() {
     const numberOfPaidMembers = this.paidMembers.size;
-    const numberOfUnpaidMembers = this.group.members.length - numberOfPaidMembers;
+    const numberOfUnpaidMembers = this.totalOfMembers - numberOfPaidMembers;
 
     if (this.pieChart) {
       this.pieChart.destroy(); // Destroy existing chart to prevent memory leaks

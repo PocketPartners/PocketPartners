@@ -2,7 +2,7 @@ import { GroupEntity } from '../model/group.entity';
 import { BaseService } from '../../shared/services/base.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,10 @@ export class GroupService extends BaseService<GroupEntity> {
 
   getExpensesById(id: number) {
     return this.http.get<GroupEntity>(`${this.resourcePath()}/groupOperations/groupId/${id}`, this.httpOptions);
+  }
+
+  getAllMembersByIdGroup(id: number): Observable<GroupEntity> {
+    return this.http.get<GroupEntity>(`${this.resourcePath()}/${id}/members`, this.httpOptions);
   }
 
   getAllGroups(): Observable<GroupEntity[]> {
