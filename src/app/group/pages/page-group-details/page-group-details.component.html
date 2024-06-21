@@ -9,13 +9,14 @@
             @if (amountOfPayToYou > 0) {
             te debe: {{ amountOfPayToYou }}
             } @else if (amountOfPayToYou < 0) { le debes: {{ amountOfPayToYou*-1 }} } @else { Estas al dia }
-              @if(group.currency[0]?.code=='PEN' ){ Soles } @else { {{ group.currency[0]?.code }} } </mat-card-title>
+              @if(group.currency[0].code || null=='PEN' ){ Soles } @else { {{ group.currency[0].code || null }} }
+              </mat-card-title>
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content>
         <p>Creación: {{ group.createdAt | date: 'dd/MM/yyyy'}}</p>
         <p *ngFor="let currency of group.currency">Currency: {{ currency.code }}</p>
-        <!-- <p>Integrantes: {{ group.members.length }}</p> -->
+        <p>Integrantes: {{ groupMembers.length }}</p>
       </mat-card-content>
     </mat-card>
 
@@ -27,7 +28,7 @@
             <input type="checkbox" [checked]="isMemberPaid(member.userId)" (change)="togglePaidMember(member.userId)">
             <span>{{ member.fullName }}</span>
           </label>
-          <span class="amount">{{ amountEachMemberShouldPay }} {{ group.currency[0]?.code }}</span>
+          <span class="amount">{{ amountEachMemberShouldPay }} {{ group.currency[0].code || null }}</span>
         </div>
       </mat-card-content>
     </mat-card>
