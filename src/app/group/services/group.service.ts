@@ -14,8 +14,8 @@ export class GroupService extends BaseService<GroupEntity> {
     this.resourceEndpoint = '/groups';
   }
 
-  putANewGroup(groupName: string, groupPhoto: string) {
-    return this.http.post<GroupEntity>(`${this.resourcePath()}`, { name: groupName, groupPhoto: groupPhoto }, this.httpOptions);
+  putANewGroup(groupName: string, groupPhoto: string, currency: any) {
+    return this.http.post<GroupEntity>(`${this.resourcePath()}`, { name: groupName, groupPhoto: groupPhoto, currency: [currency] }, this.httpOptions);
   }
 
   getById(id: number) {
