@@ -5,14 +5,17 @@
       <mat-card-header>
         <img [src]="group.groupPhoto" alt="Imagen de grupo">
         <mat-card-title-group>
-          <mat-card-title>El grupo {{ group.name }} te debe: {{ amountOfPayToYou }} {{ group.currency
-            }}</mat-card-title>
+          <mat-card-title>El grupo {{ group.name }}
+            @if (amountOfPayToYou > 0) {
+            te debe: {{ amountOfPayToYou }}
+            } @else if (amountOfPayToYou < 0) { le debes: {{ amountOfPayToYou*-1 }} } @else { Estas al dia }
+              @if(group.currency[0].code=='PEN' ){ Soles } @else { {{ group.currency[0].code }} } </mat-card-title>
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content>
         <p>Creación: {{ group.createdAt | date: 'dd/MM/yyyy'}}</p>
-        <p>Currency: {{ group.currency }}</p>
-        <p>Integrantes: {{ group.members.length }}</p>
+        <p *ngFor="let currency of group.currency">Currency: {{ currency.code }}</p>
+        <!-- <p>Integrantes: {{ group.members.length }}</p> -->
       </mat-card-content>
     </mat-card>
 

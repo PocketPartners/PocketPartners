@@ -8,6 +8,7 @@ import { environment } from "../../../environments/environment";
 import { SignUpRequest } from "../model/sign-up.request";
 import { SignUpResponse } from "../model/sign-up.response";
 import { SignInInfo } from "../model/sign-in-info";
+import { PartnerEntity } from '../../pockets/model/partnerEntity';
 
 /**
  * Service for authentication.
@@ -32,6 +33,7 @@ export class AuthenticationService {
 
   get currentUsername() { return this.signedInUsername.asObservable(); }
 
+  get currUserInformation() { return this.currentUserInformation.asObservable(); }
   /**
    * Sign up a new user.
    * @param signUpRequest The sign up request.
@@ -84,6 +86,19 @@ export class AuthenticationService {
               }
             });
           } else {
+            // obtain by id the user that is signed in
+            this.signedInUserId.subscribe((userId: any) => {
+              this.http.get<PartnerEntity>(`${this.basePath}/usersInformation/userId/${userId}`, this.httpOptions)
+                .subscribe({
+                  next: (response: any) => {
+                    this.currentUserInformation = new BehaviorSubject<SignInInfo>(response);
+                  },
+                  error: (error) => {
+                    console.error(`Error while obtaining user information: ${error}`);
+                  }
+                });
+            });
+
             this.router.navigate(['/']).then();
           }
 

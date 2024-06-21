@@ -1,7 +1,7 @@
 export class GroupEntity {
   id: number;
   name: string;
-  currency: string;
+  currency: { id: number; code: string; }[]; // Modificado para ser un array de objetos
   groupPhoto: string;
   members: {
     id: number;
@@ -26,7 +26,8 @@ export class GroupEntity {
       name: string;
     }
   }[];
-  constructor(id: number = 0, groupPhoto: string = '', currency: string = 'PEN', name: string = '', members: {
+
+  constructor(id: number = 0, groupPhoto: string = '', currency: { id: number; code: string; }[] = [], name: string = '', members: {
     id: number;
     name: string;
   }[] = [], createdAt: Date = new Date(), paymentHistory: {

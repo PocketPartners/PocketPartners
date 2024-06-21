@@ -54,7 +54,10 @@ export class FormCreateGroupComponent implements OnInit {
     this.group.members = members.map((member: string) => {
       return { name: member, id: Math.floor(Math.random() * 1000) };
     });
-    this.group.currency = this.thirdFormGroup.get('firstCtrl')?.value as string;
+    let currency: any = this.thirdFormGroup.get('firstCtrl')?.value;
+    this.group.currency = currency.map((currency: string) => {
+      return { code: currency };
+    });
     this.createGroup.emit(this.group);
   }
 }

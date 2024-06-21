@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../services/group.service';
 import { GroupEntity } from '../../model/group.entity';
-import { Chart, ChartConfiguration } from 'chart.js/auto';
+import { Chart } from 'chart.js/auto';
+import { ExpensesService } from '../../../expenses/services/expenses.service';
+import { PaymentService } from '../../../payments/services/payment.service';
+import { AuthenticationService } from '../../../iam/services/authentication.service';
 
 @Component({
   selector: 'app-page-group-details',
@@ -19,16 +22,18 @@ export class PageGroupDetailsComponent implements OnInit {
 
   pieChart!: Chart<"pie", number[], string>;
 
-  constructor(private route: ActivatedRoute, private groupService: GroupService) { }
+  constructor(private route: ActivatedRoute, private groupService: GroupService, private expensesService: ExpensesService, private paymentService: PaymentService, private authentificationService: AuthenticationService) { }
 
   ngOnInit() {
+    this.authentificationService.currUserInformation.subscribe((userInfo: any) => {
+      this.idOfUser = userInfo.id;
+    });
+
     this.id = parseInt(this.route.snapshot.url[1].path, 10);
-    console.log(this.id);
 
     if (this.id) {
       this.groupService.getById(this.id).subscribe((group: any) => {
         this.group = group;
-        console.log(this.group);
         this.calculateAmountToYou();
         this.calculateAmountEachMemberShouldPay();
         this.updatePieChart();
@@ -37,14 +42,24 @@ export class PageGroupDetailsComponent implements OnInit {
   }
 
   calculateAmountToYou() {
-    let totalAmount = 0;
-    this.group.paymentHistory.forEach((payment: any) => {
-      if (payment.paidBy === this.idOfUser) {
-        totalAmount += payment.amount;
-      }
+    let totalExpenses = 0;
+    let totalCompletedPayments = 0;
+    this.expensesService.getExpensesByGroupId(this.group.id).subscribe((expenses: any) => {
+      expenses.forEach((expense: any) => {
+        if (expense.userId == this.idOfUser) {
+          totalExpenses += expense.amount;
+        }
+        this.paymentService.getPaymentByExpenseId(expense.id).subscribe((payment: any) => {
+          payment.forEach((payment: any) => {
+            if (payment.status !== 'completed' && payment.userId == this.idOfUser) {
+              totalCompletedPayments += payment.amount;
+            }
+          });
+        });
+      });
+      this.amountOfPayToYou = totalCompletedPayments - totalExpenses;
     });
-    this.amountOfPayToYou = totalAmount;
-    console.log(this.amountOfPayToYou);
+
   }
 
   calculateAmountEachMemberShouldPay() {
