@@ -22,7 +22,7 @@ export class PageGroupDetailsComponent implements OnInit {
   amountOfPayToYou: number = 0;
   amountEachMemberShouldPay: number = 0;
   paidMembers: Set<number> = new Set<number>(); // Set to store paid member IDs
-
+  currentCurrency: string = 'PEN';
   pieChart!: Chart<"pie", number[], string>;
 
   constructor(private route: ActivatedRoute, private groupService: GroupService, private expensesService: ExpensesService, private paymentService: PaymentService, private authenticationService: AuthenticationService) { }
@@ -35,8 +35,10 @@ export class PageGroupDetailsComponent implements OnInit {
     this.id = parseInt(this.route.snapshot.url[1].path, 10);
 
     if (this.id) {
+      // Obtain group information
       this.groupService.getById(this.id).subscribe((group: any) => {
         this.group = group;
+        this.currentCurrency = group.currency[0].code;
         this.calculateAmountToYou();
       });
     }

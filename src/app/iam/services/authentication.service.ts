@@ -68,17 +68,19 @@ export class AuthenticationService {
     console.log(signInRequest);
     return this.http.post<SignInResponse>(`${this.basePath}/authentication/sign-in`, signInRequest, this.httpOptions)
       .subscribe({
+
         next: (response) => {
           this.signedIn.next(true);
           this.signedInUserId.next(response.id);
           this.signedInUsername.next(response.username);
+          localStorage.removeItem('token');
           localStorage.setItem('token', response.token);
           console.log(`Signed in as ${response.username} with token ${response.token}`);
 
           if (this.currentUserInformation !== null && this.currentUserInformation.getValue().userId !== 0) {
             this.saveUserInfo(this.currentUserInformation.value).subscribe({
               next: (response: any) => {
-                console.log(`User information saved for user id: ${response.id}`);
+                console.log(`User information saved for user id: ${response.id} and full name: ${response.fullName}`);
                 this.router.navigate(['/']).then();
               },
               error: (error) => {
@@ -98,11 +100,10 @@ export class AuthenticationService {
                   }
                 });
             });
-
             this.router.navigate(['/']).then();
           }
-
         },
+
         error: (error) => {
           this.signedIn.next(false);
           this.signedInUserId.next(0);
