@@ -22,10 +22,10 @@ export class PageGroupDetailsComponent implements OnInit {
 
   pieChart!: Chart<"pie", number[], string>;
 
-  constructor(private route: ActivatedRoute, private groupService: GroupService, private expensesService: ExpensesService, private paymentService: PaymentService, private authentificationService: AuthenticationService) { }
+  constructor(private route: ActivatedRoute, private groupService: GroupService, private expensesService: ExpensesService, private paymentService: PaymentService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-    this.authentificationService.currUserInformation.subscribe((userInfo: any) => {
+    this.authenticationService.currUserInformation.subscribe((userInfo: any) => {
       this.idOfUser = userInfo.id;
     });
 
