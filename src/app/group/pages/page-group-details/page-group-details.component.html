@@ -3,27 +3,31 @@
     <mat-card>
       <mat-card-title>{{ group.name }}</mat-card-title>
       <mat-card-header>
-        <img [src]="group.image" alt="Imagen de grupo">
+        <img [src]="group.groupPhoto" alt="Imagen de grupo">
         <mat-card-title-group>
-          <mat-card-title>El grupo {{ group.name }} te debe: {{ amountOfPayToYou }} {{ group.currency }}</mat-card-title>
+          <mat-card-title>El grupo {{ group.name }}
+            @if (amountOfPayToYou > 0) {
+            te debe: {{ amountOfPayToYou }}
+            } @else if (amountOfPayToYou < 0) { le debes: {{ amountOfPayToYou*-1 }} } @else { Estas al dia }
+              @if(currentCurrency=='PEN' ){ Soles } @else { {{ currentCurrency }} } </mat-card-title>
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content>
         <p>Creación: {{ group.createdAt | date: 'dd/MM/yyyy'}}</p>
-        <p>Currency: {{ group.currency }}</p>
-        <p>Integrantes: {{ group.members.length }}</p>
+        <p *ngFor="let currency of group.currency">Currency: {{ currency.code }}</p>
+        <p>Integrantes: {{ totalOfMembers }}</p>
       </mat-card-content>
     </mat-card>
 
     <mat-card>
       <mat-card-title>Cada miembro debe pagar</mat-card-title>
       <mat-card-content>
-        <div *ngFor="let member of group.members">
-          <label [class.checked]="isMemberPaid(member.id)">
-            <input type="checkbox" [checked]="isMemberPaid(member.id)" (change)="togglePaidMember(member.id)">
-            <span>{{ member.name }}</span>
+        <div *ngFor="let member of groupMembers">
+          <label [class.checked]="isMemberPaid(member.userId)">
+            <input type="checkbox" [checked]="isMemberPaid(member.userId)" (change)="togglePaidMember(member.userId)">
+            <span>{{ member.fullName }}</span>
           </label>
-          <span class="amount">{{ amountEachMemberShouldPay }} {{ group.currency }}</span>
+          <span class="amount">{{ amountEachMemberShouldPay }} {{ group.currency[0].code || null }}</span>
         </div>
       </mat-card-content>
     </mat-card>

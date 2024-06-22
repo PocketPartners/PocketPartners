@@ -1,3 +1,4 @@
 export const environment = {
-  baseURL: 'https://fairfinance-pocketpartners-os.happyhill-e56f582f.eastus.azurecontainerapps.io/api/v1',
+  production: true,
+  baseURL: 'https://pocketpartners.azurewebsites.net/api/v1',
 };

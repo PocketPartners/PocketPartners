@@ -18,4 +18,8 @@ export class GroupMembersService extends BaseService<GroupEntity> {
   getAllMembersByIdGroup(id: any): Observable<GroupEntity> {
     return this.http.get<GroupEntity>(`${this.resourcePath()}/${id}/members`, this.httpOptions);
   }
+
+  postGroupMember(groupId: number, memberId: number) {
+    return this.http.post<GroupEntity>(`${this.resourcePath()}/${groupId}/members/${memberId}`, null, this.httpOptions);
+  }
 }

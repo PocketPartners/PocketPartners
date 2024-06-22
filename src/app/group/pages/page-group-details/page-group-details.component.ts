@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../services/group.service';
 import { GroupEntity } from '../../model/group.entity';
-import { Chart, ChartConfiguration } from 'chart.js/auto';
+import { Chart } from 'chart.js/auto';
+import { ExpensesService } from '../../../expenses/services/expenses.service';
+import { PaymentService } from '../../../payments/services/payment.service';
+import { AuthenticationService } from '../../../iam/services/authentication.service';
 
 @Component({
   selector: 'app-page-group-details',
@@ -13,45 +16,78 @@ export class PageGroupDetailsComponent implements OnInit {
   idOfUser = 1;
   id: number = 0;
   group: GroupEntity = new GroupEntity();
+  groupMembers: any;
+  totalExpenses: number = 0;
+  totalOfMembers: number = 0;
   amountOfPayToYou: number = 0;
   amountEachMemberShouldPay: number = 0;
   paidMembers: Set<number> = new Set<number>(); // Set to store paid member IDs
-
+  currentCurrency: string = 'PEN';
   pieChart!: Chart<"pie", number[], string>;
 
-  constructor(private route: ActivatedRoute, private groupService: GroupService) { }
+  constructor(private route: ActivatedRoute, private groupService: GroupService, private expensesService: ExpensesService, private paymentService: PaymentService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+    this.authenticationService.currUserInformation.subscribe((userInfo: any) => {
+      this.idOfUser = userInfo.id;
+    });
+
     this.id = parseInt(this.route.snapshot.url[1].path, 10);
-    console.log(this.id);
 
     if (this.id) {
+      // Obtain group information
       this.groupService.getById(this.id).subscribe((group: any) => {
         this.group = group;
-        console.log(this.group);
+        this.currentCurrency = group.currency[0].code;
         this.calculateAmountToYou();
-        this.calculateAmountEachMemberShouldPay();
-        this.updatePieChart();
       });
     }
   }
 
-  calculateAmountToYou() {
-    let totalAmount = 0;
-    this.group.paymentHistory.forEach((payment: any) => {
-      if (payment.paidBy === this.idOfUser) {
-        totalAmount += payment.amount;
-      }
+  getAllGroupMembers() {
+    this.groupService.getAllMembersByIdGroup(this.group.id).subscribe((members: any) => {
+      this.groupMembers = members;
+      console.log(this.groupMembers);
     });
-    this.amountOfPayToYou = totalAmount;
-    console.log(this.amountOfPayToYou);
+  }
+
+  /**
+   * Calculates the amount to be paid to the user based on expenses and completed payments.
+   */
+  calculateAmountToYou() {
+    let totalExpenses = 0;
+    let totalCompletedPayments = 0;
+    this.expensesService.getExpensesByGroupId(this.group.id).subscribe((expenses: any) => {
+      expenses.forEach((expense: any) => {
+        if (expense.userId == this.idOfUser) {
+          totalExpenses += expense.amount;
+        }
+        this.totalExpenses += expense.amount;
+        this.paymentService.getPaymentByExpenseId(expense.id).subscribe((payments: any) => {
+          payments.forEach((payment: any) => {
+            if (payment.status !== 'completed' && payment.userId == this.idOfUser) {
+              totalCompletedPayments += payment.amount;
+            }
+          });
+        });
+      });
+      this.amountOfPayToYou = totalCompletedPayments - totalExpenses;
+      this.calculateAmountEachMemberShouldPay();
+    });
   }
 
   calculateAmountEachMemberShouldPay() {
-    const numberOfMembers = this.group.members.length;
-    if (numberOfMembers > 0) {
-      this.amountEachMemberShouldPay = this.amountOfPayToYou / numberOfMembers;
-    }
+    this.groupService.getAllMembersByIdGroup(this.group.id).subscribe((group: any) => {
+      const numberOfMembers = group.length;
+      console.log('Hay ' + numberOfMembers + ' miembros');
+      if (numberOfMembers > 0) {
+        this.totalOfMembers = numberOfMembers;
+        this.amountEachMemberShouldPay = this.totalExpenses / numberOfMembers;
+        console.log('El monto que debe pagar cada miembro es ' + this.amountEachMemberShouldPay);
+      }
+      this.getAllGroupMembers();
+      this.updatePieChart();
+    });
   }
 
   togglePaidMember(memberId: number) {
@@ -69,7 +105,7 @@ export class PageGroupDetailsComponent implements OnInit {
 
   updatePieChart() {
     const numberOfPaidMembers = this.paidMembers.size;
-    const numberOfUnpaidMembers = this.group.members.length - numberOfPaidMembers;
+    const numberOfUnpaidMembers = this.totalOfMembers - numberOfPaidMembers;
 
     if (this.pieChart) {
       this.pieChart.destroy(); // Destroy existing chart to prevent memory leaks

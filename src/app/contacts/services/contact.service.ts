@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {BaseService} from "../../shared/services/base.service";
-import {ContactEntity} from "../model/contact.entity";
-import {catchError, Observable} from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { BaseService } from "../../shared/services/base.service";
+import { ContactEntity } from "../model/contact.entity";
+import { catchError, Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContactService extends BaseService<ContactEntity>{
+export class ContactService extends BaseService<ContactEntity> {
 
   constructor(http: HttpClient) {
     super(http);
-    this.resourceEndpoint = '/users';
+    this.resourceEndpoint = '/usersInformation';
   }
 
   getUserById(userId: any) {

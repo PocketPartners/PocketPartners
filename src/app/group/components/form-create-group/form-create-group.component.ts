@@ -4,6 +4,7 @@ import { GroupEntity } from '../../model/group.entity';
 import { PartnerEntity } from '../../../pockets/model/partnerEntity';
 import { PartnerService } from '../../../pockets/services/Partner.service';
 import { GroupMembersService } from '../../services/group-members.service';
+import { AuthenticationService } from '../../../iam/services/authentication.service';
 
 @Component({
   selector: 'app-form-create-group',
@@ -13,7 +14,7 @@ import { GroupMembersService } from '../../services/group-members.service';
 export class FormCreateGroupComponent implements OnInit {
   // For the multi select
   groupMembers = new FormControl();
-  groupMembersList: string[] = [];
+  groupMembersList: any[] = [];
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -30,14 +31,19 @@ export class FormCreateGroupComponent implements OnInit {
   @Output() createGroup: EventEmitter<GroupEntity> = new EventEmitter<GroupEntity>();
 
   private group: GroupEntity = new GroupEntity();
-  private members: PartnerEntity = new PartnerEntity();
+  currentUserId: number = 0;
 
-  constructor(@Inject(FormBuilder) private _formBuilder: FormBuilder, private groupMember: GroupMembersService) { }
+  constructor(private _formBuilder: FormBuilder, private groupMember: GroupMembersService, private authenticationService: AuthenticationService) { }
   ngOnInit() {
+    this.authenticationService.currentUserId.subscribe((userId: any) => {
+      this.currentUserId = userId;
+    });
     this.groupMember.getAllMembersByIdGroup(1).subscribe((partners: any) => {
       console.log(partners);
       partners.forEach((partner: any) => {
-        this.groupMembersList.push(partner.fullName);
+        if (partner.userId !== this.currentUserId) {
+          this.groupMembersList.push({ name: partner.fullName, id: partner.userId });
+        }
       });
     });
   }
@@ -49,12 +55,12 @@ export class FormCreateGroupComponent implements OnInit {
 
   createNewGroup() {
     this.group.name = this.firstFormGroup.get('firstCtrl')?.value as string;
-    this.group.image = this.firstFormGroup.get('secondCtrl')?.value as string;
-    let members: any = this.secondFormGroup.get('firstCtrl')?.value;
-    this.group.members = members.map((member: string) => {
-      return { name: member, id: Math.floor(Math.random() * 1000) };
-    });
-    this.group.currency = this.thirdFormGroup.get('firstCtrl')?.value as string;
+    this.group.groupPhoto = this.firstFormGroup.get('secondCtrl')?.value as string;
+    //let members: any = this.secondFormGroup.get('firstCtrl')?.value;
+    //this.group.members = members;
+    let currency: any = this.thirdFormGroup.get('firstCtrl')?.value;
+    this.group.currency = currency;
+    console.log(this.group);
     this.createGroup.emit(this.group);
   }
 }

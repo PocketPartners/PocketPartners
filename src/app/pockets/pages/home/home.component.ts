@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PartnerEntity } from "../../model/partnerEntity";
 import { PartnerService } from "../../services/Partner.service";
-import {ExpensesEntity} from "../../../expenses/model/expenses.entity";
-import {ExpensesService} from "../../../expenses/services/expenses.service";
+import { ExpensesEntity } from "../../../expenses/model/expenses.entity";
+import { ExpensesService } from "../../../expenses/services/expenses.service";
+import { AuthenticationService } from '../../../iam/services/authentication.service';
 
 
 @Component({
@@ -11,15 +12,22 @@ import {ExpensesService} from "../../../expenses/services/expenses.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  partner: PartnerEntity | undefined;
-  userId: number = 151; // Aquí defines el ID del usuario que quieres obtener
+  partner: PartnerEntity = new PartnerEntity();
+  currentUsername: any;
+  userId: any;
   expenses: ExpensesEntity[] = [];
 
-  constructor(private partnerService: PartnerService, private expensesService: ExpensesService) { }
+  constructor(private partnerService: PartnerService, private expensesService: ExpensesService, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.getPartnerById(this.userId);
-    this.getExpenses();
+    this.authenticationService.currentUserId.subscribe(userId => {
+      this.userId = userId;
+      this.getPartnerById(userId);
+      this.authenticationService.currentUsername.subscribe(username => {
+        this.currentUsername = username;
+        this.getExpenses();
+      });
+    });
   }
 
   getPartnerById(id: number): void {
@@ -27,7 +35,6 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (partner: PartnerEntity) => {
           this.partner = partner;
-          console.log('Usuario obtenido:', this.partner);
         },
         (error) => {
           console.error('Error al obtener usuario por ID:', error);
@@ -42,7 +49,6 @@ export class HomeComponent implements OnInit {
           // Filtrar los gastos del usuario especificado
           // @ts-ignore
           this.expenses = expenses.filter(expense => expense.userId !== this.userId);
-          console.log('Gastos obtenidos:', this.expenses);
         },
         (error) => {
           console.error('Error al obtener gastos:', error);

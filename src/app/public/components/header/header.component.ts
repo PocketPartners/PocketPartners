@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDrawer, MatDrawerContainer } from "@angular/material/sidenav";
 import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
@@ -8,6 +8,7 @@ import { MatIcon } from "@angular/material/icon";
 import { MatAnchor, MatButton, MatIconButton } from "@angular/material/button";
 import { MatMenu, MatMenuItem, MatMenuTrigger } from "@angular/material/menu";
 import { CookieService } from 'ngx-cookie-service';
+import { AuthenticationService } from '../../../iam/services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -33,13 +34,18 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  currentUsername: any = '';
+  currentId: any = 0;
+  constructor(private authenticationService: AuthenticationService) {
+  }
 
-  constructor(private cookieService: CookieService) {
+  ngOnInit() {
+    this.currentUsername = this.authenticationService.currentUsername;
+    this.currentId = this.authenticationService.currentUserId;
   }
 
   logout() {
-    this.cookieService.delete('user');
-    window.location.reload();
+    this.authenticationService.signOut();
   }
 }

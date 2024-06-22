@@ -10,11 +10,11 @@ import { catchError, Observable } from "rxjs";
 export class PartnerService extends BaseService<PartnerEntity> {
   constructor(http: HttpClient) {
     super(http);
-    this.resourceEndpoint = '/users';
+    this.resourceEndpoint = '/usersInformation';
   }
 
   // Method to get a partner by ID
   getPartnerById(id: number): Observable<PartnerEntity> {
-    return this.http.get<PartnerEntity>(`${this.resourcePath()}/${id}`, this.httpOptions);
+    return this.http.get<PartnerEntity>(`${this.resourcePath()}/userId/${id}`, this.httpOptions);
   }
 }
