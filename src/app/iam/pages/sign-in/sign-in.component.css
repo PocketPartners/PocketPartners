@@ -6,6 +6,18 @@
   height: 100vh;
 }
 
+/* Estilos para el contenedor de la imagen */
+.image-wrapper {
+  width: 34.1%;
+  margin-right: 20px;
+}
+
+/* Estilos para la imagen */
+.side-image {
+  width: 100%;
+  height: auto;
+}
+
 /* Estilos para el card (mat-card) */
 .mat-card {
   width: 500px;
@@ -51,4 +63,20 @@ mat-form-field {
   background-color: #9c27b0;
   color: #ffffff;
   border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Estilos para los iconos sociales */
+.social-icons {
+  margin-top: 20px;
+  text-align: center; /* Centra los íconos socialmente */
+}
+
+.social-icon {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.social-icon img {
+  width: 40px; /* Tamaño de los íconos de redes sociales */
+  height: auto;
 }
