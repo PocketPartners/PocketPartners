@@ -18,7 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { CookieService } from 'ngx-cookie-service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
@@ -92,6 +92,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatAnchor,
     HeaderComponent,
     HttpClientModule,
+    MatProgressSpinnerModule,
     MatButtonToggleModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
@@ -131,7 +132,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([authenticationInterceptor])),
     GroupService,
-    CookieService
   ],
   bootstrap: [AppComponent]
 })

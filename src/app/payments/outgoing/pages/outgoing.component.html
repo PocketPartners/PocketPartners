@@ -1,3 +1,4 @@
+@if (dataLoaded | async) {
 <div class="title-container">
   <h1>Outgoing Payments</h1>
 </div>
@@ -70,7 +71,7 @@
               <div class="box name">
                 <h3><b>Members</b></h3>
                 <div *ngFor="let payment of groupPayments[group.id]">
-                  {{ users[payment.userId].fullName || payment.userId }}
+                  {{ 'No name' || users[payment.userId].fullName || payment.userId }}
                 </div>
               </div>
               <div class="box date">
@@ -98,3 +99,9 @@
     </mat-card-content>
   </mat-card>
 </div>
+}
+@else {
+<div class="loading-container">
+  <mat-spinner></mat-spinner>
+</div>
+}

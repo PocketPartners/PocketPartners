@@ -18,6 +18,7 @@ export class IncomingComponent implements OnInit {
   public groups: GroupEntity[] = [];
   public groupPayments: { [key: number]: PaymentEntity[] } = {};
   public users: { [key: number]: ContactEntity } = {}; // Store user details
+  dataLoaded: Promise<boolean> = new Promise((resolve) => resolve(false));
 
   constructor(
     private groupService: GroupService,
@@ -63,6 +64,9 @@ export class IncomingComponent implements OnInit {
         .subscribe((user: ContactEntity) => {
           console.log("User: ", user);
           this.users[userId] = user;
+          this.dataLoaded.finally(() => {
+            this.dataLoaded = new Promise((resolve) => resolve(true));
+          });
         });
     }
   }

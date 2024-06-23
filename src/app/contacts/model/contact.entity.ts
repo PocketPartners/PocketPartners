@@ -1,7 +1,7 @@
 export class ContactEntity {
 
   id: number;
-  fullName: string;
+  fullName?: string;
   email: string;
   phoneNumber: string;
   photo: string;
