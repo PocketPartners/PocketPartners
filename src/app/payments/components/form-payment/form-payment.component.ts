@@ -34,6 +34,6 @@ export class FormPaymentComponent {
     this.Payment.userId = this.user.id;
     this.onAddPayment.emit(this.Payment);
     // redirect to payments list
-    this.router.navigate(['/payments']);
+    this.router.navigate(['/outgoing']);
   }
 }
