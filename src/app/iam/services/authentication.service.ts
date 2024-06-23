@@ -65,10 +65,8 @@ export class AuthenticationService {
    * @returns The sign in response.
    */
   signIn(signInRequest: SignInRequest) {
-    console.log(signInRequest);
     return this.http.post<SignInResponse>(`${this.basePath}/authentication/sign-in`, signInRequest, this.httpOptions)
       .subscribe({
-
         next: (response) => {
           this.signedIn.next(true);
           this.signedInUserId.next(response.id);
@@ -77,10 +75,9 @@ export class AuthenticationService {
           localStorage.setItem('token', response.token);
           console.log(`Signed in as ${response.username} with token ${response.token}`);
 
-          if (this.currentUserInformation !== null && this.currentUserInformation.getValue().userId !== 0) {
+          if (this.currentUserInformation.value.userId == response.id) {
             this.saveUserInfo(this.currentUserInformation.value).subscribe({
               next: (response: any) => {
-                console.log(`User information saved for user id: ${response.id} and full name: ${response.fullName}`);
                 this.router.navigate(['/']).then();
               },
               error: (error) => {
@@ -90,7 +87,7 @@ export class AuthenticationService {
           } else {
             // obtain by id the user that is signed in
             this.signedInUserId.subscribe((userId: any) => {
-              this.http.get<PartnerEntity>(`${this.basePath}/usersInformation/userId/${userId}`, this.httpOptions)
+              this.http.get<PartnerEntity>(`${this.basePath}/usersInformation/userId/${response.id}`, this.httpOptions)
                 .subscribe({
                   next: (response: any) => {
                     this.currentUserInformation = new BehaviorSubject<SignInInfo>(response);
@@ -99,8 +96,8 @@ export class AuthenticationService {
                     console.error(`Error while obtaining user information: ${error}`);
                   }
                 });
+              this.router.navigate(['/']).then();
             });
-            this.router.navigate(['/']).then();
           }
         },
 
