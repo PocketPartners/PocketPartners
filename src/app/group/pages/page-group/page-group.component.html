@@ -3,9 +3,18 @@
   <div class="group-item" *ngFor="let group of groups">
     <h2>{{ group.name }}</h2>
     <p> {{ group.createdAt | date: 'dd/MM/yyyy'}}</p>
+    @if (group.isMember) {
+    <p>Estás en el grupo</p>
     <div class="group-item" (click)="openGroup(group.id)">
       <mat-icon>open_in_new</mat-icon> Ver más detalles
     </div>
+    } @else {
+
+    <div class="group-item" (click)="joinGroup(group.id)">
+      <mat-icon>open_in_new</mat-icon> Unirse al grupo
+    </div>
+    }
+
   </div>
 </div>
 <div class="create-group-container">

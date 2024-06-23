@@ -30,6 +30,10 @@ export class GroupService extends BaseService<GroupEntity> {
     return this.http.get<GroupEntity>(`${this.resourcePath()}/${id}/members`, this.httpOptions);
   }
 
+  joinGroup(groupId: number, userId: number) {
+    return this.http.post<GroupEntity>(`${this.resourcePath()}/${groupId}/members/${userId}`, null, this.httpOptions);
+  }
+
   getAllGroups(): Observable<GroupEntity[]> {
     return this.http.get<GroupEntity[]>(this.resourceEndpoint, this.httpOptions);
   }

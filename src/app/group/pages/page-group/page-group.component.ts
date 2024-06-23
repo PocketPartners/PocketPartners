@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GroupService } from '../../services/group.service';
 import { GroupEntity } from '../../model/group.entity';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../../iam/services/authentication.service';
 
 @Component({
   selector: 'app-page-group',
@@ -10,12 +11,30 @@ import { Router } from '@angular/router';
 })
 export class PageGroupComponent implements OnInit {
   public groups: GroupEntity[] = [];
-  constructor(private groupService: GroupService, private router: Router) { }
+  currentUserId: number = 0;
+  constructor(
+    private groupService: GroupService,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) { }
 
   getAllGroups() {
     this.groupService.getAll()
       .subscribe((groups: any) => {
         this.groups = groups;
+        this.groups.forEach(group => {
+          this.groupService.getAllMembersByIdGroup(group.id).subscribe
+            ((members: any) => {
+              group.members = members;
+              // validate if the user is in the group
+              if (group.members.some(member => member.userId === this.currentUserId)) {
+                group.isMember = true;
+              } else {
+                group.isMember = false;
+              }
+              console.log("The group: ", group);
+            });
+        });
       });
   }
 
@@ -23,8 +42,19 @@ export class PageGroupComponent implements OnInit {
     this.router.navigate(['/group-detail', id]);
   }
 
+  joinGroup(groupId: number) {
+    console.log("Te estás uniendo al grupo: ", groupId, " con el ID: ", this.currentUserId);
+    this.groupService.joinGroup(groupId, this.currentUserId).subscribe((response: any) => {
+      console.log("El grupo se unió correctamente");
+      this.getAllGroups();
+    });
+  }
+
   ngOnInit() {
-    this.getAllGroups();
+    this.authenticationService.currentUserId.subscribe((userId: any) => {
+      this.currentUserId = userId;
+      this.getAllGroups();
+    });
   }
 
 }
