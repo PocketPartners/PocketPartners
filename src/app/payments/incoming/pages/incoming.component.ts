@@ -38,6 +38,9 @@ export class IncomingComponent implements OnInit {
   }
 
   getAllGroupOperationsByGroupId(groupId: number) {
+    this.dataLoaded.finally(() => {
+      this.dataLoaded = new Promise((resolve) => resolve(true));
+    });
     this.groupOperations.getAllGroupOperationsByGroupId(groupId)
       .subscribe((operations: OperationEntity[]) => {
         console.log("Some operations: ", operations);
@@ -64,9 +67,7 @@ export class IncomingComponent implements OnInit {
         .subscribe((user: ContactEntity) => {
           console.log("User: ", user);
           this.users[userId] = user;
-          this.dataLoaded.finally(() => {
-            this.dataLoaded = new Promise((resolve) => resolve(true));
-          });
+
         });
     }
   }
