@@ -8,7 +8,7 @@
       <mat-card-title>{{ group.name }}</mat-card-title>
     </mat-card-title-group>
   </mat-card-header>
-
+  @if (groupPayments[group.id]) {
   <mat-card-content>
     <div class="container">
       <div class="box name">
@@ -31,4 +31,10 @@
       </div>
     </div>
   </mat-card-content>
+  }
+  @else {
+  <mat-card-content>
+    Todavía no hay movimientos...
+  </mat-card-content>
+  }
 </mat-card>

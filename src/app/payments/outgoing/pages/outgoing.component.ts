@@ -34,7 +34,7 @@ export class OutgoingComponent implements OnInit {
     this.groupOperations.getAllGroupOperationsByGroupId(groupId)
       .subscribe((operations: OperationEntity[]) => {
         operations.forEach(operation => {
-          this.getPaymentById(groupId, operation.paymentId);
+          this.getPaymentById(groupId, operation.paymentsId);
         });
       });
   }
@@ -54,6 +54,7 @@ export class OutgoingComponent implements OnInit {
     if (!this.users[userId]) {
       this.userService.getUserById(userId)
         .subscribe((user: ContactEntity) => {
+          console.log("User: ", user);
           this.users[userId] = user;
         });
     }
