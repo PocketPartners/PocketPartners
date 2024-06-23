@@ -12,6 +12,7 @@ import { AuthenticationService } from '../../../iam/services/authentication.serv
 export class PageGroupComponent implements OnInit {
   public groups: GroupEntity[] = [];
   currentUserId: number = 0;
+  isDataLoaded: Promise<boolean> = new Promise((resolve) => resolve(false));
   constructor(
     private groupService: GroupService,
     private router: Router,
@@ -19,6 +20,9 @@ export class PageGroupComponent implements OnInit {
   ) { }
 
   getAllGroups() {
+    this.isDataLoaded.finally(() => {
+      this.isDataLoaded = new Promise((resolve) => resolve(false));
+    });
     this.groupService.getAll()
       .subscribe((groups: any) => {
         this.groups = groups;
@@ -32,6 +36,9 @@ export class PageGroupComponent implements OnInit {
               } else {
                 group.isMember = false;
               }
+              this.isDataLoaded.finally(() => {
+                this.isDataLoaded = new Promise((resolve) => resolve(true));
+              });
               console.log("The group: ", group);
             });
         });

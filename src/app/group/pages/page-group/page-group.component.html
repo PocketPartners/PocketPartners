@@ -1,3 +1,4 @@
+@if (isDataLoaded | async) {
 <h1 class="title">Todos los grupos</h1>
 <div class="groups-container">
   <div class="group-item" *ngFor="let group of groups">
@@ -20,3 +21,8 @@
 <div class="create-group-container">
   <a [routerLink]="['/create-group']" class="create-group-button">Crear grupo</a>
 </div>
+} @else {
+<div class="loading-container">
+  <mat-spinner></mat-spinner>
+</div>
+}
