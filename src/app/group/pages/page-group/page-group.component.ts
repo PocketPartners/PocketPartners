@@ -26,6 +26,9 @@ export class PageGroupComponent implements OnInit {
     this.groupService.getAll()
       .subscribe((groups: any) => {
         this.groups = groups;
+        this.isDataLoaded.finally(() => {
+          this.isDataLoaded = new Promise((resolve) => resolve(true));
+        });
         this.groups.forEach(group => {
           this.groupService.getAllMembersByIdGroup(group.id).subscribe
             ((members: any) => {
@@ -36,9 +39,6 @@ export class PageGroupComponent implements OnInit {
               } else {
                 group.isMember = false;
               }
-              this.isDataLoaded.finally(() => {
-                this.isDataLoaded = new Promise((resolve) => resolve(true));
-              });
               console.log("The group: ", group);
             });
         });
@@ -53,7 +53,7 @@ export class PageGroupComponent implements OnInit {
     console.log("Te estás uniendo al grupo: ", groupId, " con el ID: ", this.currentUserId);
     this.groupService.joinGroup(groupId, this.currentUserId).subscribe((response: any) => {
       console.log("El grupo se unió correctamente");
-      this.getAllGroups();
+      this.openGroup(groupId);
     });
   }
 
