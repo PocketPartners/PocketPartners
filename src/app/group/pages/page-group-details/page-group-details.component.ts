@@ -6,6 +6,7 @@ import { Chart } from 'chart.js/auto';
 import { ExpensesService } from '../../../expenses/services/expenses.service';
 import { PaymentService } from '../../../payments/services/payment.service';
 import { AuthenticationService } from '../../../iam/services/authentication.service';
+import { PartnerService } from '../../../pockets/services/Partner.service';
 
 @Component({
   selector: 'app-page-group-details',
@@ -24,8 +25,16 @@ export class PageGroupDetailsComponent implements OnInit {
   paidMembers: Set<number> = new Set<number>(); // Set to store paid member IDs
   currentCurrency: string = 'PEN';
   pieChart!: Chart<"pie", number[], string>;
+  groupMemberInformation: any[] = [];
 
-  constructor(private route: ActivatedRoute, private groupService: GroupService, private expensesService: ExpensesService, private paymentService: PaymentService, private authenticationService: AuthenticationService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private groupService: GroupService,
+    private expensesService: ExpensesService,
+    private paymentService: PaymentService,
+    private authenticationService: AuthenticationService,
+    private partnerService: PartnerService
+  ) { }
 
   ngOnInit() {
     this.authenticationService.currUserInformation.subscribe((userInfo: any) => {
@@ -47,7 +56,11 @@ export class PageGroupDetailsComponent implements OnInit {
   getAllGroupMembers() {
     this.groupService.getAllMembersByIdGroup(this.group.id).subscribe((members: any) => {
       this.groupMembers = members;
-      console.log(this.groupMembers);
+      members.forEach((member: any) => {
+        this.partnerService.getUserInformationById(member.userId).subscribe((user: any) => {
+          this.groupMemberInformation.push(user);
+        });
+      });
     });
   }
 
@@ -79,11 +92,9 @@ export class PageGroupDetailsComponent implements OnInit {
   calculateAmountEachMemberShouldPay() {
     this.groupService.getAllMembersByIdGroup(this.group.id).subscribe((group: any) => {
       const numberOfMembers = group.length;
-      console.log('Hay ' + numberOfMembers + ' miembros');
       if (numberOfMembers > 0) {
         this.totalOfMembers = numberOfMembers;
         this.amountEachMemberShouldPay = this.totalExpenses / numberOfMembers;
-        console.log('El monto que debe pagar cada miembro es ' + this.amountEachMemberShouldPay);
       }
       this.getAllGroupMembers();
       this.updatePieChart();

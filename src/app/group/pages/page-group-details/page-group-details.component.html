@@ -22,7 +22,7 @@
     <mat-card>
       <mat-card-title>Cada miembro debe pagar</mat-card-title>
       <mat-card-content>
-        <div *ngFor="let member of groupMembers">
+        <div *ngFor="let member of groupMemberInformation">
           <label [class.checked]="isMemberPaid(member.userId)">
             <input type="checkbox" [checked]="isMemberPaid(member.userId)" (change)="togglePaidMember(member.userId)">
             <span>{{ member.fullName }}</span>
