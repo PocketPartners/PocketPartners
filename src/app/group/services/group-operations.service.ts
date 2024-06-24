@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class GroupOperationsService extends BaseService<GroupEntity> {
+export class GroupOperationsService extends BaseService<OperationEntity> {
   constructor(http: HttpClient) {
     super(http);
     this.resourceEndpoint = '/groupOperations';

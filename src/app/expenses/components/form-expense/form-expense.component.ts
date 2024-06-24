@@ -48,9 +48,11 @@ export class FormExpenseComponent {
       this.expenseService.getExpensesByGroupId(groupId).subscribe((expenses: any) => {
         const paymentAmount = this.Expense.amount / members.length;
         const expenseId = expenses.length;
+        const groupOperation = new OperationEntity();
 
         members.forEach((member: any) => {
           const payment = new PaymentEntity();
+
           payment.description = this.firstFormGroup.value.firstCtrl as string;
           payment.amount = paymentAmount;
           payment.status = 0;
@@ -61,7 +63,6 @@ export class FormExpenseComponent {
           this.paymentService.getPaymentByUserId(member.userId).subscribe((payments: any) => {
             const paymentId = payments.length;
 
-            const groupOperation = new OperationEntity();
             groupOperation.expenseId = expenseId;
             groupOperation.paymentsId = paymentId;
             groupOperation.groupId = this.fourthFormGroup.value.firstCtrl as unknown as number;

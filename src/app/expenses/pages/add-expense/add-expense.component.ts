@@ -5,6 +5,7 @@ import { ExpensesEntity } from '../../model/expenses.entity';
 import { ExpensesService } from '../../services/expenses.service';
 import { AuthenticationService } from '../../../iam/services/authentication.service';
 import { GroupService } from '../../../group/services/group.service';
+import {GroupOperationsService} from "../../../group/services/group-operations.service";
 
 @Component({
   selector: 'app-add-expense',
@@ -19,6 +20,7 @@ export class AddExpenseComponent implements OnInit {
     private expenseService: ExpensesService,
     private authenticationService: AuthenticationService,
     private groupService: GroupService,
+    private groupOperationService: GroupOperationsService,
   ) { }
   user: PartnerEntity = new PartnerEntity();
 
@@ -30,6 +32,10 @@ export class AddExpenseComponent implements OnInit {
           groups.forEach((group: any) => {
             this.groupService.getById(group.groupId).subscribe((group: any) => {
               this.joinedGroups.push(group);
+
+            });
+            this.groupOperationService.getAllGroupOperationsByGroupId(group.groupId).subscribe((groupOperation: any) => {
+
             });
           });
         });

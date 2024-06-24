@@ -2,6 +2,6 @@
   <h1 class="title">
     Add New Payment
   </h1>
-  <app-form-payment  /> <!--(onAddPayment)="onSubmit($event)" [user]="user"-->
+  <app-form-payment (onAddPayment)="onSubmit($event)" [user]="user" [joinedGroups]="joinedGroups" />
 </div>
 

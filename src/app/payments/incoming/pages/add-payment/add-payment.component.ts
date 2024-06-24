@@ -3,6 +3,11 @@ import {PaymentService} from "../../../services/payment.service";
 import {PartnerService} from "../../../../pockets/services/Partner.service";
 import {PartnerEntity} from "../../../../pockets/model/partnerEntity";
 import {PaymentEntity} from "../../../model/payment-entity";
+import {ExpensesService} from "../../../../expenses/services/expenses.service";
+import {AuthenticationService} from "../../../../iam/services/authentication.service";
+import {GroupService} from "../../../../group/services/group.service";
+import {ExpensesEntity} from "../../../../expenses/model/expenses.entity";
+import {GroupOperationsService} from "../../../../group/services/group-operations.service";
 
 @Component({
   selector: 'app-add-payment',
@@ -10,23 +15,46 @@ import {PaymentEntity} from "../../../model/payment-entity";
   styleUrl: './add-payment.component.css'
 })
 export class AddPaymentComponent implements OnInit {
-  private userId: number = 0;
-  constructor(private partnerService: PartnerService, private paymentService: PaymentService) { }
-  public user: PartnerEntity = new PartnerEntity();
+  userId: number = 0;
+  joinedGroups: any = [];
+  pendingPayments: any = [];
+  constructor(
+    private partnerService: PartnerService,
+    private paymentService: PaymentService,
+    private authenticationService: AuthenticationService,
+    private groupService: GroupService,
+    private groupOperationService: GroupOperationsService,
+  ) { }
+  user: PartnerEntity = new PartnerEntity();
+
   ngOnInit(): void {
-    this.partnerService.getAll().subscribe((partner: any) => {
-      partner.forEach((element: any) => {
-        if (element.id == this.userId) {
-          this.user = element;
-          console.log(this.user);
-        }
+    this.authenticationService.currentUserId.subscribe((userId: any) => {
+      this.userId = userId;
+      this.partnerService.getPartnerById(userId).subscribe((partner: any) => {
+        this.paymentService.getJoinedUserGroups(userId).subscribe((groups: any) => {
+          groups.forEach((group: any) => {
+            this.groupService.getById(group.groupId).subscribe((group: any) => {
+              this.joinedGroups.push(group);
+            });
+            this.groupOperationService.getAllGroupOperationsByGroupId(group.groupId).subscribe((groupOperation: any) => {
+              groupOperation.forEach((group: any) => {
+                this.paymentService.getPaymentByUserIdAndStatus(userId, 0).subscribe((payment: any) => {
+                  this.pendingPayments.push(payment);
+                });
+              });
+            });
+          });
+        });
       });
     });
   }
 
-  onSubmit(payment: PaymentEntity) {
-    this.paymentService.create(payment).subscribe((payment: any) => {
-      console.log(payment);
-    });
+  onSubmit(payment: PaymentEntity): void {
+    // delete un necessary properties
+    let paymentClean: any = { ...payment };
+    paymentClean.userId = this.userId;
+    delete paymentClean.createdAt;
+    delete paymentClean.updatedAt;
+    this.paymentService.create(paymentClean).subscribe();
   }
 }

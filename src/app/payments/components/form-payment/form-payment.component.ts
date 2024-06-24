@@ -28,7 +28,7 @@ export class FormPaymentComponent {
   @Input() joinedGroups: any;
   @Input() pendingPayments: any;
   private Payment = new PaymentEntity();
-  @Output() onAddExpense: EventEmitter<ExpensesEntity> = new EventEmitter<ExpensesEntity>();
+  @Output() onAddPayment: EventEmitter<PaymentEntity> = new EventEmitter<PaymentEntity>();
   constructor(private _formBuilder: FormBuilder, private router: Router) { }
 
   onSubmit() {
