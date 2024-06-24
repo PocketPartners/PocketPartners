@@ -19,6 +19,10 @@ export class ExpensesService extends BaseService<ExpensesEntity> {
     return this.http.get<any>(`${this.basePath}/groups/members/${userId}`, this.httpOptions);
   }
 
+  getExpenseById(expenseId: any) {
+    return this.http.get<any>(`${this.resourcePath()}/${expenseId}`, this.httpOptions)
+  }
+
   getExpensesByGroupId(groupId: number): Observable<ExpensesEntity[]> {
     return this.http.get<ExpensesEntity[]>(`${this.resourcePath()}/groupId/${groupId}`, this.httpOptions);
   }

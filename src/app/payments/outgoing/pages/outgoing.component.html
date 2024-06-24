@@ -11,45 +11,30 @@
 
     <mat-card-content>
       <div class="group-container">
-        <mat-card *ngFor="let group of groups" class="group-card">
+        @if (paymentsMade.length > 0) {
+        <mat-card *ngFor="let payment of paymentsMade" class="group-card">
           <mat-card-header>
             <mat-card-title-group>
-              <mat-card-title>{{ group.name }}</mat-card-title>
+              <mat-card-title>{{ payment.description }}</mat-card-title>
             </mat-card-title-group>
+
           </mat-card-header>
-          @if (groupPayments[group.id]) {
           <mat-card-content>
-            <div class="container">
-              <div class="box name">
-                <h3><b>Members</b></h3>
-                <div *ngFor="let payment of groupPayments[group.id]">
-                  {{ users[payment.userId].fullName || payment.userId }}
-                </div>
-              </div>
-              <div class="box date">
-                <h4><b>Description</b></h4>
-                <div *ngFor="let payment of groupPayments[group.id]">
-                  {{ payment.description }}
-                </div>
-              </div>
-              <div class="box amount">
-                <h4><b>Amount</b></h4>
-                <div *ngFor="let payment of groupPayments[group.id]">
-                  {{ payment.amount | currency }}
-                </div>
-              </div>
-            </div>
+            <mat-card-subtitle>{{ payment.date | date }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ payment.amount | currency }}</mat-card-subtitle>
+            <mat-card-subtitle>Groups: {{ payment.group.name }}</mat-card-subtitle>
           </mat-card-content>
-          }
-          @else {
-          <mat-card-content>
-            Todavía no hay movimientos...
-          </mat-card-content>
-          }
         </mat-card>
+        }
+        @else {
+          <mat-card-content>
+            Todavía no hay pagos. ¡Haz uno!
+          </mat-card-content>
+        }
       </div>
     </mat-card-content>
   </mat-card>
+
 
   <mat-card class="missing card">
     <mat-card-header>
@@ -59,41 +44,17 @@
 
     <mat-card-content>
       <div class="group-container">
-        <mat-card *ngFor="let group of groups" class="group-card">
+        <mat-card *ngFor="let payment of paymentsToDo" class="group-card">
           <mat-card-header>
             <mat-card-title-group>
-              <mat-card-title>{{ group.name }}</mat-card-title>
+              <mat-card-title>{{ payment.description }}</mat-card-title>
             </mat-card-title-group>
           </mat-card-header>
-          @if (groupPayments[group.id]) {
           <mat-card-content>
-            <div class="container">
-              <div class="box name">
-                <h3><b>Members</b></h3>
-                <div *ngFor="let payment of groupPayments[group.id]">
-                  {{ 'No name' || users[payment.userId].fullName || payment.userId }}
-                </div>
-              </div>
-              <div class="box date">
-                <h4><b>Description</b></h4>
-                <div *ngFor="let payment of groupPayments[group.id]">
-                  {{ payment.description }} <!-- Assuming description contains date -->
-                </div>
-              </div>
-              <div class="box amount">
-                <h4><b>Amount</b></h4>
-                <div *ngFor="let payment of groupPayments[group.id]">
-                  {{ payment.amount | currency }}
-                </div>
-              </div>
-            </div>
+            <mat-card-subtitle>{{ payment.date | date }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ payment.amount | currency }}</mat-card-subtitle>
+            <mat-card-subtitle>Groups: {{ payment.group.name }}</mat-card-subtitle>
           </mat-card-content>
-          }
-          @else {
-          <mat-card-content>
-            Todavía no hay movimientos...
-          </mat-card-content>
-          }
         </mat-card>
       </div>
     </mat-card-content>
