@@ -1,14 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {PaymentEntity} from "../../model/payment-entity";
-import {PartnerEntity} from "../../../pockets/model/partnerEntity";
-import {ExpensesEntity} from "../../../expenses/model/expenses.entity";
+import { PaymentEntity } from "../../model/payment-entity";
+import { PartnerEntity } from "../../../pockets/model/partnerEntity";
 
 @Component({
   selector: 'app-form-payment',
   templateUrl: './form-payment.component.html',
-  styleUrl: './form-payment.component.css'
+  styleUrls: ['./form-payment.component.css']
 })
 export class FormPaymentComponent {
   firstFormGroup = this._formBuilder.group({
@@ -27,17 +26,23 @@ export class FormPaymentComponent {
   @Input() user: PartnerEntity = new PartnerEntity();
   @Input() joinedGroups: any;
   @Input() pendingPayments: any;
-  private Payment = new PaymentEntity();
   @Output() onAddPayment: EventEmitter<PaymentEntity> = new EventEmitter<PaymentEntity>();
+  @Output() groupChange: EventEmitter<number> = new EventEmitter<number>();
+
+  private Payment = new PaymentEntity();
+
   constructor(private _formBuilder: FormBuilder, private router: Router) { }
 
   onSubmit() {
     this.Payment.id = this.secondFormGroup.value.firstCtrl as unknown as number;
-    this.Payment.description = this.firstFormGroup.value.firstCtrl as string;
-    this.Payment.amount = this.thirdFormGroup.value.firstCtrl as unknown as number;
-    this.Payment.userId = this.user.id;
+
+    this.onAddPayment.emit(this.Payment);
 
     // redirect to payments list
     this.router.navigate(['/outgoing']);
+  }
+
+  onGroupSelectionChange(event: any) {
+    this.groupChange.emit(event.value);
   }
 }
