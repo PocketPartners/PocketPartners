@@ -41,12 +41,12 @@ export class FormExpenseComponent {
     this.onAddExpense.emit(this.Expense);
 
     const groupId = this.Expense.groupId;
-    this.groupMembersService.getAllMembersByIdGroup(groupId).subscribe((group: any) => {
-      const members = group.members;
+    this.groupMembersService.getAllMembersByIdGroup(groupId).subscribe((members: any[]) => {
       const paymentAmount = this.Expense.amount / members.length;
 
       members.forEach((member: any) => {
         const payment = new PaymentEntity();
+        payment.description = this.firstFormGroup.value.firstCtrl as string;
         payment.amount = paymentAmount;
         payment.status = 0;
         payment.userId = member.userId;
