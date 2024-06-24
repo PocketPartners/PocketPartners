@@ -20,4 +20,8 @@ export class PaymentService extends BaseService<PaymentEntity> {
   getPaymentByExpenseId(expenseId: any) {
     return this.http.get<any>(`${this.resourcePath()}/expenseId/${expenseId}`, this.httpOptions)
   }
+
+  getPaymentByUserId(userId: any) {
+    return this.http.get<any>(`${this.resourcePath()}/userId/${userId}`, this.httpOptions)
+  }
 }

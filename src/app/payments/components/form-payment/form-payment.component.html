@@ -2,12 +2,16 @@
 <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>
-            New Payment
+            Which Group?
         </ng-template>
-        <mat-form-field>
-            <mat-label>Give it a description</mat-label>
-            <input matInput formControlName="firstCtrl" required>
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>Pick a group</mat-label>
+        <mat-select formControlName="firstCtrl" required>
+          <mat-option *ngFor="let group of joinedGroups " [value]="group.id">
+            {{ group.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
         <div>
             <button mat-button matStepperNext>Next</button>
         </div>
@@ -16,12 +20,16 @@
 <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>
-            When?
+            Which Expense?
         </ng-template>
-        <mat-form-field>
-            <mat-label>Date of the Payment</mat-label>
-            <input type="date" matInput formControlName="firstCtrl" required>
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>Pick an expense</mat-label>
+        <mat-select formControlName="firstCtrl" required>
+          <mat-option *ngFor="let payment of pendingPayments" [value]="payment.id">
+            {{ payment.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
         <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext>Next</button>
@@ -43,33 +51,14 @@
         </div>
     </form>
 </mat-step>
-<mat-step [stepControl]="fourthFormGroup">
-    <form [formGroup]="fourthFormGroup">
-        <ng-template matStepLabel>
-            Which user?
-        </ng-template>
-        <mat-form-field>
-            <mat-label>Pick a group</mat-label>
-            <mat-select formControlName="firstCtrl" required>
-                <mat-option *ngFor="let user of user" [value]="user.id">
-                    {{ user.name }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-                <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
-                </div>
-    </form>
-</mat-step>
 <mat-step>
     <ng-template matStepLabel>
         Summary
     </ng-template>
     <div>
         <h1>Summary</h1>
-        <p>Name: {{ firstFormGroup.value.firstCtrl }}</p>
-        <p>Date: {{ secondFormGroup.value.firstCtrl }}</p>
+        <p>Group: {{ firstFormGroup.value.firstCtrl }}</p>
+        <p>Expense: {{ secondFormGroup.value.firstCtrl }}</p>
         <p>Amount: {{ thirdFormGroup.value.firstCtrl }}</p>
         <p>Group: {{ fourthFormGroup.value.firstCtrl }}</p>
     </div>

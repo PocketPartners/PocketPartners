@@ -5,9 +5,11 @@ import { Router } from '@angular/router';
 import { PartnerEntity } from '../../../pockets/model/partnerEntity';
 import {PaymentEntity} from "../../../payments/model/payment-entity";
 import {PaymentService} from "../../../payments/services/payment.service";
-import {GroupService} from "../../../group/services/group.service";
 import {GroupMembersService} from "../../../group/services/group-members.service";
 import {ExpensesService} from "../../services/expenses.service";
+import {GroupOperationsService} from "../../../group/services/group-operations.service";
+import {GroupEntity} from "../../../group/model/group.entity";
+import {OperationEntity} from "../../../group/model/operation-entity";
 
 @Component({
   selector: 'app-form-expense',
@@ -32,7 +34,7 @@ export class FormExpenseComponent {
   @Input() joinedGroups: any;
   private Expense = new ExpensesEntity();
   @Output() onAddExpense: EventEmitter<ExpensesEntity> = new EventEmitter<ExpensesEntity>();
-  constructor(private _formBuilder: FormBuilder, private router: Router,private paymentService: PaymentService, private groupMembersService: GroupMembersService, private expenseService: ExpensesService) { }
+  constructor(private _formBuilder: FormBuilder, private router: Router,private paymentService: PaymentService, private groupMembersService: GroupMembersService, private expenseService: ExpensesService, private groupOperationService: GroupOperationsService) { }
 
   onSubmit() {
     this.Expense.name = this.firstFormGroup.value.firstCtrl as string;
@@ -56,6 +58,15 @@ export class FormExpenseComponent {
           payment.expenseId = expenseId;
 
           this.paymentService.create(payment).subscribe();
+          this.paymentService.getPaymentByUserId(member.userId).subscribe((payments: any) => {
+            const paymentId = payments.length;
+
+            const groupOperation = new OperationEntity();
+            groupOperation.expenseId = expenseId;
+            groupOperation.paymentsId = paymentId;
+            groupOperation.groupId = this.fourthFormGroup.value.firstCtrl as unknown as number;
+            this.groupOperationService.create(groupOperation).subscribe();
+          });
         });
       });
     });

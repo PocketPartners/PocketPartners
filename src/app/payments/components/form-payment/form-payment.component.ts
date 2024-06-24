@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {PaymentEntity} from "../../model/payment-entity";
+import {PartnerEntity} from "../../../pockets/model/partnerEntity";
+import {ExpensesEntity} from "../../../expenses/model/expenses.entity";
 
 @Component({
   selector: 'app-form-payment',
@@ -22,9 +24,11 @@ export class FormPaymentComponent {
     firstCtrl: ['', Validators.required],
   });
 
-  @Input() user: any;
+  @Input() user: PartnerEntity = new PartnerEntity();
+  @Input() joinedGroups: any;
+  @Input() pendingPayments: any;
   private Payment = new PaymentEntity();
-  @Output() onAddPayment: EventEmitter<PaymentEntity> = new EventEmitter<PaymentEntity>();
+  @Output() onAddExpense: EventEmitter<ExpensesEntity> = new EventEmitter<ExpensesEntity>();
   constructor(private _formBuilder: FormBuilder, private router: Router) { }
 
   onSubmit() {
@@ -32,7 +36,7 @@ export class FormPaymentComponent {
     this.Payment.description = this.firstFormGroup.value.firstCtrl as string;
     this.Payment.amount = this.thirdFormGroup.value.firstCtrl as unknown as number;
     this.Payment.userId = this.user.id;
-    this.onAddPayment.emit(this.Payment);
+
     // redirect to payments list
     this.router.navigate(['/outgoing']);
   }
