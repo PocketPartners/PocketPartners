@@ -7,6 +7,7 @@ import {PaymentEntity} from "../../../payments/model/payment-entity";
 import {PaymentService} from "../../../payments/services/payment.service";
 import {GroupService} from "../../../group/services/group.service";
 import {GroupMembersService} from "../../../group/services/group-members.service";
+import {ExpensesService} from "../../services/expenses.service";
 
 @Component({
   selector: 'app-form-expense',
@@ -31,7 +32,7 @@ export class FormExpenseComponent {
   @Input() joinedGroups: any;
   private Expense = new ExpensesEntity();
   @Output() onAddExpense: EventEmitter<ExpensesEntity> = new EventEmitter<ExpensesEntity>();
-  constructor(private _formBuilder: FormBuilder, private router: Router,private paymentService: PaymentService, private groupMembersService: GroupMembersService) { }
+  constructor(private _formBuilder: FormBuilder, private router: Router,private paymentService: PaymentService, private groupMembersService: GroupMembersService, private expenseService: ExpensesService) { }
 
   onSubmit() {
     this.Expense.name = this.firstFormGroup.value.firstCtrl as string;
@@ -42,17 +43,20 @@ export class FormExpenseComponent {
 
     const groupId = this.Expense.groupId;
     this.groupMembersService.getAllMembersByIdGroup(groupId).subscribe((members: any[]) => {
-      const paymentAmount = this.Expense.amount / members.length;
+      this.expenseService.getExpensesByGroupId(groupId).subscribe((expenses: any) => {
+        const paymentAmount = this.Expense.amount / members.length;
+        const expenseId = expenses.length;
 
-      members.forEach((member: any) => {
-        const payment = new PaymentEntity();
-        payment.description = this.firstFormGroup.value.firstCtrl as string;
-        payment.amount = paymentAmount;
-        payment.status = 0;
-        payment.userId = member.userId;
-        payment.expenseId = this.Expense.id; // Esto debe actualizarse con el ID real del Expense
+        members.forEach((member: any) => {
+          const payment = new PaymentEntity();
+          payment.description = this.firstFormGroup.value.firstCtrl as string;
+          payment.amount = paymentAmount;
+          payment.status = 0;
+          payment.userId = member.userId;
+          payment.expenseId = expenseId;
 
-        this.paymentService.create(payment).subscribe();
+          this.paymentService.create(payment).subscribe();
+        });
       });
     });
 
