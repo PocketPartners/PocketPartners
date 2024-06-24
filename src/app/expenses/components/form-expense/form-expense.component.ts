@@ -47,26 +47,20 @@ export class FormExpenseComponent {
     this.groupMembersService.getAllMembersByIdGroup(groupId).subscribe((members: any[]) => {
       this.expenseService.getExpensesByGroupId(groupId).subscribe((expenses: any) => {
         const paymentAmount = this.Expense.amount / members.length;
-        const expenseId = expenses.length;
+        const expenseId = expenses[expenses.length - 1].id;
         const groupOperation = new OperationEntity();
 
+        console.log(expenses);
         members.forEach((member: any) => {
           const payment = new PaymentEntity();
-
           payment.description = this.firstFormGroup.value.firstCtrl as string;
-          payment.amount = paymentAmount;
-          payment.status = 0;
-          payment.userId = member.userId;
-          payment.expenseId = expenseId;
+          const desc = this.firstFormGroup.value.firstCtrl as string;
 
-          this.paymentService.create(payment).subscribe();
-          this.paymentService.getPaymentByUserId(member.userId).subscribe((payments: any) => {
-            const paymentId = payments.length;
+          this.paymentService.create({description:desc, amount:paymentAmount, userId:member.userId, expenseId:expenseId}).subscribe((payment: any) => {
+            const paymentId = payment.id;
 
-            groupOperation.expenseId = expenseId;
-            groupOperation.paymentsId = paymentId;
-            groupOperation.groupId = this.fourthFormGroup.value.firstCtrl as unknown as number;
-            this.groupOperationService.create(groupOperation).subscribe();
+            const groupID = this.fourthFormGroup.value.firstCtrl as unknown as number;
+            this.groupOperationService.create({groupId:groupID ,expenseId:expenseId, paymentId:paymentId}).subscribe();
           });
         });
       });
