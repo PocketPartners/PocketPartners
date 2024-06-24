@@ -32,7 +32,7 @@ export class FormPaymentComponent {
   constructor(private _formBuilder: FormBuilder, private router: Router) { }
 
   onSubmit() {
-    this.Payment.id = Math.random()
+    this.Payment.id = this.secondFormGroup.value.firstCtrl as unknown as number;
     this.Payment.description = this.firstFormGroup.value.firstCtrl as string;
     this.Payment.amount = this.thirdFormGroup.value.firstCtrl as unknown as number;
     this.Payment.userId = this.user.id;

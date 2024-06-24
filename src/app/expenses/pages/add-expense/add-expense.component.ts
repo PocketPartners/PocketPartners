@@ -34,9 +34,6 @@ export class AddExpenseComponent implements OnInit {
               this.joinedGroups.push(group);
 
             });
-            this.groupOperationService.getAllGroupOperationsByGroupId(group.groupId).subscribe((groupOperation: any) => {
-
-            });
           });
         });
       });

@@ -35,12 +35,14 @@ export class AddPaymentComponent implements OnInit {
           groups.forEach((group: any) => {
             this.groupService.getById(group.groupId).subscribe((group: any) => {
               this.joinedGroups.push(group);
+              console.log(this.joinedGroups);
             });
             this.groupOperationService.getAllGroupOperationsByGroupId(group.groupId).subscribe((groupOperation: any) => {
-              groupOperation.forEach((group: any) => {
-                this.paymentService.getPaymentByUserIdAndStatus(userId, 0).subscribe((payment: any) => {
-                  this.pendingPayments.push(payment);
-                });
+              this.paymentService.getPaymentByUserIdAndStatus(this.userId, groupOperation.status="PENDING").subscribe((payment: any) => {
+                if(groupOperation.status == "PENDING") {
+                    this.pendingPayments.push(payment);
+                    console.log(this.pendingPayments);
+                }
               });
             });
           });
